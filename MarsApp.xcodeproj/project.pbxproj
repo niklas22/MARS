@@ -13,7 +13,58 @@
 		BCCB05A51C104C3A00361BAE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCCB05A31C104C3A00361BAE /* Main.storyboard */; };
 		BCCB05A71C104C3A00361BAE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCCB05A61C104C3A00361BAE /* Assets.xcassets */; };
 		BCCB05AA1C104C3A00361BAE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCCB05A81C104C3A00361BAE /* LaunchScreen.storyboard */; };
+		BCCB05B71C104D7100361BAE /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCCB05B51C104D7100361BAE /* Interface.storyboard */; };
+		BCCB05B91C104D7100361BAE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCCB05B81C104D7100361BAE /* Assets.xcassets */; };
+		BCCB05C01C104D7100361BAE /* MarsAppWatch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = BCCB05BF1C104D7100361BAE /* MarsAppWatch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		BCCB05C71C104D7100361BAE /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCB05C61C104D7100361BAE /* InterfaceController.swift */; };
+		BCCB05C91C104D7100361BAE /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCB05C81C104D7100361BAE /* ExtensionDelegate.swift */; };
+		BCCB05CB1C104D7100361BAE /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCB05CA1C104D7100361BAE /* NotificationController.swift */; };
+		BCCB05CD1C104D7100361BAE /* GlanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCB05CC1C104D7100361BAE /* GlanceController.swift */; };
+		BCCB05CF1C104D7100361BAE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCCB05CE1C104D7100361BAE /* Assets.xcassets */; };
+		BCCB05D31C104D7100361BAE /* MarsAppWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = BCCB05B31C104D7100361BAE /* MarsAppWatch.app */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BCCB05C11C104D7100361BAE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BCCB05921C104C3A00361BAE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BCCB05BE1C104D7100361BAE;
+			remoteInfo = "MarsAppWatch Extension";
+		};
+		BCCB05D11C104D7100361BAE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BCCB05921C104C3A00361BAE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BCCB05B21C104D7100361BAE;
+			remoteInfo = MarsAppWatch;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BCCB05D71C104D7100361BAE /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				BCCB05C01C104D7100361BAE /* MarsAppWatch Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BCCB05DB1C104D7100361BAE /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				BCCB05D31C104D7100361BAE /* MarsAppWatch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		BCCB059A1C104C3A00361BAE /* MarsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -24,10 +75,29 @@
 		BCCB05A61C104C3A00361BAE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BCCB05A91C104C3A00361BAE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BCCB05AB1C104C3A00361BAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BCCB05B31C104D7100361BAE /* MarsAppWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarsAppWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCCB05B61C104D7100361BAE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		BCCB05B81C104D7100361BAE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BCCB05BA1C104D7100361BAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BCCB05BF1C104D7100361BAE /* MarsAppWatch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "MarsAppWatch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCCB05C51C104D7100361BAE /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		BCCB05C61C104D7100361BAE /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		BCCB05C81C104D7100361BAE /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		BCCB05CA1C104D7100361BAE /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		BCCB05CC1C104D7100361BAE /* GlanceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlanceController.swift; sourceTree = "<group>"; };
+		BCCB05CE1C104D7100361BAE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BCCB05D01C104D7100361BAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		BCCB05971C104C3A00361BAE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BCCB05BC1C104D7100361BAE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -41,6 +111,8 @@
 			isa = PBXGroup;
 			children = (
 				BCCB059C1C104C3A00361BAE /* MarsApp */,
+				BCCB05B41C104D7100361BAE /* MarsAppWatch */,
+				BCCB05C31C104D7100361BAE /* MarsAppWatch Extension */,
 				BCCB059B1C104C3A00361BAE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -49,6 +121,8 @@
 			isa = PBXGroup;
 			children = (
 				BCCB059A1C104C3A00361BAE /* MarsApp.app */,
+				BCCB05B31C104D7100361BAE /* MarsAppWatch.app */,
+				BCCB05BF1C104D7100361BAE /* MarsAppWatch Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -67,6 +141,38 @@
 			path = MarsApp;
 			sourceTree = "<group>";
 		};
+		BCCB05B41C104D7100361BAE /* MarsAppWatch */ = {
+			isa = PBXGroup;
+			children = (
+				BCCB05B51C104D7100361BAE /* Interface.storyboard */,
+				BCCB05B81C104D7100361BAE /* Assets.xcassets */,
+				BCCB05BA1C104D7100361BAE /* Info.plist */,
+			);
+			path = MarsAppWatch;
+			sourceTree = "<group>";
+		};
+		BCCB05C31C104D7100361BAE /* MarsAppWatch Extension */ = {
+			isa = PBXGroup;
+			children = (
+				BCCB05C61C104D7100361BAE /* InterfaceController.swift */,
+				BCCB05C81C104D7100361BAE /* ExtensionDelegate.swift */,
+				BCCB05CA1C104D7100361BAE /* NotificationController.swift */,
+				BCCB05CC1C104D7100361BAE /* GlanceController.swift */,
+				BCCB05CE1C104D7100361BAE /* Assets.xcassets */,
+				BCCB05D01C104D7100361BAE /* Info.plist */,
+				BCCB05C41C104D7100361BAE /* Supporting Files */,
+			);
+			path = "MarsAppWatch Extension";
+			sourceTree = "<group>";
+		};
+		BCCB05C41C104D7100361BAE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BCCB05C51C104D7100361BAE /* PushNotificationPayload.apns */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -77,15 +183,51 @@
 				BCCB05961C104C3A00361BAE /* Sources */,
 				BCCB05971C104C3A00361BAE /* Frameworks */,
 				BCCB05981C104C3A00361BAE /* Resources */,
+				BCCB05DB1C104D7100361BAE /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				BCCB05D21C104D7100361BAE /* PBXTargetDependency */,
 			);
 			name = MarsApp;
 			productName = MarsApp;
 			productReference = BCCB059A1C104C3A00361BAE /* MarsApp.app */;
 			productType = "com.apple.product-type.application";
+		};
+		BCCB05B21C104D7100361BAE /* MarsAppWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BCCB05D81C104D7100361BAE /* Build configuration list for PBXNativeTarget "MarsAppWatch" */;
+			buildPhases = (
+				BCCB05B11C104D7100361BAE /* Resources */,
+				BCCB05D71C104D7100361BAE /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BCCB05C21C104D7100361BAE /* PBXTargetDependency */,
+			);
+			name = MarsAppWatch;
+			productName = MarsAppWatch;
+			productReference = BCCB05B31C104D7100361BAE /* MarsAppWatch.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		BCCB05BE1C104D7100361BAE /* MarsAppWatch Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BCCB05D41C104D7100361BAE /* Build configuration list for PBXNativeTarget "MarsAppWatch Extension" */;
+			buildPhases = (
+				BCCB05BB1C104D7100361BAE /* Sources */,
+				BCCB05BC1C104D7100361BAE /* Frameworks */,
+				BCCB05BD1C104D7100361BAE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "MarsAppWatch Extension";
+			productName = "MarsAppWatch Extension";
+			productReference = BCCB05BF1C104D7100361BAE /* MarsAppWatch Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -98,6 +240,12 @@
 				ORGANIZATIONNAME = "Niklas Mayr";
 				TargetAttributes = {
 					BCCB05991C104C3A00361BAE = {
+						CreatedOnToolsVersion = 7.1.1;
+					};
+					BCCB05B21C104D7100361BAE = {
+						CreatedOnToolsVersion = 7.1.1;
+					};
+					BCCB05BE1C104D7100361BAE = {
 						CreatedOnToolsVersion = 7.1.1;
 					};
 				};
@@ -116,6 +264,8 @@
 			projectRoot = "";
 			targets = (
 				BCCB05991C104C3A00361BAE /* MarsApp */,
+				BCCB05B21C104D7100361BAE /* MarsAppWatch */,
+				BCCB05BE1C104D7100361BAE /* MarsAppWatch Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -128,6 +278,23 @@
 				BCCB05AA1C104C3A00361BAE /* LaunchScreen.storyboard in Resources */,
 				BCCB05A71C104C3A00361BAE /* Assets.xcassets in Resources */,
 				BCCB05A51C104C3A00361BAE /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BCCB05B11C104D7100361BAE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCCB05B91C104D7100361BAE /* Assets.xcassets in Resources */,
+				BCCB05B71C104D7100361BAE /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BCCB05BD1C104D7100361BAE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCCB05CF1C104D7100361BAE /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,7 +311,31 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BCCB05BB1C104D7100361BAE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCCB05CB1C104D7100361BAE /* NotificationController.swift in Sources */,
+				BCCB05C91C104D7100361BAE /* ExtensionDelegate.swift in Sources */,
+				BCCB05C71C104D7100361BAE /* InterfaceController.swift in Sources */,
+				BCCB05CD1C104D7100361BAE /* GlanceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BCCB05C21C104D7100361BAE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BCCB05BE1C104D7100361BAE /* MarsAppWatch Extension */;
+			targetProxy = BCCB05C11C104D7100361BAE /* PBXContainerItemProxy */;
+		};
+		BCCB05D21C104D7100361BAE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BCCB05B21C104D7100361BAE /* MarsAppWatch */;
+			targetProxy = BCCB05D11C104D7100361BAE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		BCCB05A31C104C3A00361BAE /* Main.storyboard */ = {
@@ -161,6 +352,14 @@
 				BCCB05A91C104C3A00361BAE /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		BCCB05B51C104D7100361BAE /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BCCB05B61C104D7100361BAE /* Base */,
+			);
+			name = Interface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -271,6 +470,66 @@
 			};
 			name = Release;
 		};
+		BCCB05D51C104D7100361BAE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "MarsAppWatch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = at.fhooe.mc.MOS5.MarsApp.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		BCCB05D61C104D7100361BAE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "MarsAppWatch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = at.fhooe.mc.MOS5.MarsApp.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
+		BCCB05D91C104D7100361BAE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				IBSC_MODULE = MarsAppWatch_Extension;
+				INFOPLIST_FILE = MarsAppWatch/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = at.fhooe.mc.MOS5.MarsApp.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		BCCB05DA1C104D7100361BAE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				IBSC_MODULE = MarsAppWatch_Extension;
+				INFOPLIST_FILE = MarsAppWatch/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = at.fhooe.mc.MOS5.MarsApp.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -288,6 +547,22 @@
 			buildConfigurations = (
 				BCCB05AF1C104C3A00361BAE /* Debug */,
 				BCCB05B01C104C3A00361BAE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		BCCB05D41C104D7100361BAE /* Build configuration list for PBXNativeTarget "MarsAppWatch Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BCCB05D51C104D7100361BAE /* Debug */,
+				BCCB05D61C104D7100361BAE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		BCCB05D81C104D7100361BAE /* Build configuration list for PBXNativeTarget "MarsAppWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BCCB05D91C104D7100361BAE /* Debug */,
+				BCCB05DA1C104D7100361BAE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
