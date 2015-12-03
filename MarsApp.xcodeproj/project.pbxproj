@@ -1,0 +1,297 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BCCB059E1C104C3A00361BAE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCB059D1C104C3A00361BAE /* AppDelegate.swift */; };
+		BCCB05A01C104C3A00361BAE /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCB059F1C104C3A00361BAE /* FirstViewController.swift */; };
+		BCCB05A21C104C3A00361BAE /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCB05A11C104C3A00361BAE /* SecondViewController.swift */; };
+		BCCB05A51C104C3A00361BAE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCCB05A31C104C3A00361BAE /* Main.storyboard */; };
+		BCCB05A71C104C3A00361BAE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCCB05A61C104C3A00361BAE /* Assets.xcassets */; };
+		BCCB05AA1C104C3A00361BAE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCCB05A81C104C3A00361BAE /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		BCCB059A1C104C3A00361BAE /* MarsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCCB059D1C104C3A00361BAE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BCCB059F1C104C3A00361BAE /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		BCCB05A11C104C3A00361BAE /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		BCCB05A41C104C3A00361BAE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BCCB05A61C104C3A00361BAE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BCCB05A91C104C3A00361BAE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BCCB05AB1C104C3A00361BAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BCCB05971C104C3A00361BAE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BCCB05911C104C3A00361BAE = {
+			isa = PBXGroup;
+			children = (
+				BCCB059C1C104C3A00361BAE /* MarsApp */,
+				BCCB059B1C104C3A00361BAE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BCCB059B1C104C3A00361BAE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BCCB059A1C104C3A00361BAE /* MarsApp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BCCB059C1C104C3A00361BAE /* MarsApp */ = {
+			isa = PBXGroup;
+			children = (
+				BCCB059D1C104C3A00361BAE /* AppDelegate.swift */,
+				BCCB059F1C104C3A00361BAE /* FirstViewController.swift */,
+				BCCB05A11C104C3A00361BAE /* SecondViewController.swift */,
+				BCCB05A31C104C3A00361BAE /* Main.storyboard */,
+				BCCB05A61C104C3A00361BAE /* Assets.xcassets */,
+				BCCB05A81C104C3A00361BAE /* LaunchScreen.storyboard */,
+				BCCB05AB1C104C3A00361BAE /* Info.plist */,
+			);
+			path = MarsApp;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BCCB05991C104C3A00361BAE /* MarsApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BCCB05AE1C104C3A00361BAE /* Build configuration list for PBXNativeTarget "MarsApp" */;
+			buildPhases = (
+				BCCB05961C104C3A00361BAE /* Sources */,
+				BCCB05971C104C3A00361BAE /* Frameworks */,
+				BCCB05981C104C3A00361BAE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MarsApp;
+			productName = MarsApp;
+			productReference = BCCB059A1C104C3A00361BAE /* MarsApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BCCB05921C104C3A00361BAE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0710;
+				LastUpgradeCheck = 0710;
+				ORGANIZATIONNAME = "Niklas Mayr";
+				TargetAttributes = {
+					BCCB05991C104C3A00361BAE = {
+						CreatedOnToolsVersion = 7.1.1;
+					};
+				};
+			};
+			buildConfigurationList = BCCB05951C104C3A00361BAE /* Build configuration list for PBXProject "MarsApp" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BCCB05911C104C3A00361BAE;
+			productRefGroup = BCCB059B1C104C3A00361BAE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BCCB05991C104C3A00361BAE /* MarsApp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BCCB05981C104C3A00361BAE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCCB05AA1C104C3A00361BAE /* LaunchScreen.storyboard in Resources */,
+				BCCB05A71C104C3A00361BAE /* Assets.xcassets in Resources */,
+				BCCB05A51C104C3A00361BAE /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BCCB05961C104C3A00361BAE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCCB05A21C104C3A00361BAE /* SecondViewController.swift in Sources */,
+				BCCB059E1C104C3A00361BAE /* AppDelegate.swift in Sources */,
+				BCCB05A01C104C3A00361BAE /* FirstViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		BCCB05A31C104C3A00361BAE /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BCCB05A41C104C3A00361BAE /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BCCB05A81C104C3A00361BAE /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BCCB05A91C104C3A00361BAE /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BCCB05AC1C104C3A00361BAE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BCCB05AD1C104C3A00361BAE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BCCB05AF1C104C3A00361BAE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = MarsApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = at.fhooe.mc.MOS5.MarsApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		BCCB05B01C104C3A00361BAE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = MarsApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = at.fhooe.mc.MOS5.MarsApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BCCB05951C104C3A00361BAE /* Build configuration list for PBXProject "MarsApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BCCB05AC1C104C3A00361BAE /* Debug */,
+				BCCB05AD1C104C3A00361BAE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BCCB05AE1C104C3A00361BAE /* Build configuration list for PBXNativeTarget "MarsApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BCCB05AF1C104C3A00361BAE /* Debug */,
+				BCCB05B01C104C3A00361BAE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BCCB05921C104C3A00361BAE /* Project object */;
+}
