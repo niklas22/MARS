@@ -112,6 +112,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BCB051311C119A3E008CAC66 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
 		BCCB05911C104C3A00361BAE = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +143,7 @@
 		BCCB059C1C104C3A00361BAE /* MarsApp */ = {
 			isa = PBXGroup;
 			children = (
+				BCB051311C119A3E008CAC66 /* Controller */,
 				BCCB059D1C104C3A00361BAE /* AppDelegate.swift */,
 				BCCB059F1C104C3A00361BAE /* FirstViewController.swift */,
 				BCCB05A11C104C3A00361BAE /* SecondViewController.swift */,
@@ -588,6 +596,7 @@
 				BCCB05B01C104C3A00361BAE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BCCB05D41C104D7100361BAE /* Build configuration list for PBXNativeTarget "MarsAppWatch Extension" */ = {
 			isa = XCConfigurationList;
@@ -596,6 +605,7 @@
 				BCCB05D61C104D7100361BAE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BCCB05D81C104D7100361BAE /* Build configuration list for PBXNativeTarget "MarsAppWatch" */ = {
 			isa = XCConfigurationList;
@@ -604,6 +614,7 @@
 				BCCB05DA1C104D7100361BAE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
