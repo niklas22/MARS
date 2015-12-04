@@ -147,6 +147,8 @@
 				BCCB059D1C104C3A00361BAE /* AppDelegate.swift */,
 				BCCB059F1C104C3A00361BAE /* FirstViewController.swift */,
 				BCCB05A11C104C3A00361BAE /* SecondViewController.swift */,
+				DF7EFFCF1C10582700481E76 /* ThirdViewController.swift */,
+				DF7EFFD11C10583500481E76 /* FourthViewController.swift */,
 				BCCB05A31C104C3A00361BAE /* Main.storyboard */,
 				BCCB05A61C104C3A00361BAE /* Assets.xcassets */,
 				BCCB05A81C104C3A00361BAE /* LaunchScreen.storyboard */,
@@ -338,7 +340,9 @@
 			files = (
 				BCCB05A21C104C3A00361BAE /* SecondViewController.swift in Sources */,
 				BCCB059E1C104C3A00361BAE /* AppDelegate.swift in Sources */,
+				DF7EFFD01C10582700481E76 /* ThirdViewController.swift in Sources */,
 				BCCB05A01C104C3A00361BAE /* FirstViewController.swift in Sources */,
+				DF7EFFD21C10583500481E76 /* FourthViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
