@@ -25,7 +25,7 @@ class Pedometer {
         }
     }
     
-    func getSteps() -> Int{
+    func calculateSteps() {
         if serviceAvailable {
             let violence = 1.2
             
@@ -38,13 +38,16 @@ class Pedometer {
             y = sqrt(pow(y!, 2))
             z = sqrt(pow(z!, 2))
             
-            if (x > violence || y > violence || z > violence) {
-                steps++
+            manager.startAccelerometerUpdatesToQueue(NSOperationQueue.mainQueue()) {_,_ in 
+                if (x > violence || y > violence || z > violence) {
+                    self.steps++
+                }
             }
-            
         }
-        
-        return steps
+    }
+    
+    func stopCalculating() {
+        manager.stopAccelerometerUpdates()
     }
     
 }

@@ -12,21 +12,20 @@ class PedoViewController: UIViewController {
     @IBOutlet weak var labelStepCount: UILabel!
     
     var loop = true
+    let pedo = Pedometer()
     
     @IBAction func btnStartPressed(sender: UIButton) {
         labelStepCount.text = "0"
-        let pedo = Pedometer()
         
-        while loop {
-            labelStepCount.text = String(pedo.getSteps())
-        }
+        pedo.calculateSteps()
         
+        labelStepCount.text = String(pedo.steps)
     }
     
     @IBAction func btnStopPressed(sender: UIButton) {
         let steps = Int(labelStepCount.text!)!
         
-        loop = false
+        pedo.stopCalculating()
     }
     
     override func viewDidLoad() {
