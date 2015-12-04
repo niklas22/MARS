@@ -22,8 +22,9 @@
 		BCCB05CD1C104D7100361BAE /* GlanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCB05CC1C104D7100361BAE /* GlanceController.swift */; };
 		BCCB05CF1C104D7100361BAE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCCB05CE1C104D7100361BAE /* Assets.xcassets */; };
 		BCCB05D31C104D7100361BAE /* MarsAppWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = BCCB05B31C104D7100361BAE /* MarsAppWatch.app */; };
-		DF7EFFD01C10582700481E76 /* HeartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7EFFCF1C10582700481E76 /* HeartViewController.swift */; };
-		DF7EFFD21C10583500481E76 /* FourthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7EFFD11C10583500481E76 /* FourthViewController.swift */; };
+		BCCB05DF1C10500000361BAE /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCCB05DE1C10500000361BAE /* HealthKit.framework */; };
+		BCD2950E1C119CF500AA2287 /* HeartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD2950D1C119CF500AA2287 /* HeartViewController.swift */; };
+		BCD295101C119D2700AA2287 /* FourthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD2950F1C119D2700AA2287 /* FourthViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,8 +90,11 @@
 		BCCB05CC1C104D7100361BAE /* GlanceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlanceController.swift; sourceTree = "<group>"; };
 		BCCB05CE1C104D7100361BAE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BCCB05D01C104D7100361BAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DF7EFFCF1C10582700481E76 /* HeartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartViewController.swift; sourceTree = "<group>"; };
-		DF7EFFD11C10583500481E76 /* FourthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FourthViewController.swift; sourceTree = "<group>"; };
+		BCCB05DC1C104F1900361BAE /* MarsAppWatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = MarsAppWatch.entitlements; sourceTree = "<group>"; };
+		BCCB05DD1C104FC900361BAE /* MarsAppWatch Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "MarsAppWatch Extension.entitlements"; sourceTree = "<group>"; };
+		BCCB05DE1C10500000361BAE /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS2.0.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
+		BCD2950D1C119CF500AA2287 /* HeartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartViewController.swift; sourceTree = "<group>"; };
+		BCD2950F1C119D2700AA2287 /* FourthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FourthViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,15 +109,24 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCCB05DF1C10500000361BAE /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BCB051311C119A3E008CAC66 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
 		BCCB05911C104C3A00361BAE = {
 			isa = PBXGroup;
 			children = (
+				BCCB05DE1C10500000361BAE /* HealthKit.framework */,
 				BCCB059C1C104C3A00361BAE /* MarsApp */,
 				BCCB05B41C104D7100361BAE /* MarsAppWatch */,
 				BCCB05C31C104D7100361BAE /* MarsAppWatch Extension */,
@@ -134,12 +147,13 @@
 		BCCB059C1C104C3A00361BAE /* MarsApp */ = {
 			isa = PBXGroup;
 			children = (
+				BCB051311C119A3E008CAC66 /* Controller */,
 				BCCB059D1C104C3A00361BAE /* AppDelegate.swift */,
+				BCD2950F1C119D2700AA2287 /* FourthViewController.swift */,
 				BCCB059F1C104C3A00361BAE /* StatisticViewController.swift */,
 				BCCB05A11C104C3A00361BAE /* PedoViewController.swift */,
-				DF7EFFCF1C10582700481E76 /* HeartViewController.swift */,
-				DF7EFFD11C10583500481E76 /* FourthViewController.swift */,
 				BCCB05A31C104C3A00361BAE /* Main.storyboard */,
+				BCD2950D1C119CF500AA2287 /* HeartViewController.swift */,
 				BCCB05A61C104C3A00361BAE /* Assets.xcassets */,
 				BCCB05A81C104C3A00361BAE /* LaunchScreen.storyboard */,
 				BCCB05AB1C104C3A00361BAE /* Info.plist */,
@@ -150,6 +164,7 @@
 		BCCB05B41C104D7100361BAE /* MarsAppWatch */ = {
 			isa = PBXGroup;
 			children = (
+				BCCB05DC1C104F1900361BAE /* MarsAppWatch.entitlements */,
 				BCCB05B51C104D7100361BAE /* Interface.storyboard */,
 				BCCB05B81C104D7100361BAE /* Assets.xcassets */,
 				BCCB05BA1C104D7100361BAE /* Info.plist */,
@@ -160,6 +175,7 @@
 		BCCB05C31C104D7100361BAE /* MarsAppWatch Extension */ = {
 			isa = PBXGroup;
 			children = (
+				BCCB05DD1C104FC900361BAE /* MarsAppWatch Extension.entitlements */,
 				BCCB05C61C104D7100361BAE /* InterfaceController.swift */,
 				BCCB05C81C104D7100361BAE /* ExtensionDelegate.swift */,
 				BCCB05CA1C104D7100361BAE /* NotificationController.swift */,
@@ -250,9 +266,24 @@
 					};
 					BCCB05B21C104D7100361BAE = {
 						CreatedOnToolsVersion = 7.1.1;
+						DevelopmentTeam = 39RKS2N634;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 0;
+							};
+						};
 					};
 					BCCB05BE1C104D7100361BAE = {
 						CreatedOnToolsVersion = 7.1.1;
+						DevelopmentTeam = 39RKS2N634;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.HealthKit = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -313,9 +344,9 @@
 			files = (
 				BCCB05A21C104C3A00361BAE /* PedoViewController.swift in Sources */,
 				BCCB059E1C104C3A00361BAE /* AppDelegate.swift in Sources */,
-				DF7EFFD01C10582700481E76 /* HeartViewController.swift in Sources */,
 				BCCB05A01C104C3A00361BAE /* StatisticViewController.swift in Sources */,
-				DF7EFFD21C10583500481E76 /* FourthViewController.swift in Sources */,
+				BCD2950E1C119CF500AA2287 /* HeartViewController.swift in Sources */,
+				BCD295101C119D2700AA2287 /* FourthViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -481,10 +512,14 @@
 		BCCB05D51C104D7100361BAE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "MarsAppWatch Extension/MarsAppWatch Extension.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "MarsAppWatch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = at.fhooe.mc.MOS5.MarsApp.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
@@ -495,10 +530,14 @@
 		BCCB05D61C104D7100361BAE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "MarsAppWatch Extension/MarsAppWatch Extension.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "MarsAppWatch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = at.fhooe.mc.MOS5.MarsApp.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
@@ -510,11 +549,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MarsAppWatch/MarsAppWatch.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				IBSC_MODULE = MarsAppWatch_Extension;
 				INFOPLIST_FILE = MarsAppWatch/Info.plist;
 				PRODUCT_BUNDLE_IDENTIFIER = at.fhooe.mc.MOS5.MarsApp.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
@@ -526,11 +569,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MarsAppWatch/MarsAppWatch.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				IBSC_MODULE = MarsAppWatch_Extension;
 				INFOPLIST_FILE = MarsAppWatch/Info.plist;
 				PRODUCT_BUNDLE_IDENTIFIER = at.fhooe.mc.MOS5.MarsApp.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
