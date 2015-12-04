@@ -8,22 +8,29 @@
 
 /* Begin PBXBuildFile section */
 		BCEF80BC1C11C57E0043534E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEF80BB1C11C57E0043534E /* AppDelegate.swift */; };
-		BCEF80BE1C11C57E0043534E /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEF80BD1C11C57E0043534E /* FirstViewController.swift */; };
-		BCEF80C01C11C57E0043534E /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEF80BF1C11C57E0043534E /* SecondViewController.swift */; };
-		BCEF80C31C11C57E0043534E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCEF80C11C11C57E0043534E /* Main.storyboard */; };
+		BCEF80BE1C11C57E0043534E /* PedoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEF80BD1C11C57E0043534E /* PedoViewController.swift */; };
+		BCEF80C01C11C57E0043534E /* StatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEF80BF1C11C57E0043534E /* StatisticViewController.swift */; };
 		BCEF80C51C11C57E0043534E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCEF80C41C11C57E0043534E /* Assets.xcassets */; };
 		BCEF80C81C11C57E0043534E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCEF80C61C11C57E0043534E /* LaunchScreen.storyboard */; };
+		BCEF80D11C11C5CB0043534E /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCEF80D01C11C5CB0043534E /* HealthKit.framework */; };
+		BCEF80D51C11C6700043534E /* HeartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEF80D41C11C6700043534E /* HeartViewController.swift */; };
+		BCEF80D71C11C6A70043534E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCEF80D61C11C6A70043534E /* Main.storyboard */; };
+		BCEF80D91C11C7230043534E /* Pedometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEF80D81C11C7230043534E /* Pedometer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		BCEF80B81C11C57E0043534E /* MOS5.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MOS5.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCEF80BB1C11C57E0043534E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BCEF80BD1C11C57E0043534E /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		BCEF80BF1C11C57E0043534E /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
-		BCEF80C21C11C57E0043534E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BCEF80BD1C11C57E0043534E /* PedoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PedoViewController.swift; sourceTree = "<group>"; };
+		BCEF80BF1C11C57E0043534E /* StatisticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticViewController.swift; sourceTree = "<group>"; };
 		BCEF80C41C11C57E0043534E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BCEF80C71C11C57E0043534E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BCEF80C91C11C57E0043534E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BCEF80CF1C11C5CB0043534E /* MOS5.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = MOS5.entitlements; sourceTree = "<group>"; };
+		BCEF80D01C11C5CB0043534E /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		BCEF80D41C11C6700043534E /* HeartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartViewController.swift; sourceTree = "<group>"; };
+		BCEF80D61C11C6A70043534E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		BCEF80D81C11C7230043534E /* Pedometer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pedometer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCEF80D11C11C5CB0043534E /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +48,7 @@
 		BCEF80AF1C11C57E0043534E = {
 			isa = PBXGroup;
 			children = (
+				BCEF80D01C11C5CB0043534E /* HealthKit.framework */,
 				BCEF80BA1C11C57E0043534E /* MOS5 */,
 				BCEF80B91C11C57E0043534E /* Products */,
 			);
@@ -56,15 +65,34 @@
 		BCEF80BA1C11C57E0043534E /* MOS5 */ = {
 			isa = PBXGroup;
 			children = (
+				BCEF80D31C11C61F0043534E /* Controller */,
+				BCEF80D21C11C6190043534E /* Model */,
+				BCEF80CF1C11C5CB0043534E /* MOS5.entitlements */,
 				BCEF80BB1C11C57E0043534E /* AppDelegate.swift */,
-				BCEF80BD1C11C57E0043534E /* FirstViewController.swift */,
-				BCEF80BF1C11C57E0043534E /* SecondViewController.swift */,
-				BCEF80C11C11C57E0043534E /* Main.storyboard */,
+				BCEF80BD1C11C57E0043534E /* PedoViewController.swift */,
+				BCEF80BF1C11C57E0043534E /* StatisticViewController.swift */,
+				BCEF80D61C11C6A70043534E /* Main.storyboard */,
 				BCEF80C41C11C57E0043534E /* Assets.xcassets */,
 				BCEF80C61C11C57E0043534E /* LaunchScreen.storyboard */,
 				BCEF80C91C11C57E0043534E /* Info.plist */,
+				BCEF80D41C11C6700043534E /* HeartViewController.swift */,
 			);
 			path = MOS5;
+			sourceTree = "<group>";
+		};
+		BCEF80D21C11C6190043534E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BCEF80D81C11C7230043534E /* Pedometer.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		BCEF80D31C11C61F0043534E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -99,6 +127,15 @@
 				TargetAttributes = {
 					BCEF80B71C11C57E0043534E = {
 						CreatedOnToolsVersion = 7.1.1;
+						DevelopmentTeam = H9V5B53QWB;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.HealthKit = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -127,7 +164,7 @@
 			files = (
 				BCEF80C81C11C57E0043534E /* LaunchScreen.storyboard in Resources */,
 				BCEF80C51C11C57E0043534E /* Assets.xcassets in Resources */,
-				BCEF80C31C11C57E0043534E /* Main.storyboard in Resources */,
+				BCEF80D71C11C6A70043534E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,23 +175,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BCEF80C01C11C57E0043534E /* SecondViewController.swift in Sources */,
+				BCEF80D91C11C7230043534E /* Pedometer.swift in Sources */,
+				BCEF80C01C11C57E0043534E /* StatisticViewController.swift in Sources */,
 				BCEF80BC1C11C57E0043534E /* AppDelegate.swift in Sources */,
-				BCEF80BE1C11C57E0043534E /* FirstViewController.swift in Sources */,
+				BCEF80BE1C11C57E0043534E /* PedoViewController.swift in Sources */,
+				BCEF80D51C11C6700043534E /* HeartViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		BCEF80C11C11C57E0043534E /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BCEF80C21C11C57E0043534E /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		BCEF80C61C11C57E0043534E /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -253,6 +284,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MOS5/MOS5.entitlements;
 				INFOPLIST_FILE = MOS5/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = at.fhooe.MOS5;
@@ -264,6 +296,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MOS5/MOS5.entitlements;
 				INFOPLIST_FILE = MOS5/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = at.fhooe.MOS5;
