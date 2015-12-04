@@ -8,7 +8,7 @@
         <!--Statistics-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController id="9pv-A4-QxB" customClass="FirstViewController" customModule="MarsApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="9pv-A4-QxB" customClass="StatisticViewController" customModule="MarsApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ia1-K6-d13"/>
                         <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
@@ -51,7 +51,7 @@
         <!--Pedo-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController id="8rJ-Kc-sve" customClass="SecondViewController" customModule="MarsApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="8rJ-Kc-sve" customClass="PedoViewController" customModule="MarsApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="L7p-HK-0SC"/>
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
@@ -111,10 +111,10 @@
             </objects>
             <point key="canvasLocation" x="114" y="1039"/>
         </scene>
-        <!--TBA-->
+        <!--Heart-->
         <scene sceneID="ScU-1q-jT9">
             <objects>
-                <viewController id="0hs-Q5-eWS" customClass="ThirdViewController" customModule="MarsApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="0hs-Q5-eWS" customClass="HeartViewController" customModule="MarsApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KdA-GB-VW8"/>
                         <viewControllerLayoutGuide type="bottom" id="SO4-Xb-czc"/>
@@ -125,7 +125,7 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="TBA" image="first" id="iFM-EV-QQS"/>
+                    <tabBarItem key="tabBarItem" title="Heart" image="first" id="iFM-EV-QQS"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PAn-4O-gB1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
