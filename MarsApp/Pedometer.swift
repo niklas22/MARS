@@ -15,6 +15,10 @@ class Pedometer {
     
     
     init() {
-        
+        if manager.accelerometerAvailable {
+            
+        } else {
+            
+        }
     }
 }
