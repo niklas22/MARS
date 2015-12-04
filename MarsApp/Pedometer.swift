@@ -41,6 +41,7 @@ class Pedometer {
             manager.startAccelerometerUpdatesToQueue(NSOperationQueue.mainQueue()) {_,_ in 
                 if (x > violence || y > violence || z > violence) {
                     self.steps++
+                    print(self.steps)
                 }
             }
         }
