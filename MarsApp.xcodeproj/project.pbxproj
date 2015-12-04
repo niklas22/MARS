@@ -121,6 +121,11 @@
 		BCB051311C119A3E008CAC66 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				BCD2950F1C119D2700AA2287 /* FourthViewController.swift */,
+				BCCB059F1C104C3A00361BAE /* StatisticViewController.swift */,
+				BCCB05A11C104C3A00361BAE /* PedoViewController.swift */,
+				BCD2950D1C119CF500AA2287 /* HeartViewController.swift */,
+				BCD295111C119F8400AA2287 /* LoginViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -152,11 +157,7 @@
 				DFC4466F1C11A3340054A1D4 /* Model */,
 				BCB051311C119A3E008CAC66 /* Controller */,
 				BCCB059D1C104C3A00361BAE /* AppDelegate.swift */,
-				BCD2950F1C119D2700AA2287 /* FourthViewController.swift */,
-				BCCB059F1C104C3A00361BAE /* StatisticViewController.swift */,
-				BCCB05A11C104C3A00361BAE /* PedoViewController.swift */,
 				BCCB05A31C104C3A00361BAE /* Main.storyboard */,
-				BCD2950D1C119CF500AA2287 /* HeartViewController.swift */,
 				BCCB05A61C104C3A00361BAE /* Assets.xcassets */,
 				BCCB05A81C104C3A00361BAE /* LaunchScreen.storyboard */,
 				BCCB05AB1C104C3A00361BAE /* Info.plist */,
@@ -353,6 +354,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCD295121C119F8400AA2287 /* LoginViewController.swift in Sources */,
 				BCCB05A21C104C3A00361BAE /* PedoViewController.swift in Sources */,
 				BCCB059E1C104C3A00361BAE /* AppDelegate.swift in Sources */,
 				BCCB05A01C104C3A00361BAE /* StatisticViewController.swift in Sources */,
