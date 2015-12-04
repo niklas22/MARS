@@ -25,7 +25,7 @@
 		BCCB05DF1C10500000361BAE /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCCB05DE1C10500000361BAE /* HealthKit.framework */; };
 		BCD2950E1C119CF500AA2287 /* HeartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD2950D1C119CF500AA2287 /* HeartViewController.swift */; };
 		BCD295101C119D2700AA2287 /* FourthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD2950F1C119D2700AA2287 /* FourthViewController.swift */; };
-		BCD295121C119F8400AA2287 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD295111C119F8400AA2287 /* LoginViewController.swift */; };
+		DFC446711C11A35F0054A1D4 /* Pedometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC446701C11A35F0054A1D4 /* Pedometer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,7 +96,7 @@
 		BCCB05DE1C10500000361BAE /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS2.0.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
 		BCD2950D1C119CF500AA2287 /* HeartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartViewController.swift; sourceTree = "<group>"; };
 		BCD2950F1C119D2700AA2287 /* FourthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FourthViewController.swift; sourceTree = "<group>"; };
-		BCD295111C119F8400AA2287 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		DFC446701C11A35F0054A1D4 /* Pedometer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pedometer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +154,7 @@
 		BCCB059C1C104C3A00361BAE /* MarsApp */ = {
 			isa = PBXGroup;
 			children = (
+				DFC4466F1C11A3340054A1D4 /* Model */,
 				BCB051311C119A3E008CAC66 /* Controller */,
 				BCCB059D1C104C3A00361BAE /* AppDelegate.swift */,
 				BCCB05A31C104C3A00361BAE /* Main.storyboard */,
@@ -196,6 +197,14 @@
 				BCCB05C51C104D7100361BAE /* PushNotificationPayload.apns */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DFC4466F1C11A3340054A1D4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DFC446701C11A35F0054A1D4 /* Pedometer.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -351,6 +360,7 @@
 				BCCB05A01C104C3A00361BAE /* StatisticViewController.swift in Sources */,
 				BCD2950E1C119CF500AA2287 /* HeartViewController.swift in Sources */,
 				BCD295101C119D2700AA2287 /* FourthViewController.swift in Sources */,
+				DFC446711C11A35F0054A1D4 /* Pedometer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

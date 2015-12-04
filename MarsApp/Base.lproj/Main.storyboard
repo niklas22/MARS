@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Statistics-->
@@ -60,18 +61,49 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Loaded by SecondViewController" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDk-cv-Gan">
-                                <rect key="frame" x="192" y="329" width="215.5" height="17"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q1C-30-6RI">
+                                <rect key="frame" x="70" y="321" width="34" height="30"/>
                                 <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Start">
+                                    <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnStartPressed:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="3he-pw-iDO"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lLt-Xd-o0U">
+                                <rect key="frame" x="498" y="321" width="32" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Stop">
+                                    <color key="titleColor" red="0.69803921568627447" green="0.1803921568627451" blue="0.12549019607843137" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnStopPressed:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="Lq7-UR-ENF"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="StepCount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0fa-Oz-7Ah">
+                                <rect key="frame" x="259" y="180" width="82" height="20.5"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="0fa-Oz-7Ah" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="G8V-tU-KkC"/>
+                            <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="0fa-Oz-7Ah" secondAttribute="bottom" constant="350" id="Mns-Qz-SHw"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="lLt-Xd-o0U" secondAttribute="trailing" constant="50" id="RyP-yh-XpY"/>
+                            <constraint firstItem="Q1C-30-6RI" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" constant="50" id="hsS-F7-g4v"/>
+                            <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="Q1C-30-6RI" secondAttribute="bottom" constant="200" id="o94-1A-09k"/>
+                            <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="lLt-Xd-o0U" secondAttribute="bottom" constant="200" id="y8P-HV-jC1"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Pedo" image="first" id="cPa-gy-q4n"/>
+                    <connections>
+                        <outlet property="labelStepCount" destination="0fa-Oz-7Ah" id="mPk-DV-cQS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
