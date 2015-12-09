@@ -255,10 +255,15 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v2s-pr-86X">
-                                                    <rect key="frame" x="117" y="4" width="53" height="33"/>
+                                                    <rect key="frame" x="120" y="4" width="480" height="33"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <state key="normal" title="22"/>
+                                                    <state key="normal" title="22">
+                                                        <color key="titleColor" red="0.73333333333333328" green="0.72941176470588232" blue="0.75686274509803919" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="showAgePicker:" destination="PKe-Gr-gG6" eventType="touchUpInside" id="MMC-V2-ncx"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <animations/>
@@ -280,10 +285,15 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="soK-R9-zQ3">
-                                                    <rect key="frame" x="117" y="4" width="53" height="33"/>
+                                                    <rect key="frame" x="120" y="4" width="480" height="33"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <state key="normal" title="80"/>
+                                                    <state key="normal" title="80">
+                                                        <color key="titleColor" red="0.73333333333333328" green="0.72941176470588232" blue="0.75686274509803919" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="showHeightPicker:" destination="PKe-Gr-gG6" eventType="touchUpInside" id="lx2-g8-C5W"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <animations/>
@@ -305,10 +315,15 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1fP-7G-Htk">
-                                                    <rect key="frame" x="117" y="4" width="53" height="33"/>
+                                                    <rect key="frame" x="120" y="4" width="480" height="33"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <state key="normal" title="80"/>
+                                                    <state key="normal" title="80">
+                                                        <color key="titleColor" red="0.73333333333333328" green="0.72941176470588232" blue="0.75686274509803919" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="showWeightPicker:" destination="PKe-Gr-gG6" eventType="touchUpInside" id="hmf-yx-A9F"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <animations/>
@@ -367,10 +382,19 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="buttonAge" destination="v2s-pr-86X" id="PzA-6T-8MU"/>
+                        <outlet property="buttonHeight" destination="soK-R9-zQ3" id="joc-1l-a1T"/>
+                        <outlet property="buttonWeight" destination="1fP-7G-Htk" id="uw3-GG-bs8"/>
+                        <outlet property="textEmail" destination="K1e-B5-3H7" id="M8R-RS-GKs"/>
+                        <outlet property="textName" destination="ur6-3f-hND" id="8Qg-IW-U9f"/>
+                        <outlet property="textPassword" destination="dJl-da-7CX" id="Wei-Pc-0n6"/>
+                        <outlet property="textPasswordConfirm" destination="BjF-g0-hwr" id="3RB-u1-DsV"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NqX-Vn-dr3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-484" y="-7"/>
+            <point key="canvasLocation" x="-402" y="-52"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">

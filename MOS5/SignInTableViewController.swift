@@ -8,16 +8,34 @@
 
 import UIKit
 
-class SignInTableViewController: UITableViewController {
-
+class SignInTableViewController: UITableViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+    
+    @IBOutlet weak var buttonHeight: UIButton!
+    @IBOutlet weak var buttonAge: UIButton!
+    @IBOutlet weak var buttonWeight: UIButton!
+    @IBOutlet weak var textPassword: UITextField!
+    @IBOutlet weak var textEmail: UITextField!
+    @IBOutlet weak var textName: UITextField!
+    @IBOutlet weak var textPasswordConfirm: UITextField!
+    var pickOption:[String]!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        pickOption = ["one", "two", "three", "seven", "fifteen"]
+        
+        let pickerView = UIPickerView()
+        
+        pickerView.delegate = self
+        
+        textEmail.inputView = pickerView
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        buttonHeight.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
+        buttonAge.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
+        buttonWeight.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,7 +52,39 @@ class SignInTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 4
+        if section == 0{
+            return 3
+        } else{
+            return 4
+        }
+    }
+    
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickOption.count
+    }
+    
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickOption[row]
+    }
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        textEmail.text = pickOption[row]
+    }
+    
+    @IBAction func showWeightPicker(sender: AnyObject) {
+        print(textEmail.text)
+    }
+    
+    @IBAction func showHeightPicker(sender: AnyObject) {
+         print("tabbed")
+    }
+    
+    @IBAction func showAgePicker(sender: AnyObject) {
+         print("tabbed")
     }
 
     /*
