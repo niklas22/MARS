@@ -102,6 +102,7 @@
 		DF3D74241C184E1900C3C7E1 /* GlanceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlanceController.swift; sourceTree = "<group>"; };
 		DF3D74261C184E1900C3C7E1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DF3D74281C184E1900C3C7E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DF3D74341C1851FD00C3C7E1 /* MOS5Watch Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "MOS5Watch Extension.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +195,7 @@
 		DF3D741B1C184E1900C3C7E1 /* MOS5Watch Extension */ = {
 			isa = PBXGroup;
 			children = (
+				DF3D74341C1851FD00C3C7E1 /* MOS5Watch Extension.entitlements */,
 				DF3D741E1C184E1900C3C7E1 /* InterfaceController.swift */,
 				DF3D74201C184E1900C3C7E1 /* ExtensionDelegate.swift */,
 				DF3D74221C184E1900C3C7E1 /* NotificationController.swift */,
@@ -297,6 +299,12 @@
 					};
 					DF3D74161C184E1900C3C7E1 = {
 						CreatedOnToolsVersion = 7.1.1;
+						DevelopmentTeam = H9V5B53QWB;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -555,10 +563,14 @@
 		DF3D742E1C184E1900C3C7E1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "MOS5Watch Extension/MOS5Watch Extension.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "MOS5Watch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = at.fhooe.MOS5.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
@@ -569,10 +581,14 @@
 		DF3D742F1C184E1900C3C7E1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "MOS5Watch Extension/MOS5Watch Extension.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "MOS5Watch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = at.fhooe.MOS5.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
@@ -608,6 +624,7 @@
 				DF3D742F1C184E1900C3C7E1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DF3D74321C184E1900C3C7E1 /* Build configuration list for PBXNativeTarget "MOS5Watch" */ = {
 			isa = XCConfigurationList;
@@ -616,6 +633,7 @@
 				DF3D742D1C184E1900C3C7E1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -21,6 +21,14 @@ class InterfaceController: WKInterfaceController {
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
+        
+        let appGroudID = "group.at.fhooe.mc.MARS"
+        
+        let defaults = NSUserDefaults(suiteName: appGroudID)
+        
+        let value = "MARSHATSSARS"
+        
+        defaults!.setObject(value, forKey: "value")
     }
 
     override func didDeactivate() {
