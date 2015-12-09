@@ -10,8 +10,11 @@ import Foundation
 
 class Person: ObjectToStringDelegate {
     var name:String!
+    var test:String!
     
     func objectToString() -> String {
         return ""
     }
+    
+    
 }
