@@ -27,6 +27,7 @@ class PedoViewController: UIViewController {
     
     @IBAction func btnStopPressed(sender: UIButton) {
     //    let steps = Int(labelStepCount.text!)!
+        self.labelStepCount.text = "0"
         pedo.stopCalculating()
     }
     
