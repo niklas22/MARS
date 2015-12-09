@@ -15,32 +15,22 @@ class PedoViewController: UIViewController {
     var pedo:Pedometer!
     var connector:ServerConnector!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        pedo = Pedometer()
+        connector = ServerConnector.connector
+    }
+    
     @IBAction func btnStartPressed(sender: UIButton) {
         labelStepCount.text = "0"
         
         pedo.calculateSteps { (steps) -> Void in
             self.labelStepCount.text = String(steps)
         }
-        
-        //labelStepCount.text = String(pedo.steps)
     }
     
     @IBAction func btnStopPressed(sender: UIButton) {
-    //    let steps = Int(labelStepCount.text!)!
-        self.labelStepCount.text = "0"
         pedo.stopCalculating()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        pedo = Pedometer()
-        connector = ServerConnector.connector
-        
-    }
-    
-    private func updateSteps(obj: AnyObject?){
-      //  labelStepCount.text = String(pedo.steps)
-        print("mars")
     }
     
     override func didReceiveMemoryWarning() {
@@ -55,9 +45,6 @@ class PedoViewController: UIViewController {
             print(jsonString)
             print(error)
         }
-        
     }
-    
-    
 }
 
