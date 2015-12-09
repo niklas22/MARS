@@ -55,6 +55,7 @@ class Pedometer{
     
     func stopCalculating() {
         manager.stopAccelerometerUpdates()
+        self.steps = 0
     }
     
 }

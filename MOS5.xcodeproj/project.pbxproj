@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC3144B41C184D7200C07CC6 /* SignInTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3144B31C184D7200C07CC6 /* SignInTableViewController.swift */; };
 		BCD79C2F1C181A18004FACF6 /* ServerConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD79C2E1C181A18004FACF6 /* ServerConnector.swift */; };
 		BCD79C331C18249B004FACF6 /* ObjectToStringDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD79C321C18249B004FACF6 /* ObjectToStringDelegate.swift */; };
 		BCD79C351C182861004FACF6 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD79C341C182861004FACF6 /* Person.swift */; };
@@ -73,6 +74,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		BC3144B31C184D7200C07CC6 /* SignInTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInTableViewController.swift; sourceTree = "<group>"; };
 		BCD79C2E1C181A18004FACF6 /* ServerConnector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerConnector.swift; sourceTree = "<group>"; };
 		BCD79C321C18249B004FACF6 /* ObjectToStringDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectToStringDelegate.swift; sourceTree = "<group>"; };
 		BCD79C341C182861004FACF6 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 		BCEF80D31C11C61F0043534E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				BC3144B31C184D7200C07CC6 /* SignInTableViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -360,6 +363,7 @@
 				BCD79C2F1C181A18004FACF6 /* ServerConnector.swift in Sources */,
 				BCD79C351C182861004FACF6 /* Person.swift in Sources */,
 				BCEF80D51C11C6700043534E /* HeartViewController.swift in Sources */,
+				BC3144B41C184D7200C07CC6 /* SignInTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
