@@ -19,7 +19,58 @@
 		BCEF80D51C11C6700043534E /* HeartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEF80D41C11C6700043534E /* HeartViewController.swift */; };
 		BCEF80D71C11C6A70043534E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCEF80D61C11C6A70043534E /* Main.storyboard */; };
 		BCEF80D91C11C7230043534E /* Pedometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEF80D81C11C7230043534E /* Pedometer.swift */; };
+		DF3D740F1C184E1900C3C7E1 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF3D740D1C184E1900C3C7E1 /* Interface.storyboard */; };
+		DF3D74111C184E1900C3C7E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF3D74101C184E1900C3C7E1 /* Assets.xcassets */; };
+		DF3D74181C184E1900C3C7E1 /* MOS5Watch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = DF3D74171C184E1900C3C7E1 /* MOS5Watch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		DF3D741F1C184E1900C3C7E1 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3D741E1C184E1900C3C7E1 /* InterfaceController.swift */; };
+		DF3D74211C184E1900C3C7E1 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3D74201C184E1900C3C7E1 /* ExtensionDelegate.swift */; };
+		DF3D74231C184E1900C3C7E1 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3D74221C184E1900C3C7E1 /* NotificationController.swift */; };
+		DF3D74251C184E1900C3C7E1 /* GlanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3D74241C184E1900C3C7E1 /* GlanceController.swift */; };
+		DF3D74271C184E1900C3C7E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF3D74261C184E1900C3C7E1 /* Assets.xcassets */; };
+		DF3D742B1C184E1900C3C7E1 /* MOS5Watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = DF3D740B1C184E1900C3C7E1 /* MOS5Watch.app */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DF3D74191C184E1900C3C7E1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BCEF80B01C11C57E0043534E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DF3D74161C184E1900C3C7E1;
+			remoteInfo = "MOS5Watch Extension";
+		};
+		DF3D74291C184E1900C3C7E1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BCEF80B01C11C57E0043534E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DF3D740A1C184E1900C3C7E1;
+			remoteInfo = MOS5Watch;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		DF3D74311C184E1900C3C7E1 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				DF3D74181C184E1900C3C7E1 /* MOS5Watch Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DF3D74331C184E1900C3C7E1 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				DF3D742B1C184E1900C3C7E1 /* MOS5Watch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		BCD79C2E1C181A18004FACF6 /* ServerConnector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerConnector.swift; sourceTree = "<group>"; };
@@ -37,6 +88,18 @@
 		BCEF80D41C11C6700043534E /* HeartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartViewController.swift; sourceTree = "<group>"; };
 		BCEF80D61C11C6A70043534E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		BCEF80D81C11C7230043534E /* Pedometer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pedometer.swift; sourceTree = "<group>"; };
+		DF3D740B1C184E1900C3C7E1 /* MOS5Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MOS5Watch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF3D740E1C184E1900C3C7E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		DF3D74101C184E1900C3C7E1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DF3D74121C184E1900C3C7E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DF3D74171C184E1900C3C7E1 /* MOS5Watch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "MOS5Watch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF3D741D1C184E1900C3C7E1 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		DF3D741E1C184E1900C3C7E1 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		DF3D74201C184E1900C3C7E1 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		DF3D74221C184E1900C3C7E1 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		DF3D74241C184E1900C3C7E1 /* GlanceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlanceController.swift; sourceTree = "<group>"; };
+		DF3D74261C184E1900C3C7E1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DF3D74281C184E1900C3C7E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +111,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DF3D74141C184E1900C3C7E1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -56,6 +126,8 @@
 			children = (
 				BCEF80D01C11C5CB0043534E /* HealthKit.framework */,
 				BCEF80BA1C11C57E0043534E /* MOS5 */,
+				DF3D740C1C184E1900C3C7E1 /* MOS5Watch */,
+				DF3D741B1C184E1900C3C7E1 /* MOS5Watch Extension */,
 				BCEF80B91C11C57E0043534E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -64,6 +136,8 @@
 			isa = PBXGroup;
 			children = (
 				BCEF80B81C11C57E0043534E /* MOS5.app */,
+				DF3D740B1C184E1900C3C7E1 /* MOS5Watch.app */,
+				DF3D74171C184E1900C3C7E1 /* MOS5Watch Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -104,6 +178,38 @@
 			name = Controller;
 			sourceTree = "<group>";
 		};
+		DF3D740C1C184E1900C3C7E1 /* MOS5Watch */ = {
+			isa = PBXGroup;
+			children = (
+				DF3D740D1C184E1900C3C7E1 /* Interface.storyboard */,
+				DF3D74101C184E1900C3C7E1 /* Assets.xcassets */,
+				DF3D74121C184E1900C3C7E1 /* Info.plist */,
+			);
+			path = MOS5Watch;
+			sourceTree = "<group>";
+		};
+		DF3D741B1C184E1900C3C7E1 /* MOS5Watch Extension */ = {
+			isa = PBXGroup;
+			children = (
+				DF3D741E1C184E1900C3C7E1 /* InterfaceController.swift */,
+				DF3D74201C184E1900C3C7E1 /* ExtensionDelegate.swift */,
+				DF3D74221C184E1900C3C7E1 /* NotificationController.swift */,
+				DF3D74241C184E1900C3C7E1 /* GlanceController.swift */,
+				DF3D74261C184E1900C3C7E1 /* Assets.xcassets */,
+				DF3D74281C184E1900C3C7E1 /* Info.plist */,
+				DF3D741C1C184E1900C3C7E1 /* Supporting Files */,
+			);
+			path = "MOS5Watch Extension";
+			sourceTree = "<group>";
+		};
+		DF3D741C1C184E1900C3C7E1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DF3D741D1C184E1900C3C7E1 /* PushNotificationPayload.apns */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -114,15 +220,51 @@
 				BCEF80B41C11C57E0043534E /* Sources */,
 				BCEF80B51C11C57E0043534E /* Frameworks */,
 				BCEF80B61C11C57E0043534E /* Resources */,
+				DF3D74331C184E1900C3C7E1 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				DF3D742A1C184E1900C3C7E1 /* PBXTargetDependency */,
 			);
 			name = MOS5;
 			productName = MOS5;
 			productReference = BCEF80B81C11C57E0043534E /* MOS5.app */;
 			productType = "com.apple.product-type.application";
+		};
+		DF3D740A1C184E1900C3C7E1 /* MOS5Watch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DF3D74321C184E1900C3C7E1 /* Build configuration list for PBXNativeTarget "MOS5Watch" */;
+			buildPhases = (
+				DF3D74091C184E1900C3C7E1 /* Resources */,
+				DF3D74311C184E1900C3C7E1 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DF3D741A1C184E1900C3C7E1 /* PBXTargetDependency */,
+			);
+			name = MOS5Watch;
+			productName = MOS5Watch;
+			productReference = DF3D740B1C184E1900C3C7E1 /* MOS5Watch.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		DF3D74161C184E1900C3C7E1 /* MOS5Watch Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DF3D74301C184E1900C3C7E1 /* Build configuration list for PBXNativeTarget "MOS5Watch Extension" */;
+			buildPhases = (
+				DF3D74131C184E1900C3C7E1 /* Sources */,
+				DF3D74141C184E1900C3C7E1 /* Frameworks */,
+				DF3D74151C184E1900C3C7E1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "MOS5Watch Extension";
+			productName = "MOS5Watch Extension";
+			productReference = DF3D74171C184E1900C3C7E1 /* MOS5Watch Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -146,6 +288,13 @@
 							};
 						};
 					};
+					DF3D740A1C184E1900C3C7E1 = {
+						CreatedOnToolsVersion = 7.1.1;
+						DevelopmentTeam = H9V5B53QWB;
+					};
+					DF3D74161C184E1900C3C7E1 = {
+						CreatedOnToolsVersion = 7.1.1;
+					};
 				};
 			};
 			buildConfigurationList = BCEF80B31C11C57E0043534E /* Build configuration list for PBXProject "MOS5" */;
@@ -162,6 +311,8 @@
 			projectRoot = "";
 			targets = (
 				BCEF80B71C11C57E0043534E /* MOS5 */,
+				DF3D740A1C184E1900C3C7E1 /* MOS5Watch */,
+				DF3D74161C184E1900C3C7E1 /* MOS5Watch Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -174,6 +325,23 @@
 				BCEF80C81C11C57E0043534E /* LaunchScreen.storyboard in Resources */,
 				BCEF80C51C11C57E0043534E /* Assets.xcassets in Resources */,
 				BCEF80D71C11C6A70043534E /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DF3D74091C184E1900C3C7E1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DF3D74111C184E1900C3C7E1 /* Assets.xcassets in Resources */,
+				DF3D740F1C184E1900C3C7E1 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DF3D74151C184E1900C3C7E1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DF3D74271C184E1900C3C7E1 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,7 +363,31 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DF3D74131C184E1900C3C7E1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DF3D74231C184E1900C3C7E1 /* NotificationController.swift in Sources */,
+				DF3D74211C184E1900C3C7E1 /* ExtensionDelegate.swift in Sources */,
+				DF3D741F1C184E1900C3C7E1 /* InterfaceController.swift in Sources */,
+				DF3D74251C184E1900C3C7E1 /* GlanceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DF3D741A1C184E1900C3C7E1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DF3D74161C184E1900C3C7E1 /* MOS5Watch Extension */;
+			targetProxy = DF3D74191C184E1900C3C7E1 /* PBXContainerItemProxy */;
+		};
+		DF3D742A1C184E1900C3C7E1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DF3D740A1C184E1900C3C7E1 /* MOS5Watch */;
+			targetProxy = DF3D74291C184E1900C3C7E1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		BCEF80C61C11C57E0043534E /* LaunchScreen.storyboard */ = {
@@ -204,6 +396,14 @@
 				BCEF80C71C11C57E0043534E /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		DF3D740D1C184E1900C3C7E1 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DF3D740E1C184E1900C3C7E1 /* Base */,
+			);
+			name = Interface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -316,6 +516,66 @@
 			};
 			name = Release;
 		};
+		DF3D742C1C184E1900C3C7E1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				IBSC_MODULE = MOS5Watch_Extension;
+				INFOPLIST_FILE = MOS5Watch/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = at.fhooe.MOS5.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		DF3D742D1C184E1900C3C7E1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				IBSC_MODULE = MOS5Watch_Extension;
+				INFOPLIST_FILE = MOS5Watch/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = at.fhooe.MOS5.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
+		DF3D742E1C184E1900C3C7E1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "MOS5Watch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = at.fhooe.MOS5.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		DF3D742F1C184E1900C3C7E1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "MOS5Watch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = at.fhooe.MOS5.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -336,6 +596,22 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		DF3D74301C184E1900C3C7E1 /* Build configuration list for PBXNativeTarget "MOS5Watch Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DF3D742E1C184E1900C3C7E1 /* Debug */,
+				DF3D742F1C184E1900C3C7E1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		DF3D74321C184E1900C3C7E1 /* Build configuration list for PBXNativeTarget "MOS5Watch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DF3D742C1C184E1900C3C7E1 /* Debug */,
+				DF3D742D1C184E1900C3C7E1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
