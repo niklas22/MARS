@@ -88,6 +88,14 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v0s-3Z-iTr">
+                                <rect key="frame" x="252" y="396" width="97" height="30"/>
+                                <animations/>
+                                <state key="normal" title="SendToServer"/>
+                                <connections>
+                                    <action selector="sendData:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="8OU-0i-ghh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -112,7 +120,7 @@
         <!--TBA-->
         <scene sceneID="GX7-Ok-KdJ">
             <objects>
-                <viewController id="8I0-tH-np3" customClass="FourthViewController" customModule="MOS5" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="8I0-tH-np3" customClass="StatisticViewController" customModule="MOS5" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3Qm-1H-07k"/>
                         <viewControllerLayoutGuide type="bottom" id="5Um-zp-S4w"/>

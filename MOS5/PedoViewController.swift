@@ -13,13 +13,16 @@ class PedoViewController: UIViewController {
     
     var loop = true
     var pedo:Pedometer!
+    var connector:ServerConnector!
     
     @IBAction func btnStartPressed(sender: UIButton) {
         labelStepCount.text = "0"
         
-        pedo.calculateSteps()
+        pedo.calculateSteps { (steps) -> Void in
+            self.labelStepCount.text = String(steps)
+        }
         
-        labelStepCount.text = String(pedo.steps)
+        //labelStepCount.text = String(pedo.steps)
     }
     
     @IBAction func btnStopPressed(sender: UIButton) {
@@ -29,11 +32,9 @@ class PedoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-        
-        // add observer
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateSteps", name: "StepCounter", object: nil)
         pedo = Pedometer()
+        connector = ServerConnector.connector
+        
     }
     
     private func updateSteps(obj: AnyObject?){
@@ -44,6 +45,16 @@ class PedoViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func sendData(sender: AnyObject) {
+        let person = Person()
+        
+        connector.sendMessage(person, functionName: "pt") { (jsonString,error) -> Void in
+            print(jsonString)
+            print(error)
+        }
+        
     }
     
     

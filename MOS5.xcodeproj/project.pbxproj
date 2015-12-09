@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BCD79C2F1C181A18004FACF6 /* ServerConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD79C2E1C181A18004FACF6 /* ServerConnector.swift */; };
+		BCD79C331C18249B004FACF6 /* ObjectToStringDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD79C321C18249B004FACF6 /* ObjectToStringDelegate.swift */; };
+		BCD79C351C182861004FACF6 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD79C341C182861004FACF6 /* Person.swift */; };
 		BCEF80BC1C11C57E0043534E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEF80BB1C11C57E0043534E /* AppDelegate.swift */; };
 		BCEF80BE1C11C57E0043534E /* PedoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEF80BD1C11C57E0043534E /* PedoViewController.swift */; };
 		BCEF80C01C11C57E0043534E /* StatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEF80BF1C11C57E0043534E /* StatisticViewController.swift */; };
@@ -19,6 +22,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BCD79C2E1C181A18004FACF6 /* ServerConnector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerConnector.swift; sourceTree = "<group>"; };
+		BCD79C321C18249B004FACF6 /* ObjectToStringDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectToStringDelegate.swift; sourceTree = "<group>"; };
+		BCD79C341C182861004FACF6 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		BCEF80B81C11C57E0043534E /* MOS5.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MOS5.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCEF80BB1C11C57E0043534E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BCEF80BD1C11C57E0043534E /* PedoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PedoViewController.swift; sourceTree = "<group>"; };
@@ -84,6 +90,9 @@
 			isa = PBXGroup;
 			children = (
 				BCEF80D81C11C7230043534E /* Pedometer.swift */,
+				BCD79C2E1C181A18004FACF6 /* ServerConnector.swift */,
+				BCD79C321C18249B004FACF6 /* ObjectToStringDelegate.swift */,
+				BCD79C341C182861004FACF6 /* Person.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -177,8 +186,11 @@
 			files = (
 				BCEF80D91C11C7230043534E /* Pedometer.swift in Sources */,
 				BCEF80C01C11C57E0043534E /* StatisticViewController.swift in Sources */,
+				BCD79C331C18249B004FACF6 /* ObjectToStringDelegate.swift in Sources */,
 				BCEF80BC1C11C57E0043534E /* AppDelegate.swift in Sources */,
 				BCEF80BE1C11C57E0043534E /* PedoViewController.swift in Sources */,
+				BCD79C2F1C181A18004FACF6 /* ServerConnector.swift in Sources */,
+				BCD79C351C182861004FACF6 /* Person.swift in Sources */,
 				BCEF80D51C11C6700043534E /* HeartViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -323,6 +335,7 @@
 				BCEF80CE1C11C57E0043534E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

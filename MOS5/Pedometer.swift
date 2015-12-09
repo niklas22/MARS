@@ -9,7 +9,7 @@
 import Foundation
 import CoreMotion
 
-class Pedometer {
+class Pedometer{
     
     let manager = CMMotionManager()
     var serviceAvailable : Bool
@@ -28,11 +28,10 @@ class Pedometer {
         }
     }
     
-    func calculateSteps() {
-        notificationCenter.postNotificationName("StepCounter", object: nil)
+    func calculateSteps(completion: (steps: Int) -> Void) {
         
         if serviceAvailable {
-            let violence = 1.6
+            let violence = 1.8
             
             manager.startAccelerometerUpdatesToQueue(NSOperationQueue.mainQueue(), withHandler: { (data, error) -> Void in
                 
@@ -48,7 +47,7 @@ class Pedometer {
                 
                 if (sum > violence) {
                     self.steps++
-                   
+                    completion(steps: self.steps)
                 }
             })
         }
