@@ -10,11 +10,13 @@ import Foundation
 
 class Person: ObjectToStringDelegate {
     var name:String!
-    var test:String!
+    var mail:String!
+    var pw:String!
+    var age:Int!
+    var height:Int!
+    var weight:Int!
     
     func objectToString() -> String {
-        return ""
+        return "name=\(name)&email=\(mail)&pw=\(pw)&age=\(age)&height=\(height)&weight=\(weight)"
     }
-    
-    
 }

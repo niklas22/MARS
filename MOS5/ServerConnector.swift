@@ -41,7 +41,6 @@ final class ServerConnector{
             let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
             completion(jsonString: String(responseString),error: "")
             
-            
         }
         
         task.resume()

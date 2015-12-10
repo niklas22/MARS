@@ -10,32 +10,56 @@ import UIKit
 
 class SignInTableViewController: UITableViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
-    @IBOutlet weak var buttonHeight: UIButton!
-    @IBOutlet weak var buttonAge: UIButton!
-    @IBOutlet weak var buttonWeight: UIButton!
+    @IBOutlet weak var textWeight: UITextField!
+    @IBOutlet weak var textHeight: UITextField!
+    @IBOutlet weak var textAge: UITextField!
     @IBOutlet weak var textPassword: UITextField!
     @IBOutlet weak var textEmail: UITextField!
     @IBOutlet weak var textName: UITextField!
     @IBOutlet weak var textPasswordConfirm: UITextField!
-    var pickOption:[String]!
+    
+    var person = Person()
+
+    var options:[String]!
+    
+    var pickerView : UIPickerView!
+    
+    var connector:ServerConnector!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        pickOption = ["one", "two", "three", "seven", "fifteen"]
         
-        let pickerView = UIPickerView()
+        connector = ServerConnector.connector
+        
+        pickerView = UIPickerView()
         
         pickerView.delegate = self
         
-        textEmail.inputView = pickerView
+        textAge.inputView = pickerView
+        textHeight.inputView = pickerView
+        textWeight.inputView = pickerView
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        buttonHeight.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
-        buttonAge.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
-        buttonWeight.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
+        
+    }
+    
+    @IBAction func textAgeEditing(sender: AnyObject) {
+        options = []
+        for (var i = 10; i < 61; i++) { options.append("\(i)") }
+        pickerView.reloadAllComponents()
+    }
+    @IBAction func textHeightEditing(sender: UITextField) {
+        options = []
+        for (var i = 100; i < 221; i++) { options.append("\(i)") }
+        pickerView.reloadAllComponents()
+    }
+    @IBAction func textWeightEditing(sender: UITextField) {
+        options = []
+        for (var i = 50; i < 151; i++) { options.append("\(i)") }
+        pickerView.reloadAllComponents()
     }
 
     override func didReceiveMemoryWarning() {
@@ -59,34 +83,50 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
         }
     }
     
+    //Pickerview Functions for Age
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
     }
     
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickOption.count
+        return options.count
     }
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return pickOption[row]
+        return options[row]
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        textEmail.text = pickOption[row]
-    }
-    
-    @IBAction func showWeightPicker(sender: AnyObject) {
-        print(textEmail.text)
-    }
-    
-    @IBAction func showHeightPicker(sender: AnyObject) {
-         print("tabbed")
-    }
-    
-    @IBAction func showAgePicker(sender: AnyObject) {
-         print("tabbed")
+        if textAge.editing {
+            textAge.text = options[row]
+            person.age = Int(options[row])
+        } else if textWeight.editing {
+            textWeight.text = options[row]
+            person.weight = Int(options[row])
+        } else {
+            textHeight.text = options[row]
+            person.height = Int(options[row])
+        }
     }
 
+
+    @IBAction func btnDoneClicked(sender: UIBarButtonItem) {
+        if textEmail.text != "" && textPassword.text != "" && textPasswordConfirm.text != "" && textName.text != "" {
+            person.name = textName.text
+            person.mail = textEmail.text
+            person.pw = textPassword.text
+            
+            connector.sendMessage(person, functionName: "register") { (jsonString,error) -> Void in
+                print(jsonString)
+                print(error)
+            }
+            self.performSegueWithIdentifier("showMenu", sender: self)
+            
+        } else {
+            print("Mars: Please enter all the data!")
+        }
+    }
+    
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)

@@ -31,6 +31,8 @@ class PedoViewController: UIViewController {
     
     @IBAction func btnStopPressed(sender: UIButton) {
         pedo.stopCalculating()
+        
+        
     }
     
     override func didReceiveMemoryWarning() {
