@@ -17,6 +17,9 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
     @IBOutlet weak var textEmail: UITextField!
     @IBOutlet weak var textName: UITextField!
     @IBOutlet weak var textPasswordConfirm: UITextField!
+    @IBOutlet weak var LogRegSegment: UISegmentedControl!
+    
+    let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
     
     var person = Person()
 
@@ -46,6 +49,10 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
         
     }
     
+    @IBAction func LogRegSegmentValueChanged(sender: UISegmentedControl) {
+        tableView.reloadData()
+    }
+    
     @IBAction func textAgeEditing(sender: AnyObject) {
         options = []
         for (var i = 10; i < 61; i++) { options.append("\(i)") }
@@ -71,15 +78,26 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 2
+        if (LogRegSegment.selectedSegmentIndex == 0) {
+            return 2
+        } else {
+            return 1
+        }
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        if section == 0{
-            return 3
-        } else{
-            return 4
+        if (LogRegSegment.selectedSegmentIndex == 0) {
+            if section == 0{
+                return 3
+            } else{
+                return 4
+            }
+        } else {
+            if section == 0{
+                return 2
+            } else{
+                return 0
+            }
         }
     }
     
@@ -111,20 +129,53 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
 
 
     @IBAction func btnDoneClicked(sender: UIBarButtonItem) {
-        if textEmail.text != "" && textPassword.text != "" && textPasswordConfirm.text != "" && textName.text != "" {
-            person.name = textName.text
-            person.mail = textEmail.text
-            person.pw = textPassword.text
-            
-            connector.sendMessage(person, functionName: "register") { (jsonString,error) -> Void in
-                print(jsonString)
-                print(error)
+        if (LogRegSegment.selectedSegmentIndex == 0) {
+            //Register
+            if textEmail.text != "" && textPassword.text != "" && textPasswordConfirm.text != "" && textName.text != "" {
+                person.name = textName.text
+                person.mail = textEmail.text
+                person.pw = textPassword.text
+                
+                connector.sendMessage(person, functionName: "register") { (jsonString,error) -> Void in
+                    print("SENT")
+                    if jsonString == "3" {
+                        print("Server/DB Error")
+                    } else if jsonString == "1" {
+                        print("Successful")
+                        self.appDel.person = self.person
+                        self.performSegueWithIdentifier("showMenu", sender: self)
+                    } else if jsonString == "-2" {
+                        print("Username already taken")
+                    }
+                }
+                
+            } else {
+                print("Mars: Please enter all the data!")
             }
-            self.performSegueWithIdentifier("showMenu", sender: self)
-            
         } else {
-            print("Mars: Please enter all the data!")
+            //Login
+            
+            if textEmail.text != "" && textPassword.text != "" {
+                person.mail = textEmail.text
+                person.pw = textPassword.text
+                
+                connector.sendMessage(person, functionName: "login") { (jsonString,error) -> Void in
+                    print(jsonString)
+                    print(error)
+                    
+                    //Convert JSON String to Person Object
+                    //Params of the JSON String: age, email, height, name, password, weight
+                }
+                
+                //appDel.person = self.person
+                self.performSegueWithIdentifier("showMenu", sender: self)
+            } else {
+                print("Mars: Please enter all the data!")
+            }
+
         }
+        
+
     }
     
     /*

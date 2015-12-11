@@ -325,10 +325,13 @@
                             <rect key="frame" x="226" y="7" width="148" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
-                                <segment title="Login"/>
                                 <segment title="Register"/>
+                                <segment title="Login"/>
                             </segments>
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="LogRegSegmentValueChanged:" destination="PKe-Gr-gG6" eventType="valueChanged" id="9CR-Mz-oT2"/>
+                            </connections>
                         </segmentedControl>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="06h-wZ-ajz">
                             <connections>
@@ -338,6 +341,7 @@
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="LogRegSegment" destination="oxN-Ab-dAC" id="ejC-j1-52e"/>
                         <outlet property="textAge" destination="lQG-T5-WbR" id="mxt-Gd-Mpe"/>
                         <outlet property="textEmail" destination="K1e-B5-3H7" id="M8R-RS-GKs"/>
                         <outlet property="textHeight" destination="TnY-xj-ced" id="XJZ-mM-7gQ"/>
@@ -371,7 +375,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="288" y="-7"/>
+            <point key="canvasLocation" x="322" y="-52"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kWS-ia-T4m">

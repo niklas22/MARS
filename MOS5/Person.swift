@@ -19,4 +19,14 @@ class Person: ObjectToStringDelegate {
     func objectToString() -> String {
         return "name=\(name)&email=\(mail)&pw=\(pw)&age=\(age)&height=\(height)&weight=\(weight)"
     }
+    
+    init() {
+        name = ""
+        mail = ""
+        pw = ""
+        age = 0
+        height = 0
+        weight = 0
+    }
+    
 }
