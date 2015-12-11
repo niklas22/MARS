@@ -19,6 +19,11 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
     @IBOutlet weak var textPasswordConfirm: UITextField!
     @IBOutlet weak var LogRegSegment: UISegmentedControl!
     
+    @IBOutlet weak var labelMale: UILabel!
+    @IBOutlet weak var labelFemale: UILabel!
+    
+    @IBOutlet weak var switchGender: UISwitch!
+    
     let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
     
     var person = Person()
@@ -41,15 +46,35 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
         textAge.inputView = pickerView
         textHeight.inputView = pickerView
         textWeight.inputView = pickerView
-
+        
+        let recognizer = UITapGestureRecognizer(target: self, action: "maleTapped")
+        labelMale.userInteractionEnabled = true
+        labelMale.addGestureRecognizer(recognizer)
+        
+        let recognizer2 = UITapGestureRecognizer(target: self, action: "femaleTapped")
+        labelFemale.userInteractionEnabled = true
+        labelFemale.addGestureRecognizer(recognizer2)
+        
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
         
     }
     
+    func maleTapped() {
+        switchGender.setOn(true, animated: true)
+    }
+    
+    func femaleTapped() {
+        switchGender.setOn(false, animated: true)
+    }
+    
     @IBAction func LogRegSegmentValueChanged(sender: UISegmentedControl) {
         tableView.reloadData()
+        let range = NSMakeRange(0, self.tableView.numberOfSections)
+        let sections = NSIndexSet(indexesInRange: range)
+        self.tableView.reloadSections(sections, withRowAnimation: .Bottom)
     }
     
     @IBAction func textAgeEditing(sender: AnyObject) {
@@ -75,6 +100,8 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
 
     // MARK: - Table view data source
 
+    
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         if (LogRegSegment.selectedSegmentIndex == 0) {
@@ -89,7 +116,7 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
             if section == 0{
                 return 3
             } else{
-                return 4
+                return 5
             }
         } else {
             if section == 0{
@@ -126,7 +153,6 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
         }
     }
 
-
     @IBAction func btnDoneClicked(sender: UIBarButtonItem) {
         
         if (LogRegSegment.selectedSegmentIndex == 0) {
@@ -135,26 +161,29 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
                 person.name = textName.text
                 person.mail = textEmail.text
                 person.pw = textPassword.text
+                person.gender = switchGender.on
                 
                 connector.sendMessage(person, functionName: "register") { (jsonString,error) -> Void in
                     print("SENT")
+                    print(jsonString)
+                    print("Error: \(error)")
                     if jsonString == "3" {
                         print("Server/DB Error")
                     } else if jsonString == "1" {
                         print("Successful")
-                        self.appDel.person = self.person
-                        self.performSegueWithIdentifier("showMenu", sender: self)
+                        dispatch_async(dispatch_get_main_queue()) {
+                            self.appDel.person = self.person
+                            self.performSegueWithIdentifier("showMenu", sender: self)
+                        }
                     } else if jsonString == "-2" {
                         print("Username already taken")
                     }
                 }
-                
             } else {
                 print("Mars: Please enter all the data!")
             }
         } else {
             //Login
-            
             if textEmail.text != "" && textPassword.text != "" {
                 person.mail = textEmail.text
                 person.pw = textPassword.text
@@ -167,7 +196,7 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
                     //Params of the JSON String: age, email, height, name, password, weight
                 }
                 
-                //appDel.person = self.person
+                appDel.person = self.person
                 self.performSegueWithIdentifier("showMenu", sender: self)
             } else {
                 print("Mars: Please enter all the data!")

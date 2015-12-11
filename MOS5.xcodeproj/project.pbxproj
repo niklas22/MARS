@@ -308,7 +308,6 @@
 					};
 					DF3D74161C184E1900C3C7E1 = {
 						CreatedOnToolsVersion = 7.1.1;
-						DevelopmentTeam = H9V5B53QWB;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
