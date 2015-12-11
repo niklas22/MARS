@@ -155,6 +155,10 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
 
     @IBAction func btnDoneClicked(sender: UIBarButtonItem) {
         
+        var hr = HeartRate()
+        
+        hr.checkAvailability()
+        
         if (LogRegSegment.selectedSegmentIndex == 0) {
             //Register
             if textEmail.text != "" && textPassword.text != "" && textPasswordConfirm.text != "" && textName.text != "" {

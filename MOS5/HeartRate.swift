@@ -26,11 +26,10 @@ class HeartRate {
         
         let yesterday = NSCalendar.currentCalendar().dateByAddingUnit(NSCalendarUnit.Day, value: -1, toDate: now, options: .WrapComponents)
         
+        let timeIntervall = now.dateByAddingTimeInterval(-20*60)
+        print(timeIntervall)
         
-        //let timeIntervall = now.dateByAddingTimeInterval(-90*60)
-        //print(timeIntervall)
-        
-        return HKQuery.predicateForSamplesWithStartDate(yesterday,
+        return HKQuery.predicateForSamplesWithStartDate(timeIntervall,
             endDate: now,
             options: .StrictEndDate)
     }()
