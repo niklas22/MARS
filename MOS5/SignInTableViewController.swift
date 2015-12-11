@@ -51,6 +51,9 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
     
     @IBAction func LogRegSegmentValueChanged(sender: UISegmentedControl) {
         tableView.reloadData()
+        let range = NSMakeRange(0, self.tableView.numberOfSections)
+        let sections = NSIndexSet(indexesInRange: range)
+        self.tableView.reloadSections(sections, withRowAnimation: .Bottom)
     }
     
     @IBAction func textAgeEditing(sender: AnyObject) {
@@ -76,6 +79,8 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
 
     // MARK: - Table view data source
 
+    
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         if (LogRegSegment.selectedSegmentIndex == 0) {
@@ -127,7 +132,6 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
         }
     }
 
-
     @IBAction func btnDoneClicked(sender: UIBarButtonItem) {
         if (LogRegSegment.selectedSegmentIndex == 0) {
             //Register
@@ -142,19 +146,18 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
                         print("Server/DB Error")
                     } else if jsonString == "1" {
                         print("Successful")
-                        self.appDel.person = self.person
-                        self.performSegueWithIdentifier("showMenu", sender: self)
+                        dispatch_async(dispatch_get_main_queue()) {
+                            self.performSegueWithIdentifier("showMenu", sender: self)
+                        }
                     } else if jsonString == "-2" {
                         print("Username already taken")
                     }
                 }
-                
             } else {
                 print("Mars: Please enter all the data!")
             }
         } else {
             //Login
-            
             if textEmail.text != "" && textPassword.text != "" {
                 person.mail = textEmail.text
                 person.pw = textPassword.text
