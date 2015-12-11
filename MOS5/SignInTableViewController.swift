@@ -19,6 +19,11 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
     @IBOutlet weak var textPasswordConfirm: UITextField!
     @IBOutlet weak var LogRegSegment: UISegmentedControl!
     
+    @IBOutlet weak var labelMale: UILabel!
+    @IBOutlet weak var labelFemale: UILabel!
+    
+    @IBOutlet weak var switchGender: UISwitch!
+    
     let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
     
     var person = Person()
@@ -41,12 +46,29 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
         textAge.inputView = pickerView
         textHeight.inputView = pickerView
         textWeight.inputView = pickerView
-
+        
+        let recognizer = UITapGestureRecognizer(target: self, action: "maleTapped")
+        labelMale.userInteractionEnabled = true
+        labelMale.addGestureRecognizer(recognizer)
+        
+        let recognizer2 = UITapGestureRecognizer(target: self, action: "femaleTapped")
+        labelFemale.userInteractionEnabled = true
+        labelFemale.addGestureRecognizer(recognizer2)
+        
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
+    }
+    
+    func maleTapped() {
+        switchGender.setOn(true, animated: true)
+    }
+    
+    func femaleTapped() {
+        switchGender.setOn(false, animated: true)
     }
     
     @IBAction func LogRegSegmentValueChanged(sender: UISegmentedControl) {
@@ -95,7 +117,7 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
             if section == 0{
                 return 3
             } else{
-                return 4
+                return 5
             }
         } else {
             if section == 0{
@@ -139,14 +161,18 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
                 person.name = textName.text
                 person.mail = textEmail.text
                 person.pw = textPassword.text
+                person.gender = switchGender.on
                 
                 connector.sendMessage(person, functionName: "register") { (jsonString,error) -> Void in
                     print("SENT")
+                    print(jsonString)
+                    print("Error: \(error)")
                     if jsonString == "3" {
                         print("Server/DB Error")
                     } else if jsonString == "1" {
                         print("Successful")
                         dispatch_async(dispatch_get_main_queue()) {
+                            self.appDel.person = self.person
                             self.performSegueWithIdentifier("showMenu", sender: self)
                         }
                     } else if jsonString == "-2" {
@@ -170,7 +196,7 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
                     //Params of the JSON String: age, email, height, name, password, weight
                 }
                 
-                //appDel.person = self.person
+                appDel.person = self.person
                 self.performSegueWithIdentifier("showMenu", sender: self)
             } else {
                 print("Mars: Please enter all the data!")

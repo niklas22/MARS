@@ -15,9 +15,10 @@ class Person: ObjectToStringDelegate {
     var age:Int!
     var height:Int!
     var weight:Int!
+    var gender:Bool!
     
     func objectToString() -> String {
-        return "name=\(name)&email=\(mail)&pw=\(pw)&age=\(age)&height=\(height)&weight=\(weight)"
+        return "name=\(name)&email=\(mail)&pw=\(pw)&age=\(age)&height=\(height)&weight=\(weight)&gender=\(gender)"
     }
     
     init() {
