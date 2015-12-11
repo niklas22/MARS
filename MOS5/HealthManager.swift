@@ -56,8 +56,9 @@ class HealthManager {
         
         if (healthStore != nil){
             
+            
             let query = HKObserverQuery(sampleType: heartRateSampleType, predicate: nil) {
-                query, completionHandler, error in
+                query, completion, error in
                 
                 if error != nil {
                     
@@ -70,7 +71,9 @@ class HealthManager {
                 // This may involve executing other queries
                 
                 // If you have subscribed for background updates you must call the completion handler here.
-                completionHandler()
+                //completionHandler()
+                print("found")
+                completion()
             }
             
             healthStore!.executeQuery(query)

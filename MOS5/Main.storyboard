@@ -40,13 +40,19 @@
                             <constraint firstAttribute="centerY" secondItem="KQZ-1w-vlD" secondAttribute="centerY" id="exm-UA-ej4"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Statistics" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Statistics" image="GraphIcon" selectedImage="GraphIcon" id="acW-dT-cKf">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="0.82745098039215681" green="0.18431372549019609" blue="0.18431372549019609" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2004" y="-994"/>
         </scene>
-        <!--Pedo-->
+        <!--Steps-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
                 <viewController id="8rJ-Kc-sve" customClass="PedoViewController" customModule="MOS5" customModuleProvider="target" sceneMemberID="viewController">
@@ -93,7 +99,13 @@
                             <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="lLt-Xd-o0U" secondAttribute="bottom" constant="200" id="y8P-HV-jC1"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Pedo" image="first" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Steps" image="stepsIcon" selectedImage="stepsIcon" id="cPa-gy-q4n">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="0.82745098039215681" green="0.18431372549019609" blue="0.18431372549019609" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <connections>
                         <outlet property="labelStepCount" destination="0fa-Oz-7Ah" id="mPk-DV-cQS"/>
                     </connections>
@@ -134,7 +146,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Heart" image="first" id="iFM-EV-QQS"/>
+                    <tabBarItem key="tabBarItem" title="Heart" image="heart8" selectedImage="heart8" id="iFM-EV-QQS">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="0.82745098039215681" green="0.18431372549019609" blue="0.18431372549019609" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PAn-4O-gB1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -397,7 +415,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="GraphIcon" width="32" height="32"/>
         <image name="first" width="30" height="30"/>
+        <image name="heart8" width="32" height="32"/>
+        <image name="stepsIcon" width="32" height="32"/>
     </resources>
     <color key="tintColor" red="0.78431372549019607" green="0.14509803921568626" blue="0.10588235294117647" alpha="1" colorSpace="calibratedRGB"/>
 </document>

@@ -44,8 +44,7 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
         
     }
     
@@ -129,6 +128,7 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
 
 
     @IBAction func btnDoneClicked(sender: UIBarButtonItem) {
+        
         if (LogRegSegment.selectedSegmentIndex == 0) {
             //Register
             if textEmail.text != "" && textPassword.text != "" && textPasswordConfirm.text != "" && textName.text != "" {
