@@ -10,6 +10,7 @@ import UIKit
 
 class SignInTableViewController: UITableViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
+    @IBOutlet weak var textPar: UITextField!
     @IBOutlet weak var textWeight: UITextField!
     @IBOutlet weak var textHeight: UITextField!
     @IBOutlet weak var textAge: UITextField!
@@ -23,6 +24,8 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
     @IBOutlet weak var labelFemale: UILabel!
     
     @IBOutlet weak var switchGender: UISwitch!
+    
+    @IBOutlet weak var pictureInfo: UIImageView!
     
     let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
     
@@ -50,6 +53,7 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
         textAge.inputView = pickerView
         textHeight.inputView = pickerView
         textWeight.inputView = pickerView
+        textPar.inputView = pickerView
         
         let recognizer = UITapGestureRecognizer(target: self, action: "maleTapped")
         labelMale.userInteractionEnabled = true
@@ -59,6 +63,9 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
         labelFemale.userInteractionEnabled = true
         labelFemale.addGestureRecognizer(recognizer2)
         
+        let recognizer3 = UITapGestureRecognizer(target: self, action: "infoTapped")
+        pictureInfo.userInteractionEnabled = true
+        pictureInfo.addGestureRecognizer(recognizer3)
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -72,6 +79,20 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
     
     func femaleTapped() {
         switchGender.setOn(false, animated: true)
+    }
+    
+    func infoTapped() {
+        let alert = UIAlertController()
+        
+        alert.title = "Info"
+        alert.message = "mars hat sars"
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) -> Void in
+            alert.dismissViewControllerAnimated(true, completion: nil)
+        })
+        )
+        
+        presentViewController(alert, animated: true, completion: nil)
     }
     
     @IBAction func LogRegSegmentValueChanged(sender: UISegmentedControl) {
@@ -96,7 +117,12 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
         for (var i = 50; i < 151; i++) { options.append("\(i)") }
         pickerView.reloadAllComponents()
     }
-
+    @IBAction func textParEditing(sender: UITextField) {
+        options = []
+        for (var i = 0; i < 8; i++) { options.append("\(i)") }
+        pickerView.reloadAllComponents()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -120,7 +146,7 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
             if section == 0{
                 return 3
             } else{
-                return 5
+                return 6
             }
         } else {
             if section == 0{
@@ -151,9 +177,12 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
         } else if textWeight.editing {
             textWeight.text = options[row]
             person.weight = Int(options[row])
-        } else {
+        } else  if textHeight.editing {
             textHeight.text = options[row]
             person.height = Int(options[row])
+        } else {
+            textPar.text = options[row]
+            person.par = Int(options[row])
         }
     }
 
@@ -161,7 +190,7 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
         
         if (LogRegSegment.selectedSegmentIndex == 0) {
             //Register
-            if textEmail.text != "" && textPassword.text != "" && textPasswordConfirm.text != "" && textName.text != "" {
+            if textEmail.text != "" && textPassword.text != "" && textPasswordConfirm.text != "" && textName.text != "" && textPar.text != "" {
                 person.name = textName.text
                 person.mail = textEmail.text
                 person.pw = textPassword.text
