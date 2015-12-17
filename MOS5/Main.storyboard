@@ -64,19 +64,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q1C-30-6RI">
-                                <rect key="frame" x="70" y="321" width="34" height="30"/>
-                                <state key="normal" title="Start">
-                                    <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="btnStartPressed:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="3he-pw-iDO"/>
-                                </connections>
-                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circleR" translatesAutoresizingMaskIntoConstraints="NO" id="eQC-ya-7PR">
+                                <rect key="frame" x="420" y="391" width="120" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="kIs-C8-krh"/>
+                                    <constraint firstAttribute="width" constant="120" id="uaO-2a-g31"/>
+                                </constraints>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lLt-Xd-o0U">
-                                <rect key="frame" x="498" y="321" width="32" height="30"/>
+                                <rect key="frame" x="464" y="436" width="32" height="30"/>
                                 <state key="normal" title="Stop">
-                                    <color key="titleColor" red="0.69803921568627447" green="0.1803921568627451" blue="0.12549019607843137" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.82745098039215681" green="0.18431372549019609" blue="0.18431372549019609" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="btnStopPressed:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="Lq7-UR-ENF"/>
@@ -88,16 +86,48 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circleG" translatesAutoresizingMaskIntoConstraints="NO" id="KRo-Pu-m3v">
+                                <rect key="frame" x="60" y="391" width="120" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="Rqd-3A-oC9"/>
+                                    <constraint firstAttribute="height" constant="120" id="ocg-sL-puc"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q1C-30-6RI">
+                                <rect key="frame" x="103" y="436" width="34" height="30"/>
+                                <state key="normal" title="Start">
+                                    <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnStartPressed:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="3he-pw-iDO"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Q1C-30-6RI" firstAttribute="centerY" secondItem="KRo-Pu-m3v" secondAttribute="centerY" id="1bq-jg-pVz"/>
                             <constraint firstItem="0fa-Oz-7Ah" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="G8V-tU-KkC"/>
+                            <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="KRo-Pu-m3v" secondAttribute="bottom" constant="40" id="IFX-iQ-8ub"/>
+                            <constraint firstItem="KRo-Pu-m3v" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" constant="40" id="LHa-hP-uEW"/>
                             <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="0fa-Oz-7Ah" secondAttribute="bottom" constant="350" id="Mns-Qz-SHw"/>
+                            <constraint firstItem="lLt-Xd-o0U" firstAttribute="centerY" secondItem="eQC-ya-7PR" secondAttribute="centerY" id="NOV-f8-D1j"/>
                             <constraint firstAttribute="trailingMargin" secondItem="lLt-Xd-o0U" secondAttribute="trailing" constant="50" id="RyP-yh-XpY"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="eQC-ya-7PR" secondAttribute="trailing" constant="40" id="Xhe-eB-vgi"/>
                             <constraint firstItem="Q1C-30-6RI" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" constant="50" id="hsS-F7-g4v"/>
+                            <constraint firstItem="Q1C-30-6RI" firstAttribute="centerX" secondItem="KRo-Pu-m3v" secondAttribute="centerX" id="iLm-tn-745"/>
+                            <constraint firstItem="lLt-Xd-o0U" firstAttribute="centerX" secondItem="eQC-ya-7PR" secondAttribute="centerX" id="iUQ-KK-Ycm"/>
                             <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="Q1C-30-6RI" secondAttribute="bottom" constant="200" id="o94-1A-09k"/>
                             <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="lLt-Xd-o0U" secondAttribute="bottom" constant="200" id="y8P-HV-jC1"/>
+                            <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="eQC-ya-7PR" secondAttribute="bottom" constant="40" id="yGF-qA-oMR"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="hsS-F7-g4v"/>
+                                <exclude reference="o94-1A-09k"/>
+                                <exclude reference="y8P-HV-jC1"/>
+                                <exclude reference="RyP-yh-XpY"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Steps" image="stepsIcon" selectedImage="stepsIcon" id="cPa-gy-q4n">
                         <userDefinedRuntimeAttributes>
@@ -112,7 +142,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2004" y="-306"/>
+            <point key="canvasLocation" x="1971" y="-322"/>
         </scene>
         <!--TBA-->
         <scene sceneID="GX7-Ok-KdJ">
@@ -363,6 +393,40 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="GenderCell" id="zZq-tK-Jxx" userLabel="GenderCell">
+                                        <rect key="frame" x="0.0" y="515.5" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zZq-tK-Jxx" id="I6h-kr-U0T">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="P-AR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dZL-HP-dKQ">
+                                                    <rect key="frame" x="14" y="11" width="40" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="P-AR" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fAo-Ow-Co9">
+                                                    <rect key="frame" x="120" y="7" width="480" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="textParEditing:" destination="PKe-Gr-gG6" eventType="editingDidBegin" id="ADX-vd-Nlo"/>
+                                                    </connections>
+                                                </textField>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="info" translatesAutoresizingMaskIntoConstraints="NO" id="Azw-3M-AvB">
+                                                    <rect key="frame" x="542" y="7" width="30" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="fFa-vG-gg3"/>
+                                                        <constraint firstAttribute="width" constant="30" id="uc0-e6-4cI"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Azw-3M-AvB" secondAttribute="trailing" constant="10" id="oji-pK-YQT"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -396,11 +460,13 @@
                         <outlet property="LogRegSegment" destination="oxN-Ab-dAC" id="ejC-j1-52e"/>
                         <outlet property="labelFemale" destination="ksk-vD-hwP" id="3q8-Ms-RMM"/>
                         <outlet property="labelMale" destination="v2N-6U-uOc" id="ppN-AT-Y26"/>
+                        <outlet property="pictureInfo" destination="Azw-3M-AvB" id="Wa6-Ul-DKL"/>
                         <outlet property="switchGender" destination="Fax-ct-rmU" id="Xe9-v7-OVy"/>
                         <outlet property="textAge" destination="lQG-T5-WbR" id="mxt-Gd-Mpe"/>
                         <outlet property="textEmail" destination="K1e-B5-3H7" id="M8R-RS-GKs"/>
                         <outlet property="textHeight" destination="TnY-xj-ced" id="XJZ-mM-7gQ"/>
                         <outlet property="textName" destination="ur6-3f-hND" id="8Qg-IW-U9f"/>
+                        <outlet property="textPar" destination="fAo-Ow-Co9" id="Bn6-f2-sVc"/>
                         <outlet property="textPassword" destination="dJl-da-7CX" id="Wei-Pc-0n6"/>
                         <outlet property="textPasswordConfirm" destination="BjF-g0-hwr" id="3RB-u1-DsV"/>
                         <outlet property="textWeight" destination="7NC-Jk-NZT" id="4Zw-qn-g7m"/>
@@ -409,7 +475,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NqX-Vn-dr3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-402" y="-52"/>
+            <point key="canvasLocation" x="-681" y="-41"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -453,8 +519,11 @@
     </scenes>
     <resources>
         <image name="GraphIcon" width="32" height="32"/>
+        <image name="circleG" width="256" height="256"/>
+        <image name="circleR" width="256" height="256"/>
         <image name="first" width="30" height="30"/>
         <image name="heart8" width="32" height="32"/>
+        <image name="info" width="256" height="256"/>
         <image name="stepsIcon" width="32" height="32"/>
     </resources>
     <color key="tintColor" red="0.78431372549019607" green="0.14509803921568626" blue="0.10588235294117647" alpha="1" colorSpace="calibratedRGB"/>
