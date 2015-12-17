@@ -27,7 +27,7 @@ class HeartRate: HeartRateDelegate{
         let timeIntervall = now.dateByAddingTimeInterval(-20*60)
         print(timeIntervall)
         
-        return HKQuery.predicateForSamplesWithStartDate(timeIntervall,
+        return HKQuery.predicateForSamplesWithStartDate(yesterday,
             endDate: now,
             options: .StrictEndDate)
     }()
@@ -53,7 +53,7 @@ class HeartRate: HeartRateDelegate{
                 
                 guard let results = results where results.count > 0 else {
                     print("Could not read the user's heartRate")
-                    print("or no heartRate data was available")
+                    NSNotificationCenter.defaultCenter().postNotificationName("newHeartRate", object: nil, userInfo:["bpm":"0"])
                     return
                 }
                 
@@ -66,6 +66,8 @@ class HeartRate: HeartRateDelegate{
                     
                     // prints heartrate
                     dispatch_async(dispatch_get_main_queue(), {
+                        
+                        NSNotificationCenter.defaultCenter().postNotificationName("newHeartRate", object: nil, userInfo:["bpm":String(heartRate)])
                         print("HeartRate has been changed to " +
                             "\(heartRate)")
                         print("Change date = \(sample.startDate)")

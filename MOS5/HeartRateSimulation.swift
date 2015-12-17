@@ -23,7 +23,7 @@ class HeartRateSimulation: HeartRateDelegate {
     let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
     let date:NSDate
     init(){
-        date = NSDate().dateByAddingTimeInterval(5)
+        date = NSDate().dateByAddingTimeInterval(2)
         
         index = 0;
         
@@ -44,18 +44,18 @@ class HeartRateSimulation: HeartRateDelegate {
         timer.invalidate()
     }
     
-    dynamic func runCode() -> Double{
+    dynamic func runCode(){
         
         if bpms != nil {
             index = index % bpms!.count
-            let curValue = Double(bpms![index])!
             index = index + 1
-            print(curValue)
             
-            return curValue
+            NSNotificationCenter.defaultCenter().postNotificationName("newHeartRate", object: nil, userInfo:["bpm":bpms![index]])
         }
-        
-        return 0
+        else {
+            NSNotificationCenter.defaultCenter().postNotificationName("newHeartRate", object: nil, userInfo:["bpm":"0"])
+        }
+    
     }
     
     

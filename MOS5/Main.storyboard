@@ -204,6 +204,9 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </tabBarItem>
+                    <connections>
+                        <outlet property="heartRateLabel" destination="PhL-K1-M4a" id="olQ-ru-XRi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PAn-4O-gB1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

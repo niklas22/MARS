@@ -12,15 +12,20 @@ class HeartViewController: UIViewController {
 
     var appdel:AppDelegate!
     
+    var userinfo:Dictionary<String,String!>!
+    
+    @IBOutlet weak var heartRateLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateHeartRate:", name: "newHeartRate", object: nil)
         
         appdel = UIApplication.sharedApplication().delegate as! AppDelegate
         
         HeartRate.checkAvailability { (isAvailable) -> Void in
             if isAvailable == true {
-                self.appdel.hkAvailable = false
+                self.appdel.hkAvailable = true
             }
             else {
                 self.appdel.hkAvailable = false
@@ -38,9 +43,18 @@ class HeartViewController: UIViewController {
     
     @IBAction func messureHeartRate(sender: AnyObject) {
         print(self.appdel.hkAvailable)
-        var hrObject = HealthFactory.createHeartRateSensor()
+        let hrObject = HealthFactory.createHeartRateSensor()
         
         hrObject.startMonitoring()
+    }
+    
+    func updateHeartRate(notification: NSNotification){
+        
+        userinfo = notification.userInfo as! Dictionary<String,String!>
+        
+        dispatch_async(dispatch_get_main_queue()) {
+            self.heartRateLabel.text = self.userinfo["bpm"]!
+        }
     }
 
     /*
