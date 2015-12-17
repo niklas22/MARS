@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BC1FCFC61C1ACF2D00F95BB4 /* HealthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1FCFC51C1ACF2D00F95BB4 /* HealthManager.swift */; };
+		BC1FCFC61C1ACF2D00F95BB4 /* HealthFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1FCFC51C1ACF2D00F95BB4 /* HealthFactory.swift */; };
 		BC1FCFCA1C1AD4BE00F95BB4 /* HeartRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1FCFC91C1AD4BE00F95BB4 /* HeartRate.swift */; };
 		BC3144B41C184D7200C07CC6 /* SignInTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3144B31C184D7200C07CC6 /* SignInTableViewController.swift */; };
 		BCD79C2F1C181A18004FACF6 /* ServerConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD79C2E1C181A18004FACF6 /* ServerConnector.swift */; };
@@ -77,7 +77,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		BC1FCFC51C1ACF2D00F95BB4 /* HealthManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthManager.swift; sourceTree = "<group>"; };
+		BC1FCFC51C1ACF2D00F95BB4 /* HealthFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthFactory.swift; sourceTree = "<group>"; };
 		BC1FCFC91C1AD4BE00F95BB4 /* HeartRate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartRate.swift; sourceTree = "<group>"; };
 		BC3144B31C184D7200C07CC6 /* SignInTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInTableViewController.swift; sourceTree = "<group>"; };
 		BCD79C2E1C181A18004FACF6 /* ServerConnector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerConnector.swift; sourceTree = "<group>"; };
@@ -177,7 +177,7 @@
 				BCD79C321C18249B004FACF6 /* ObjectToStringDelegate.swift */,
 				BCD79C341C182861004FACF6 /* Person.swift */,
 				DF7732571C1998E100C4D95F /* Steps.swift */,
-				BC1FCFC51C1ACF2D00F95BB4 /* HealthManager.swift */,
+				BC1FCFC51C1ACF2D00F95BB4 /* HealthFactory.swift */,
 				BC1FCFC91C1AD4BE00F95BB4 /* HeartRate.swift */,
 			);
 			name = Model;
@@ -375,7 +375,7 @@
 				DF7732581C1998E100C4D95F /* Steps.swift in Sources */,
 				BCEF80C01C11C57E0043534E /* StatisticViewController.swift in Sources */,
 				BCD79C331C18249B004FACF6 /* ObjectToStringDelegate.swift in Sources */,
-				BC1FCFC61C1ACF2D00F95BB4 /* HealthManager.swift in Sources */,
+				BC1FCFC61C1ACF2D00F95BB4 /* HealthFactory.swift in Sources */,
 				BCEF80BC1C11C57E0043534E /* AppDelegate.swift in Sources */,
 				BCEF80BE1C11C57E0043534E /* PedoViewController.swift in Sources */,
 				BC1FCFCA1C1AD4BE00F95BB4 /* HeartRate.swift in Sources */,

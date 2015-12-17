@@ -155,9 +155,13 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
 
     @IBAction func btnDoneClicked(sender: UIBarButtonItem) {
         
-        var hr = HeartRate()
+        let hr = HeartRate()
         
-        hr.checkAvailability()
+        hr.checkAvailability { (isAvailable) -> Void in
+            if isAvailable {
+                hr.startObserving()
+            }
+        }
         
         if (LogRegSegment.selectedSegmentIndex == 0) {
             //Register

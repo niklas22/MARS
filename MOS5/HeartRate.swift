@@ -37,7 +37,7 @@ class HeartRate {
     lazy var query: HKObserverQuery = {
         return HKObserverQuery(sampleType: self.heartRateQuantityType,
             predicate: self.predicate,
-            updateHandler: self.weightChangedHandler)
+            updateHandler: self.heartRateChangedHandler)
     }()
     
     func fetchRecordedHealthInLastDay(){
@@ -82,7 +82,7 @@ class HeartRate {
         
     }
     
-    func weightChangedHandler(query: HKObserverQuery,
+    func heartRateChangedHandler(query: HKObserverQuery,
         completionHandler: HKObserverQueryCompletionHandler,
         error: NSError?){
             
@@ -93,7 +93,7 @@ class HeartRate {
             
     }
     
-    func startObservingHeartRateChanges(){
+    func heartRateChangesStart(){
         healthStore.executeQuery(query)
         healthStore.enableBackgroundDeliveryForType(heartRateQuantityType,
             frequency: .Immediate,
@@ -111,7 +111,7 @@ class HeartRate {
         })
     }
     
-    func stopObservingHeartRateChanges(){
+    func heartRateChangesStop(){
         healthStore.stopQuery(query)
         healthStore.disableAllBackgroundDeliveryWithCompletion{
             succeeded, error in
@@ -128,7 +128,20 @@ class HeartRate {
         }
     }
     
-    func checkAvailability(){
+    func startObserving(){
+        dispatch_async(dispatch_get_main_queue(),
+            self.heartRateChangesStart)
+    }
+    
+    func stopObserving(){
+        dispatch_async(dispatch_get_main_queue(),
+            self.heartRateChangesStop)
+    }
+    
+    
+    
+    func checkAvailability(completion: (isAvailable: Bool) -> Void) {
+        
         if HKHealthStore.isHealthDataAvailable(){
             
             healthStore.requestAuthorizationToShareTypes(nil,
@@ -136,14 +149,13 @@ class HeartRate {
                 completion: {succeeded, error in
                     
                     if succeeded && error == nil{
-                        dispatch_async(dispatch_get_main_queue(),
-                            self.startObservingHeartRateChanges)
+                       completion(isAvailable: true)
                     } else {
                         if let theError = error{
                             print("Error occurred = \(theError)")
                         }
+                        completion(isAvailable: false)
                     }
-                    
             })
             
         } else {
