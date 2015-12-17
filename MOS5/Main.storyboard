@@ -144,7 +144,28 @@
                     <view key="view" contentMode="scaleToFill" id="x1C-TI-79I">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nLB-Yp-WHR">
+                                <rect key="frame" x="235" y="381" width="130" height="30"/>
+                                <state key="normal" title="Messure heartRate"/>
+                                <connections>
+                                    <action selector="messureHeartRate:" destination="0hs-Q5-eWS" eventType="touchUpInside" id="nPS-S7-Sgx"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PhL-K1-M4a">
+                                <rect key="frame" x="279" y="289" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="nLB-Yp-WHR" firstAttribute="centerX" secondItem="x1C-TI-79I" secondAttribute="centerX" id="fZn-35-BlQ"/>
+                            <constraint firstItem="nLB-Yp-WHR" firstAttribute="top" secondItem="PhL-K1-M4a" secondAttribute="bottom" constant="71" id="ll3-Bx-QOQ"/>
+                            <constraint firstItem="SO4-Xb-czc" firstAttribute="top" secondItem="nLB-Yp-WHR" secondAttribute="bottom" constant="140" id="oTh-XQ-BbR"/>
+                            <constraint firstItem="nLB-Yp-WHR" firstAttribute="centerX" secondItem="PhL-K1-M4a" secondAttribute="centerX" id="otN-Gw-zAc"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Heart" image="heart8" selectedImage="heart8" id="iFM-EV-QQS">
                         <userDefinedRuntimeAttributes>

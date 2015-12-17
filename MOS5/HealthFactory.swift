@@ -8,9 +8,20 @@
 
 import Foundation
 import HealthKit
+import UIKit
 
 class HealthFactory {
     
+    static var appdel:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    
+    class func createHeartRateSensor() -> HeartRateDelegate {
+        if appdel.hkAvailable {
+            return HeartRate()
+        }
+        else {
+            return HeartRateSimulation()
+        }
+    }
     
     
     

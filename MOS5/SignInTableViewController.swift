@@ -34,10 +34,14 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
     
     var connector:ServerConnector!
     
+    var simulation:HeartRateSimulation!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         connector = ServerConnector.connector
+        
+        simulation = HeartRateSimulation()
         
         pickerView = UIPickerView()
         
@@ -154,14 +158,6 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
     }
 
     @IBAction func btnDoneClicked(sender: UIBarButtonItem) {
-        
-        let hr = HeartRate()
-        
-        hr.checkAvailability { (isAvailable) -> Void in
-            if isAvailable {
-                hr.startObserving()
-            }
-        }
         
         if (LogRegSegment.selectedSegmentIndex == 0) {
             //Register

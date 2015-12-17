@@ -9,9 +9,7 @@
 import Foundation
 import HealthKit
 
-class HeartRate {
-    
-    //let heartRateQuantityType = HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMass)!
+class HeartRate: HeartRateDelegate{
     
     let heartRateQuantityType = HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeartRate)!
     
@@ -60,13 +58,13 @@ class HeartRate {
                 }
                 
                 for sample in results as! [HKQuantitySample]{
-                    /* Get the weight in kilograms from the quantity */
+                    
                     let heartRateUnit: HKUnit = HKUnit.countUnit().unitDividedByUnit(HKUnit.minuteUnit())
                 
                     
                     let heartRate = sample.quantity.doubleValueForUnit(heartRateUnit)
                     
-                    /* This is the value of "KG", localized in user's language */
+                    // prints heartrate
                     dispatch_async(dispatch_get_main_queue(), {
                         print("HeartRate has been changed to " +
                             "\(heartRate)")
@@ -128,23 +126,30 @@ class HeartRate {
         }
     }
     
-    func startObserving(){
+    func startMonitoring() {
         dispatch_async(dispatch_get_main_queue(),
             self.heartRateChangesStart)
     }
     
-    func stopObserving(){
+    func stopMonitoring() {
         dispatch_async(dispatch_get_main_queue(),
             self.heartRateChangesStop)
     }
     
     
-    
-    func checkAvailability(completion: (isAvailable: Bool) -> Void) {
+    class func checkAvailability(completion: (isAvailable: Bool) -> Void) {
         
         if HKHealthStore.isHealthDataAvailable(){
             
-            healthStore.requestAuthorizationToShareTypes(nil,
+            
+            let hs = HKHealthStore()
+            let qtypes = HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeartRate)!
+            
+            let types: Set<HKObjectType> = {
+                return [qtypes]
+            }()
+            
+            hs.requestAuthorizationToShareTypes(nil,
                 readTypes: types,
                 completion: {succeeded, error in
                     

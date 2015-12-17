@@ -10,8 +10,23 @@ import UIKit
 
 class HeartViewController: UIViewController {
 
+    var appdel:AppDelegate!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        appdel = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        HeartRate.checkAvailability { (isAvailable) -> Void in
+            if isAvailable == true {
+                self.appdel.hkAvailable = false
+            }
+            else {
+                self.appdel.hkAvailable = false
+            }
+           
+        }
 
         // Do any additional setup after loading the view.
     }
@@ -21,6 +36,12 @@ class HeartViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func messureHeartRate(sender: AnyObject) {
+        print(self.appdel.hkAvailable)
+        var hrObject = HealthFactory.createHeartRateSensor()
+        
+        hrObject.startMonitoring()
+    }
 
     /*
     // MARK: - Navigation
