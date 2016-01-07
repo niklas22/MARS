@@ -31,14 +31,13 @@ class Person: ObjectToStringDelegate {
             var p = Person()
             
             p.name = json["name"].stringValue
-            p.mail = json["mail"].stringValue
-            p.pw = json["pw"].stringValue
             p.age = json["age"].intValue
             p.height = json["height"].intValue
             p.weight = json["weight"].intValue
+            p.gender = json["gender"].boolValue
+            p.par = json["par"].intValue
+            p.stepLength = json["steplength"].intValue
             
-            var gender = json["gender"].intValue
-
             return p
         }
         

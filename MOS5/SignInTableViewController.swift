@@ -203,9 +203,9 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
         
         NSNotificationCenter.defaultCenter().postNotificationName("notifyWatch", object: nil, userInfo: nil)
         
-        connector.sendMessage(person, functionName: "") { (jsonString, error) -> Void in
-            print(jsonString)
-        }
+//        connector.sendMessage(person, functionName: "") { (jsonString, error) -> Void in
+//            print(jsonString)
+//        }
 
         
         
@@ -216,7 +216,7 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
                 person.mail = textEmail.text
                 person.pw = textPassword.text
                 person.gender = switchGender.on
-                
+                                
                 connector.sendMessage(person, functionName: "register") { (jsonString,error) -> Void in
                     print("Error: \(error)")
                     if jsonString == "3" {
@@ -252,7 +252,10 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
                         //Params of the JSON String: age, email, height, name, password, weight, gender, par, steplength
                         
                         self.person = self.person.jsonToObject(jsonString)
-                        print(self.person.objectToString())
+                        self.person.mail = self.textEmail.text
+                        self.person.pw = self.textPassword.text
+
+                        print("MARS: \(self.person.objectToString())")
                         dispatch_async(dispatch_get_main_queue()) {
                             self.appDel.person = self.person
                             self.performSegueWithIdentifier("showMenu", sender: self)
