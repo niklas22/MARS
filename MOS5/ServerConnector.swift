@@ -19,8 +19,8 @@ final class ServerConnector{
     
     func sendMessage(senddata: ObjectToStringDelegate,functionName: String!,completion: (jsonString: String,error: String) -> Void ) {
         
-        //self.url = NSURL(string: "http://193.170.133.31:33333/MarsServer/server/\(functionName)")!
-        self.url = NSURL(string: "http://193.170.134.195:8088/ServerLinkTo/webapi/persons")
+        self.url = NSURL(string: "http://193.170.133.31:33333/MarsServer/server/\(functionName)")!
+        //self.url = NSURL(string: "http://193.170.134.195:8088/ServerLinkTo/webapi/persons")
         
         let request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
         
