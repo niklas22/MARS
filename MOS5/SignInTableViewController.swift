@@ -200,6 +200,15 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
 
     @IBAction func btnDoneClicked(sender: UIBarButtonItem) {
         
+        
+        NSNotificationCenter.defaultCenter().postNotificationName("notifyWatch", object: nil, userInfo: nil)
+        
+        connector.sendMessage(person, functionName: "") { (jsonString, error) -> Void in
+            print(jsonString)
+        }
+
+        
+        
         if (LogRegSegment.selectedSegmentIndex == 0) {
             //Register
             if textEmail.text != "" && textPassword.text != "" && textPasswordConfirm.text != "" && textName.text != "" && textPar.text != "" && textStepLength.text != "" && textWeight.text != "" && textHeight.text != "" && textAge.text != ""{

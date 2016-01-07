@@ -7,9 +7,12 @@
 //
 
 import Foundation
+import UIKit
 import HealthKit
 
 class HeartRate: HeartRateDelegate{
+    
+    var hrObjects:[HeartRateObject] = []
     
     let heartRateQuantityType = HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeartRate)!
     
@@ -40,6 +43,9 @@ class HeartRate: HeartRateDelegate{
     
     func fetchRecordedHealthInLastDay(){
         
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "dd MMM yyyy"
+        
         let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierEndDate,
             ascending: true)
         
@@ -52,25 +58,37 @@ class HeartRate: HeartRateDelegate{
                 error: NSError?) in
                 
                 guard let results = results where results.count > 0 else {
+                    let appdel = UIApplication.sharedApplication().delegate as! AppDelegate
+                    appdel.hkAvailable = false
                     print("Could not read the user's heartRate")
-                    NSNotificationCenter.defaultCenter().postNotificationName("newHeartRate", object: nil, userInfo:["bpm":"0"])
+                    
+                    NSNotificationCenter.defaultCenter().postNotificationName("changeHeartRateSource", object: nil)
+                   // NSNotificationCenter.defaultCenter().postNotificationName("newHeartRate", object: nil, userInfo:["bpm":"0"])
                     return
                 }
+                
+                var nowDouble:Double!
                 
                 for sample in results as! [HKQuantitySample]{
                     
                     let heartRateUnit: HKUnit = HKUnit.countUnit().unitDividedByUnit(HKUnit.minuteUnit())
-                
+                    
+                    
                     
                     let heartRate = sample.quantity.doubleValueForUnit(heartRateUnit)
                     
+                    nowDouble = sample.startDate.timeIntervalSince1970
+                    
+                    
+                    self.hrObjects.append(HeartRateObject(heartRate: Int(heartRate), date: Int64(nowDouble*100000)))
+                    
                     // prints heartrate
                     dispatch_async(dispatch_get_main_queue(), {
+                        NSNotificationCenter.defaultCenter().postNotificationName("newHeartRate", object: nil, userInfo:["bpm":String(heartRate),"date":String(nowDouble*100000)])
+//                        print("HeartRate has been changed to " + "\(heartRate)")
+//                        print("time: \(nowDouble*100000)")
                         
-                        NSNotificationCenter.defaultCenter().postNotificationName("newHeartRate", object: nil, userInfo:["bpm":String(heartRate)])
-                        print("HeartRate has been changed to " +
-                            "\(heartRate)")
-                        print("Change date = \(sample.startDate)")
+                     
                         
                     })
                 }
@@ -100,10 +118,10 @@ class HeartRate: HeartRateDelegate{
             withCompletion: {succeeded, error in
                 
                 if succeeded{
-                    print("Enabled background delivery of weight changes")
+                   // print("Enabled background delivery of weight changes")
                 } else {
                     if let theError = error{
-                        print("Failed to enable background delivery of weight changes. ")
+                        print("Failed to enable background delivery of heartrate changes. ")
                         print("Error = \(theError)")
                     }
                 }
@@ -117,10 +135,10 @@ class HeartRate: HeartRateDelegate{
             succeeded, error in
             
             if succeeded{
-                print("Disabled background delivery of weight changes")
+                print("Disabled background delivery of heartrate changes")
             } else {
                 if let theError = error{
-                    print("Failed to disable background delivery of weight changes. ")
+                    print("Failed to disable background delivery of heartrate changes. ")
                     print("Error = \(theError)")
                 }
             }
@@ -140,6 +158,7 @@ class HeartRate: HeartRateDelegate{
     
     
     class func checkAvailability(completion: (isAvailable: Bool) -> Void) {
+        
         
         if HKHealthStore.isHealthDataAvailable(){
             

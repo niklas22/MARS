@@ -14,12 +14,15 @@ class HeartViewController: UIViewController {
     
     var userinfo:Dictionary<String,String!>!
     
+    var measuring:Bool = false
+    
     @IBOutlet weak var heartRateLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateHeartRate:", name: "newHeartRate", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "messureHeartRate:", name: "changeHeartRateSource", object: nil)
         
         appdel = UIApplication.sharedApplication().delegate as! AppDelegate
         
@@ -45,7 +48,15 @@ class HeartViewController: UIViewController {
         print(self.appdel.hkAvailable)
         let hrObject = HealthFactory.createHeartRateSensor()
         
-        hrObject.startMonitoring()
+        if measuring {
+            hrObject.stopMonitoring()
+            measuring = false
+        } else {
+            hrObject.startMonitoring()
+            measuring = true
+        }
+        
+        
     }
     
     func updateHeartRate(notification: NSNotification){

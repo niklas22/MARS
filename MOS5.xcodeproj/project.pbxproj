@@ -10,6 +10,7 @@
 		BC1FCFC61C1ACF2D00F95BB4 /* HealthFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1FCFC51C1ACF2D00F95BB4 /* HealthFactory.swift */; };
 		BC1FCFCA1C1AD4BE00F95BB4 /* HeartRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1FCFC91C1AD4BE00F95BB4 /* HeartRate.swift */; };
 		BC3144B41C184D7200C07CC6 /* SignInTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3144B31C184D7200C07CC6 /* SignInTableViewController.swift */; };
+		BCCF2C771C3EA54900A2DFB4 /* HeartRateObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCF2C761C3EA54900A2DFB4 /* HeartRateObject.swift */; };
 		BCD79C2F1C181A18004FACF6 /* ServerConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD79C2E1C181A18004FACF6 /* ServerConnector.swift */; };
 		BCD79C331C18249B004FACF6 /* ObjectToStringDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD79C321C18249B004FACF6 /* ObjectToStringDelegate.swift */; };
 		BCD79C351C182861004FACF6 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD79C341C182861004FACF6 /* Person.swift */; };
@@ -85,6 +86,7 @@
 		BC1FCFC51C1ACF2D00F95BB4 /* HealthFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthFactory.swift; sourceTree = "<group>"; };
 		BC1FCFC91C1AD4BE00F95BB4 /* HeartRate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartRate.swift; sourceTree = "<group>"; };
 		BC3144B31C184D7200C07CC6 /* SignInTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInTableViewController.swift; sourceTree = "<group>"; };
+		BCCF2C761C3EA54900A2DFB4 /* HeartRateObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartRateObject.swift; sourceTree = "<group>"; };
 		BCD79C2E1C181A18004FACF6 /* ServerConnector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerConnector.swift; sourceTree = "<group>"; };
 		BCD79C321C18249B004FACF6 /* ObjectToStringDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectToStringDelegate.swift; sourceTree = "<group>"; };
 		BCD79C341C182861004FACF6 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 				BCF505461C22B5C300869E43 /* HeartRateDelegate.swift */,
 				BCF5054A1C22BA0300869E43 /* HeartRateSimulation.swift */,
 				BCF5054C1C22BA5B00869E43 /* SwiftCSV.swift */,
+				BCCF2C761C3EA54900A2DFB4 /* HeartRateObject.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -394,6 +397,7 @@
 				BCD79C331C18249B004FACF6 /* ObjectToStringDelegate.swift in Sources */,
 				BC1FCFC61C1ACF2D00F95BB4 /* HealthFactory.swift in Sources */,
 				BCEF80BC1C11C57E0043534E /* AppDelegate.swift in Sources */,
+				BCCF2C771C3EA54900A2DFB4 /* HeartRateObject.swift in Sources */,
 				BCEF80BE1C11C57E0043534E /* PedoViewController.swift in Sources */,
 				BC1FCFCA1C1AD4BE00F95BB4 /* HeartRate.swift in Sources */,
 				BCF505471C22B5C300869E43 /* HeartRateDelegate.swift in Sources */,
