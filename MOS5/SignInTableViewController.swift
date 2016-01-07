@@ -18,6 +18,8 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
     @IBOutlet weak var textEmail: UITextField!
     @IBOutlet weak var textName: UITextField!
     @IBOutlet weak var textPasswordConfirm: UITextField!
+    @IBOutlet weak var textStepLength: UITextField!
+
     @IBOutlet weak var LogRegSegment: UISegmentedControl!
     
     @IBOutlet weak var labelMale: UILabel!
@@ -54,6 +56,7 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
         textHeight.inputView = pickerView
         textWeight.inputView = pickerView
         textPar.inputView = pickerView
+        textStepLength.inputView = pickerView
         
         let recognizer = UITapGestureRecognizer(target: self, action: "maleTapped")
         labelMale.userInteractionEnabled = true
@@ -85,7 +88,7 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
         let alert = UIAlertController()
         
         alert.title = "Info"
-        alert.message = "mars hat sars"
+        alert.message = "Use the number (0 – 7) that best describes your physical activity level for the previous month: \n 0-1: Do not participate regularly in programmed recreation sport or heavy physical activity \n 2-3: Participate regularly in recreation or work requiring modest physical activity, such as golf, horseback riding, calisthenics, gymnastics, table tennis, bowling, weightlifting, yard work \n 4-7: Participate regularly in heavy physical exercise such as running or jogging, swimming, cycling, rowing, skipping rope, running in place or engaging in vigorous activity exercise such as tennis, basketball, or handball work"
         
         alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) -> Void in
             alert.dismissViewControllerAnimated(true, completion: nil)
@@ -122,6 +125,12 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
         for (var i = 0; i < 8; i++) { options.append("\(i)") }
         pickerView.reloadAllComponents()
     }
+    @IBAction func textStepLengthEditing(sender: UITextField) {
+        options = []
+        for (var i = 20; i < 181; i++) { options.append("\(i)") }
+        pickerView.reloadAllComponents()
+    }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -146,7 +155,7 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
             if section == 0{
                 return 3
             } else{
-                return 6
+                return 7
             }
         } else {
             if section == 0{
@@ -177,12 +186,15 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
         } else if textWeight.editing {
             textWeight.text = options[row]
             person.weight = Int(options[row])
-        } else  if textHeight.editing {
+        } else if textHeight.editing {
             textHeight.text = options[row]
             person.height = Int(options[row])
-        } else {
+        } else if textPar.editing {
             textPar.text = options[row]
             person.par = Int(options[row])
+        } else {
+            textStepLength.text = options[row]
+            person.stepLength = Int(options[row])
         }
     }
 
@@ -190,15 +202,13 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
         
         if (LogRegSegment.selectedSegmentIndex == 0) {
             //Register
-            if textEmail.text != "" && textPassword.text != "" && textPasswordConfirm.text != "" && textName.text != "" && textPar.text != "" {
+            if textEmail.text != "" && textPassword.text != "" && textPasswordConfirm.text != "" && textName.text != "" && textPar.text != "" && textStepLength.text != "" && textWeight.text != "" && textHeight.text != "" && textAge.text != ""{
                 person.name = textName.text
                 person.mail = textEmail.text
                 person.pw = textPassword.text
                 person.gender = switchGender.on
                 
                 connector.sendMessage(person, functionName: "register") { (jsonString,error) -> Void in
-                    print("SENT")
-                    print(jsonString)
                     print("Error: \(error)")
                     if jsonString == "3" {
                         print("Server/DB Error")
@@ -225,12 +235,19 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
                     print(jsonString)
                     print(error)
                     
-                    //Convert JSON String to Person Object
-                    //Params of the JSON String: age, email, height, name, password, weight
+                    if jsonString == "" {
+                        print("User not in our database")
+                    } else {
+                        //User Data contained in jsonString
+                        //Convert JSON String to Person Object
+                        //Params of the JSON String: age, email, height, name, password, weight, gender, par, steplength
+                        
+                        dispatch_async(dispatch_get_main_queue()) {
+                            self.appDel.person = self.person
+                            self.performSegueWithIdentifier("showMenu", sender: self)
+                        }
+                    }
                 }
-                
-                appDel.person = self.person
-                self.performSegueWithIdentifier("showMenu", sender: self)
             } else {
                 print("Mars: Please enter all the data!")
             }
