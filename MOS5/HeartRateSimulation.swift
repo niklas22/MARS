@@ -50,7 +50,7 @@ class HeartRateSimulation: HeartRateDelegate {
         if bpms != nil {
             index = index % bpms!.count
             index = index + 1
-            hrObjects.append(HeartRateObject(heartRate: Int(bpms![index])!, date: 0))
+            hrObjects.append(HeartRateObject(heartRate: Int(bpms![index])!, date: "0"))
             NSNotificationCenter.defaultCenter().postNotificationName("newHeartRate", object: nil, userInfo:["bpm":bpms![index]])
             
         }

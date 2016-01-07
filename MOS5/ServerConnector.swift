@@ -26,7 +26,7 @@ final class ServerConnector{
         
         // get encoded objectdatatoString
         request.HTTPBody = senddata.objectToString().dataUsingEncoding(NSUTF8StringEncoding)
-        request.HTTPBody = "firstname=Niklas&lastname=Mayr&age=22".dataUsingEncoding(NSUTF8StringEncoding)
+        //request.HTTPBody = "firstname=Niklas&lastname=Mayr&age=22".dataUsingEncoding(NSUTF8StringEncoding)
         request.HTTPMethod = "POST"
         
         //set timeout from serverconnection in seconds

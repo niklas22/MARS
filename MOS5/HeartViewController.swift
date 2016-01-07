@@ -18,6 +18,8 @@ class HeartViewController: UIViewController {
     
     @IBOutlet weak var heartRateLabel: UILabel!
     
+    var hrObject:HeartRateDelegate!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,12 +28,15 @@ class HeartViewController: UIViewController {
         
         appdel = UIApplication.sharedApplication().delegate as! AppDelegate
         
+        
         HeartRate.checkAvailability { (isAvailable) -> Void in
             if isAvailable == true {
                 self.appdel.hkAvailable = true
+                self.hrObject = HealthFactory.createHeartRateSensor()
             }
             else {
                 self.appdel.hkAvailable = false
+                self.hrObject = HealthFactory.createHeartRateSensor()
             }
            
         }
@@ -46,11 +51,9 @@ class HeartViewController: UIViewController {
     
     @IBAction func messureHeartRate(sender: AnyObject) {
         print(self.appdel.hkAvailable)
-        let hrObject = HealthFactory.createHeartRateSensor()
         
         if measuring {
             hrObject.stopMonitoring()
-            measuring = false
         } else {
             hrObject.startMonitoring()
             measuring = true
@@ -81,3 +84,17 @@ class HeartViewController: UIViewController {
     */
 
 }
+
+extension Array {
+    
+    func toJsonArray() -> String{
+        var ar:String = "["
+        
+        for ind in 0...self.count-2{
+            ar.appendContentsOf("\(JSONSerializer.toJson(self[ind] as! AnyObject)),")
+        }
+        ar.appendContentsOf("\(JSONSerializer.toJson(self[self.count-1] as! AnyObject))]")
+        return ar
+    }
+}
+

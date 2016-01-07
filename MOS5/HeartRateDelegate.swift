@@ -8,11 +8,13 @@
 
 import Foundation
 
-protocol HeartRateDelegate {
+protocol HeartRateDelegate: class {
     
     func startMonitoring()
     
     func stopMonitoring()
+    
+    var hrObjects: [HeartRateObject]{get set}
 }
 
 
