@@ -100,10 +100,10 @@ class HeartRate: HeartRateDelegate{
             withCompletion: {succeeded, error in
                 
                 if succeeded{
-                    print("Enabled background delivery of weight changes")
+                   // print("Enabled background delivery of weight changes")
                 } else {
                     if let theError = error{
-                        print("Failed to enable background delivery of weight changes. ")
+                        print("Failed to enable background delivery of heartrate changes. ")
                         print("Error = \(theError)")
                     }
                 }
@@ -117,10 +117,10 @@ class HeartRate: HeartRateDelegate{
             succeeded, error in
             
             if succeeded{
-                print("Disabled background delivery of weight changes")
+                print("Disabled background delivery of heartrate changes")
             } else {
                 if let theError = error{
-                    print("Failed to disable background delivery of weight changes. ")
+                    print("Failed to disable background delivery of heartrate changes. ")
                     print("Error = \(theError)")
                 }
             }
@@ -140,6 +140,7 @@ class HeartRate: HeartRateDelegate{
     
     
     class func checkAvailability(completion: (isAvailable: Bool) -> Void) {
+        
         
         if HKHealthStore.isHealthDataAvailable(){
             
