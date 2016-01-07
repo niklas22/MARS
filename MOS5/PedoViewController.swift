@@ -49,6 +49,9 @@ class PedoViewController: UIViewController {
         }
         
         pedo.stopCalculating()
+        
+        print(steps.startTime)
+        print(steps.endTime)
     }
     
     override func didReceiveMemoryWarning() {
