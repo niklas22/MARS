@@ -20,8 +20,11 @@ class HeartRateSimulation: HeartRateDelegate {
     
     var index:Int!
     
+    var hrObjects:[HeartRateObject] = []
+    
     let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
     let date:NSDate
+    
     init(){
         date = NSDate().dateByAddingTimeInterval(2)
         
@@ -35,13 +38,11 @@ class HeartRateSimulation: HeartRateDelegate {
     }
     
     func startMonitoring() {
-        
-        timer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: Selector("runCode"), userInfo: nil, repeats: true)
-        
+        self.timer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: Selector("runCode"), userInfo: nil, repeats: true)
     }
     
     func stopMonitoring() {
-        timer.invalidate()
+        self.timer.invalidate()
     }
     
     dynamic func runCode(){
@@ -49,8 +50,9 @@ class HeartRateSimulation: HeartRateDelegate {
         if bpms != nil {
             index = index % bpms!.count
             index = index + 1
-            
+            hrObjects.append(HeartRateObject(heartRate: Int(bpms![index])!, date: 0))
             NSNotificationCenter.defaultCenter().postNotificationName("newHeartRate", object: nil, userInfo:["bpm":bpms![index]])
+            
         }
         else {
             NSNotificationCenter.defaultCenter().postNotificationName("newHeartRate", object: nil, userInfo:["bpm":"0"])
