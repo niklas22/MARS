@@ -18,6 +18,7 @@ class Person: ObjectToStringDelegate {
     var gender:Bool!
     var par:Int!
     
+    
     func objectToString() -> String {
         return "name=\(name)&email=\(mail)&pw=\(pw)&age=\(age)&height=\(height)&weight=\(weight)&gender=\(gender)&par=\(par)"
     }
