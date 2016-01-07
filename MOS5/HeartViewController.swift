@@ -63,6 +63,8 @@ class HeartViewController: UIViewController {
         
         userinfo = notification.userInfo as! Dictionary<String,String!>
         
+        
+        
         dispatch_async(dispatch_get_main_queue()) {
             self.heartRateLabel.text = self.userinfo["bpm"]!
         }

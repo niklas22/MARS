@@ -20,6 +20,9 @@ class HeartRateObject: ObjectToStringDelegate {
     //uploadHeartrates heartrates
     
     func objectToString() -> String {
-        return ""
+        let json = JSONSerializer.toJson(self)
+        
+        return json
+
     }
 }

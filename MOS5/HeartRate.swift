@@ -80,7 +80,9 @@ class HeartRate: HeartRateDelegate{
                     nowDouble = sample.startDate.timeIntervalSince1970
                     
                     
-                    self.hrObjects.append(HeartRateObject(heartRate: Int(heartRate), date: Int64(nowDouble*100000)))
+                    let obj = HeartRateObject(heartRate: Int(heartRate), date: Int64(nowDouble*100000))
+                    self.hrObjects.append(obj)
+                    print(obj.objectToString())
                     
                     // prints heartrate
                     dispatch_async(dispatch_get_main_queue(), {
