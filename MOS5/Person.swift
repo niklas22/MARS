@@ -34,7 +34,7 @@ class Person: ObjectToStringDelegate {
             p.age = json["age"].intValue
             p.height = json["height"].intValue
             p.weight = json["weight"].intValue
-            p.gender = json["gender"].boolValue
+            p.gender = json["male"].boolValue
             p.par = json["par"].intValue
             p.stepLength = json["steplength"].intValue
             
