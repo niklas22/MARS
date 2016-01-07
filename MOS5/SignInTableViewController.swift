@@ -242,6 +242,8 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
                         //Convert JSON String to Person Object
                         //Params of the JSON String: age, email, height, name, password, weight, gender, par, steplength
                         
+                        self.person = self.person.jsonToObject(jsonString)
+                        print(self.person.objectToString())
                         dispatch_async(dispatch_get_main_queue()) {
                             self.appDel.person = self.person
                             self.performSegueWithIdentifier("showMenu", sender: self)

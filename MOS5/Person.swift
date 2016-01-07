@@ -24,6 +24,24 @@ class Person: ObjectToStringDelegate {
         return "name=\(name)&email=\(mail)&pw=\(pw)&age=\(age)&height=\(height)&weight=\(weight)&gender=\(gender)&par=\(par)&steplength=\(stepLength)"
     }
     
+    func jsonToObject(jsonString: String) -> Person{
+        var p = Person()
+        
+        if let dataFromString = jsonString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false) {
+            let json = JSON(data: dataFromString)
+            
+            p.name = json["name"].stringValue
+            p.mail = json["mail"].stringValue
+            p.pw = json["pw"].stringValue
+            p.age = json["age"].intValue
+            p.height = json["height"].intValue
+            p.weight = json["weight"].intValue
+
+        }
+        
+        return p
+    }
+    
     init() {
         name = ""
         mail = ""
