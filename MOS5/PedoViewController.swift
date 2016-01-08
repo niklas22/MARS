@@ -28,8 +28,8 @@ class PedoViewController: UIViewController {
     }
     
     @IBAction func btnStartPressed(sender: UIButton) {
-        labelStepCount.text = "0"
-        labelDistance.text = "0"
+        labelStepCount.text = "0 steps"
+        labelDistance.text = "0 meter"
         
         steps.startTime = Int(NSDate().timeIntervalSince1970)
         
