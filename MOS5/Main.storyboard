@@ -81,7 +81,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="StepCount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0fa-Oz-7Ah">
-                                <rect key="frame" x="259" y="180" width="82" height="20.5"/>
+                                <rect key="frame" x="259" y="80.5" width="82" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -102,27 +102,53 @@
                                     <action selector="btnStartPressed:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="3he-pw-iDO"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="StepCount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JWu-Kz-ube">
+                                <rect key="frame" x="259" y="40" width="82" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Approx. Distance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fIJ-4S-rXA">
+                                <rect key="frame" x="234.5" y="121" width="131" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="val" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rPu-eb-WBp">
+                                <rect key="frame" x="289.5" y="161.5" width="21.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Q1C-30-6RI" firstAttribute="centerY" secondItem="KRo-Pu-m3v" secondAttribute="centerY" id="1bq-jg-pVz"/>
+                            <constraint firstItem="rPu-eb-WBp" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="2oF-K5-Hk3"/>
+                            <constraint firstItem="0fa-Oz-7Ah" firstAttribute="top" secondItem="JWu-Kz-ube" secondAttribute="bottom" constant="20" id="6W2-rj-DOE"/>
+                            <constraint firstItem="fIJ-4S-rXA" firstAttribute="top" secondItem="0fa-Oz-7Ah" secondAttribute="bottom" constant="20" id="CwH-I0-hUu"/>
                             <constraint firstItem="0fa-Oz-7Ah" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="G8V-tU-KkC"/>
                             <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="KRo-Pu-m3v" secondAttribute="bottom" constant="40" id="IFX-iQ-8ub"/>
                             <constraint firstItem="KRo-Pu-m3v" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" constant="40" id="LHa-hP-uEW"/>
                             <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="0fa-Oz-7Ah" secondAttribute="bottom" constant="350" id="Mns-Qz-SHw"/>
                             <constraint firstItem="lLt-Xd-o0U" firstAttribute="centerY" secondItem="eQC-ya-7PR" secondAttribute="centerY" id="NOV-f8-D1j"/>
                             <constraint firstAttribute="trailingMargin" secondItem="lLt-Xd-o0U" secondAttribute="trailing" constant="50" id="RyP-yh-XpY"/>
+                            <constraint firstItem="JWu-Kz-ube" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="Sl0-ld-we7"/>
                             <constraint firstAttribute="trailingMargin" secondItem="eQC-ya-7PR" secondAttribute="trailing" constant="40" id="Xhe-eB-vgi"/>
                             <constraint firstItem="Q1C-30-6RI" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" constant="50" id="hsS-F7-g4v"/>
+                            <constraint firstItem="fIJ-4S-rXA" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="i6k-yT-n3Z"/>
                             <constraint firstItem="Q1C-30-6RI" firstAttribute="centerX" secondItem="KRo-Pu-m3v" secondAttribute="centerX" id="iLm-tn-745"/>
                             <constraint firstItem="lLt-Xd-o0U" firstAttribute="centerX" secondItem="eQC-ya-7PR" secondAttribute="centerX" id="iUQ-KK-Ycm"/>
+                            <constraint firstItem="JWu-Kz-ube" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="20" id="jj0-Ae-h4m"/>
                             <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="Q1C-30-6RI" secondAttribute="bottom" constant="200" id="o94-1A-09k"/>
+                            <constraint firstItem="rPu-eb-WBp" firstAttribute="top" secondItem="fIJ-4S-rXA" secondAttribute="bottom" constant="20" id="pjL-c7-2Zi"/>
                             <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="lLt-Xd-o0U" secondAttribute="bottom" constant="200" id="y8P-HV-jC1"/>
                             <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="eQC-ya-7PR" secondAttribute="bottom" constant="40" id="yGF-qA-oMR"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="hsS-F7-g4v"/>
+                                <exclude reference="Mns-Qz-SHw"/>
                                 <exclude reference="o94-1A-09k"/>
                                 <exclude reference="y8P-HV-jC1"/>
                                 <exclude reference="RyP-yh-XpY"/>
@@ -137,6 +163,7 @@
                         </userDefinedRuntimeAttributes>
                     </tabBarItem>
                     <connections>
+                        <outlet property="labelDistance" destination="rPu-eb-WBp" id="Ded-wY-wIA"/>
                         <outlet property="labelStepCount" destination="0fa-Oz-7Ah" id="mPk-DV-cQS"/>
                     </connections>
                 </viewController>

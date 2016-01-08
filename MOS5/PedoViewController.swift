@@ -10,6 +10,7 @@ import UIKit
 
 class PedoViewController: UIViewController {
     @IBOutlet weak var labelStepCount: UILabel!
+    @IBOutlet weak var labelDistance: UILabel!
     
     let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
     
@@ -28,11 +29,13 @@ class PedoViewController: UIViewController {
     
     @IBAction func btnStartPressed(sender: UIButton) {
         labelStepCount.text = "0"
+        labelDistance.text = "0"
         
         steps.startTime = Int(NSDate().timeIntervalSince1970)
         
         pedo.calculateSteps { (steps) -> Void in
-            self.labelStepCount.text = String(steps)
+            self.labelStepCount.text = "\(String(steps)) steps"
+            self.labelDistance.text = "\(String(self.appDel.person.stepLength*steps/100)) meter"
         }
     }
     
