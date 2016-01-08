@@ -11,6 +11,7 @@ import UIKit
 class PedoViewController: UIViewController {
     @IBOutlet weak var labelStepCount: UILabel!
     @IBOutlet weak var labelDistance: UILabel!
+    @IBOutlet weak var labelSpeed: UILabel!
     
     let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
     
@@ -18,7 +19,6 @@ class PedoViewController: UIViewController {
     var pedo:Pedometer!
     var connector:ServerConnector!
     var steps:Steps!
-    var person:Person!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,31 +30,44 @@ class PedoViewController: UIViewController {
     @IBAction func btnStartPressed(sender: UIButton) {
         labelStepCount.text = "0 steps"
         labelDistance.text = "0 meter"
+        labelSpeed.text = "0 km/h"
         
         steps.startTime = Int(NSDate().timeIntervalSince1970)
         
+        appDel.person.steps = steps
+        
         pedo.calculateSteps { (steps) -> Void in
+            let distance = self.appDel.person.stepLength*steps/100
+            let time = (Int(NSDate().timeIntervalSince1970) - self.appDel.person.steps.startTime)
+            let speed = Double(Double(distance) / Double(time)) * 3.6
+            print(time)
+            print(speed)
+            
             self.labelStepCount.text = "\(String(steps)) steps"
-            self.labelDistance.text = "\(String(self.appDel.person.stepLength*steps/100)) meter"
+            self.labelDistance.text = "\(String(distance)) meter"
+            self.labelSpeed.text = "\(String(speed)) km/h"
         }
     }
     
     @IBAction func btnStopPressed(sender: UIButton) {
-        steps.endTime = Int(NSDate().timeIntervalSince1970)
-        steps.steps = pedo.steps
+        if appDel.person.steps.startTime == nil {
+            return
+        }
         
-        steps.mail = appDel.person.mail
-        steps.pw = appDel.person.pw
+        appDel.person.steps.endTime = Int(NSDate().timeIntervalSince1970)
+        appDel.person.steps.steps = pedo.steps
         
-        connector.sendMessage(steps.objectToString(), functionName: "uploadSteps") { (jsonString,error) -> Void in
+        appDel.person.steps.mail = appDel.person.mail
+        appDel.person.steps.pw = appDel.person.pw
+        
+        connector.sendMessage(appDel.person.steps.objectToString(), functionName: "uploadSteps") { (jsonString,error) -> Void in
             print(jsonString)
             print(error)
         }
         
         pedo.stopCalculating()
         
-        print(steps.startTime)
-        print(steps.endTime)
+        appDel.person.steps.startTime = nil
     }
     
     override func didReceiveMemoryWarning() {

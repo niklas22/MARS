@@ -53,8 +53,6 @@ class HeartViewController: UIViewController {
     }
     
     @IBAction func messureHeartRate(sender: AnyObject) {
-       
-        
         if measuring {
             
             if let bt = sender as? UIButton {
@@ -66,18 +64,14 @@ class HeartViewController: UIViewController {
                 ServerConnector.connector.sendMessage(appdel.person.heartRatesToString(), functionName: "uploadHeartrates", completion: { (jsonString, error) -> Void in
                     print(jsonString)
                 })
-                
             }
         } else {
-            
             if let bt = sender as? UIButton {
                 bt.setTitle("Stop measuring heartrate", forState: .Normal)
                 measuring = true
                 hrObject.startMonitoring()
             }
         }
-        
-        
     }
     
     func updateHeartRate(notification: NSNotification){
@@ -93,7 +87,9 @@ class HeartViewController: UIViewController {
         
         dispatch_async(dispatch_get_main_queue()) {
             self.heartRateLabel.text = self.userinfo["bpm"]!
-            self.eeLabel.text = "\(self.appDel.person.calcEE()) kcal"
+            let ee = Double(round(1000*self.appDel.person.calcEE())/1000)
+            print(ee)
+            self.eeLabel.text = "\(ee) kcal"
         }
     }
 

@@ -19,6 +19,7 @@ class Person: ObjectToStringDelegate {
     var par:Int!
     var stepLength:Int!
     var heartRates:[HeartRateObject]!
+    var steps: Steps
     
     func objectToString() -> String {
         return "name=\(name)&email=\(mail)&pw=\(pw)&age=\(age)&height=\(height)&weight=\(weight)&gender=\(gender)&par=\(par)&steplength=\(stepLength)"
@@ -54,6 +55,7 @@ class Person: ObjectToStringDelegate {
         weight = 0
         par=0
         stepLength=0
+        steps = Steps()
     }
     
     func calcVO() -> Double{
