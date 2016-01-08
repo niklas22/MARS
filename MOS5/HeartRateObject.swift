@@ -9,10 +9,10 @@
 import Foundation
 
 class HeartRateObject: ObjectToStringDelegate {
-    var heartRate:Int
+    var heartRate:Double
     var date:String
     
-    init(heartRate: Int, date: String){
+    init(heartRate: Double, date: String){
         self.heartRate = heartRate
         self.date = date
         

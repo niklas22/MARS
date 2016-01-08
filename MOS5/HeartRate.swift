@@ -86,7 +86,7 @@ class HeartRate: HeartRateDelegate{
                     nowDouble = sample.startDate.timeIntervalSince1970
                     
                     
-                    let obj = HeartRateObject(heartRate: Int(heartRate), date: String(nowDouble*100000))
+                    let obj = HeartRateObject(heartRate: heartRate, date: String(nowDouble*100000))
                     self.hrObjects.append(obj)
                     
                     // prints heartrate
@@ -115,6 +115,9 @@ class HeartRate: HeartRateDelegate{
     }
     
     func heartRateChangesStart(){
+        
+        initQuery()
+        
         healthStore.executeQuery(query)
         healthStore.enableBackgroundDeliveryForType(heartRateQuantityType,
             frequency: .Immediate,
@@ -133,12 +136,14 @@ class HeartRate: HeartRateDelegate{
     }
     
     func heartRateChangesStop(){
+        
         healthStore.stopQuery(query)
         healthStore.disableAllBackgroundDeliveryWithCompletion{
             succeeded, error in
             
             if succeeded{
                 print("Disabled background delivery of heartrate changes")
+                 NSNotificationCenter.defaultCenter().postNotificationName("newHeartRate", object: nil, userInfo:["bpm":"0","date":"0"])
             } else {
                 if let theError = error{
                     print("Failed to disable background delivery of heartrate changes. ")
@@ -155,8 +160,9 @@ class HeartRate: HeartRateDelegate{
     }
     
     func stopMonitoring() {
-        dispatch_async(dispatch_get_main_queue(),
-            self.heartRateChangesStop)
+       
+       dispatch_async(dispatch_get_main_queue(),
+         self.heartRateChangesStop)
     }
     
     class func checkAvailability(completion: (isAvailable: Bool) -> Void){
@@ -181,6 +187,12 @@ class HeartRate: HeartRateDelegate{
         })
         
         healthStore.executeQuery(query)
+    }
+    
+    private func initQuery(){
+        query = HKObserverQuery(sampleType: self.heartRateQuantityType,
+            predicate: predicate,
+            updateHandler: self.heartRateChangedHandler)
     }
     
 }

@@ -78,13 +78,17 @@ class HeartViewController: UIViewController {
     func updateHeartRate(notification: NSNotification){
         
         userinfo = notification.userInfo as! Dictionary<String,String!>
+        let hr = Double(userinfo["bpm"]!)
+        let d = userinfo["date"]!
+        
+        let hrObject = HeartRateObject(heartRate: hr!, date: d)
+        self.appdel.person.heartRates.append(hrObject)
         
         
         
         dispatch_async(dispatch_get_main_queue()) {
             self.heartRateLabel.text = self.userinfo["bpm"]!
-            let hrObject = HeartRateObject(heartRate: Int(self.userinfo["bpm"]!)!, date: self.userinfo["date"]!)
-            self.appdel.person.heartRates.append(hrObject)
+            self.eeLabel.text = "\(self.appDel.person.calcEE())"
         }
     }
 
