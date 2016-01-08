@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import HealthKit
 
-class HeartRate: HeartRateDelegate, ObjectToStringDelegate{
+class HeartRate: HeartRateDelegate{
     
     var hrObjects:[HeartRateObject] = []
     
@@ -181,10 +181,6 @@ class HeartRate: HeartRateDelegate, ObjectToStringDelegate{
         })
         
         healthStore.executeQuery(query)
-    }
-    
-    func objectToString() -> String {
-        return self.hrObjects.toJsonArray()
     }
     
 }
