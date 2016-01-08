@@ -53,7 +53,6 @@ class Person: ObjectToStringDelegate {
         weight = 0
         par=0
         stepLength=0
-        currentHeartRate = HeartRateObject(heartRate: 0, date: "0")
     }
     
     func calcVO() -> Double{
