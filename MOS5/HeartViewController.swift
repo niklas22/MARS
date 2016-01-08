@@ -88,7 +88,7 @@ class HeartViewController: UIViewController {
         
         dispatch_async(dispatch_get_main_queue()) {
             self.heartRateLabel.text = self.userinfo["bpm"]!
-            self.eeLabel.text = "\(self.appDel.person.calcEE())"
+            self.eeLabel.text = "\(self.appDel.person.calcEE()) kcal"
         }
     }
 
