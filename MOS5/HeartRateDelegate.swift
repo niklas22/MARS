@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol HeartRateDelegate: class {
+protocol HeartRateDelegate: class, ObjectToStringDelegate {
     
     func startMonitoring()
     

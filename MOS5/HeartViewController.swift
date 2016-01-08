@@ -50,13 +50,27 @@ class HeartViewController: UIViewController {
     }
     
     @IBAction func messureHeartRate(sender: AnyObject) {
-        print(self.appdel.hkAvailable)
+       
         
         if measuring {
-            hrObject.stopMonitoring()
+            
+            if let bt = sender as? UIButton {
+                bt.setTitle("Measuring heartrate", forState: .Normal)
+                measuring = false
+                hrObject.stopMonitoring()
+                
+                // send data to server
+                ServerConnector.connector.sendMessage(hrObject, functionName: "uploadHeartrates", completion: { (jsonString, error) -> Void in
+                    print(jsonString)
+                })
+            }
         } else {
-            hrObject.startMonitoring()
-            measuring = true
+            
+            if let bt = sender as? UIButton {
+                bt.setTitle("Stop measuring heartrate", forState: .Normal)
+                measuring = true
+                hrObject.startMonitoring()
+            }
         }
         
         

@@ -43,6 +43,9 @@ class HeartRateSimulation: HeartRateDelegate {
     
     func stopMonitoring() {
         self.timer.invalidate()
+        index = 0
+        NSNotificationCenter.defaultCenter().postNotificationName("newHeartRate", object: nil, userInfo:["bpm":"0"])
+        
     }
     
     dynamic func runCode(){
@@ -58,6 +61,10 @@ class HeartRateSimulation: HeartRateDelegate {
             NSNotificationCenter.defaultCenter().postNotificationName("newHeartRate", object: nil, userInfo:["bpm":"0"])
         }
     
+    }
+    
+    func objectToString() -> String {
+        return self.hrObjects.toJsonArray()
     }
     
     
