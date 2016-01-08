@@ -62,6 +62,11 @@ class HeartViewController: UIViewController {
                 measuring = false
                 hrObject.stopMonitoring()
                 
+                // upload hr
+                ServerConnector.connector.sendMessage(appdel.person.heartRatesToString(), functionName: "uploadHeartrates", completion: { (jsonString, error) -> Void in
+                    print(jsonString)
+                })
+                
             }
         } else {
             

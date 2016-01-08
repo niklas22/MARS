@@ -104,4 +104,13 @@ class Person: ObjectToStringDelegate {
         return res
     }
     
+    
+    
+    // MARK: - memberToString for upload
+    
+    func heartRatesToString() -> String {
+        return "email=\(mail)&pw=\(pw)&heartrates=\(heartRates.toJsonArray())"
+
+    }
+    
 }
