@@ -30,12 +30,15 @@ class HeartViewController: UIViewController {
         
         appdel = UIApplication.sharedApplication().delegate as! AppDelegate
         
+        
         HeartRate.checkAvailability { (isAvailable) -> Void in
             if isAvailable == true {
                 self.appdel.hkAvailable = true
+                self.hrObject = HealthFactory.createHeartRateSensor()
             }
             else {
                 self.appdel.hkAvailable = false
+                self.hrObject = HealthFactory.createHeartRateSensor()
             }
            
         }
@@ -49,15 +52,27 @@ class HeartViewController: UIViewController {
     }
     
     @IBAction func messureHeartRate(sender: AnyObject) {
-        print(self.appdel.hkAvailable)
-        let hrObject = HealthFactory.createHeartRateSensor()
+       
         
         if measuring {
-            hrObject.stopMonitoring()
-            measuring = false
+            
+            if let bt = sender as? UIButton {
+                bt.setTitle("Measuring heartrate", forState: .Normal)
+                measuring = false
+                hrObject.stopMonitoring()
+                
+                // send data to server
+                ServerConnector.connector.sendMessage(hrObject, functionName: "uploadHeartrates", completion: { (jsonString, error) -> Void in
+                    print(jsonString)
+                })
+            }
         } else {
-            hrObject.startMonitoring()
-            measuring = true
+            
+            if let bt = sender as? UIButton {
+                bt.setTitle("Stop measuring heartrate", forState: .Normal)
+                measuring = true
+                hrObject.startMonitoring()
+            }
         }
         
         
@@ -66,6 +81,8 @@ class HeartViewController: UIViewController {
     func updateHeartRate(notification: NSNotification){
         
         userinfo = notification.userInfo as! Dictionary<String,String!>
+        
+        
         
         dispatch_async(dispatch_get_main_queue()) {
             self.heartRateLabel.text = self.userinfo["bpm"]!
@@ -84,3 +101,17 @@ class HeartViewController: UIViewController {
     */
 
 }
+
+extension Array {
+    
+    func toJsonArray() -> String{
+        var ar:String = "["
+        
+        for ind in 0...self.count-2{
+            ar.appendContentsOf("\(JSONSerializer.toJson(self[ind] as! AnyObject)),")
+        }
+        ar.appendContentsOf("\(JSONSerializer.toJson(self[self.count-1] as! AnyObject))]")
+        return ar
+    }
+}
+

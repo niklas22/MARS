@@ -10,16 +10,20 @@ import Foundation
 
 class HeartRateObject: ObjectToStringDelegate {
     var heartRate:Int
-    var date:Int64
+    var date:String
     
-    init(heartRate: Int, date: Int64){
+    init(heartRate: Int, date: String){
         self.heartRate = heartRate
         self.date = date
+        
     }
     
     //uploadHeartrates heartrates
     
     func objectToString() -> String {
-        return ""
+        
+        let json = JSONSerializer.toJson(self)
+        return json
+
     }
 }

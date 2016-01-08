@@ -43,6 +43,9 @@ class HeartRateSimulation: HeartRateDelegate {
     
     func stopMonitoring() {
         self.timer.invalidate()
+        index = 0
+        NSNotificationCenter.defaultCenter().postNotificationName("newHeartRate", object: nil, userInfo:["bpm":"0"])
+        
     }
     
     dynamic func runCode(){
@@ -50,7 +53,7 @@ class HeartRateSimulation: HeartRateDelegate {
         if bpms != nil {
             index = index % bpms!.count
             index = index + 1
-            hrObjects.append(HeartRateObject(heartRate: Int(bpms![index])!, date: 0))
+            hrObjects.append(HeartRateObject(heartRate: Int(bpms![index])!, date: "0"))
             NSNotificationCenter.defaultCenter().postNotificationName("newHeartRate", object: nil, userInfo:["bpm":bpms![index]])
             
         }
@@ -58,6 +61,10 @@ class HeartRateSimulation: HeartRateDelegate {
             NSNotificationCenter.defaultCenter().postNotificationName("newHeartRate", object: nil, userInfo:["bpm":"0"])
         }
     
+    }
+    
+    func objectToString() -> String {
+        return self.hrObjects.toJsonArray()
     }
     
     

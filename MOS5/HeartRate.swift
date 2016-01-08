@@ -10,9 +10,10 @@ import Foundation
 import UIKit
 import HealthKit
 
-class HeartRate: HeartRateDelegate{
+class HeartRate: HeartRateDelegate, ObjectToStringDelegate{
     
     var hrObjects:[HeartRateObject] = []
+    
     
     let heartRateQuantityType = HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeartRate)!
     
@@ -57,6 +58,10 @@ class HeartRate: HeartRateDelegate{
                 results: [HKSample]?,
                 error: NSError?) in
                 
+                if results?.count == 0{
+                    print("no permission")
+                }
+                
                 guard let results = results where results.count > 0 else {
                     let appdel = UIApplication.sharedApplication().delegate as! AppDelegate
                     appdel.hkAvailable = false
@@ -66,6 +71,7 @@ class HeartRate: HeartRateDelegate{
                    // NSNotificationCenter.defaultCenter().postNotificationName("newHeartRate", object: nil, userInfo:["bpm":"0"])
                     return
                 }
+                
                 
                 var nowDouble:Double!
                 
@@ -80,15 +86,12 @@ class HeartRate: HeartRateDelegate{
                     nowDouble = sample.startDate.timeIntervalSince1970
                     
                     
-                    self.hrObjects.append(HeartRateObject(heartRate: Int(heartRate), date: Int64(nowDouble*100000)))
+                    let obj = HeartRateObject(heartRate: Int(heartRate), date: String(nowDouble*100000))
+                    self.hrObjects.append(obj)
                     
                     // prints heartrate
                     dispatch_async(dispatch_get_main_queue(), {
                         NSNotificationCenter.defaultCenter().postNotificationName("newHeartRate", object: nil, userInfo:["bpm":String(heartRate),"date":String(nowDouble*100000)])
-//                        print("HeartRate has been changed to " + "\(heartRate)")
-//                        print("time: \(nowDouble*100000)")
-                        
-                     
                         
                     })
                 }
@@ -156,38 +159,32 @@ class HeartRate: HeartRateDelegate{
             self.heartRateChangesStop)
     }
     
+    class func checkAvailability(completion: (isAvailable: Bool) -> Void){
+        
+        let heartRateQuantityType = HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeartRate)!
+        let healthStore = HKHealthStore()
+        
+        let query = HKSampleQuery(sampleType: heartRateQuantityType,
+            predicate: nil,
+            limit: Int(HKObjectQueryNoLimit),
+            sortDescriptors: nil,
+            resultsHandler: {(query: HKSampleQuery,
+                results: [HKSample]?,
+                error: NSError?) in
+                
+                if results?.count == 0{
+                    completion(isAvailable: false)
+                } else {
+                    completion(isAvailable: true)
+                }
+                
+        })
+        
+        healthStore.executeQuery(query)
+    }
     
-    class func checkAvailability(completion: (isAvailable: Bool) -> Void) {
-        
-        
-        if HKHealthStore.isHealthDataAvailable(){
-            
-            
-            let hs = HKHealthStore()
-            let qtypes = HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeartRate)!
-            
-            let types: Set<HKObjectType> = {
-                return [qtypes]
-            }()
-            
-            hs.requestAuthorizationToShareTypes(nil,
-                readTypes: types,
-                completion: {succeeded, error in
-                    
-                    if succeeded && error == nil{
-                       completion(isAvailable: true)
-                    } else {
-                        if let theError = error{
-                            print("Error occurred = \(theError)")
-                        }
-                        completion(isAvailable: false)
-                    }
-            })
-            
-        } else {
-            print("Health data is not available")
-        }
- 
+    func objectToString() -> String {
+        return self.hrObjects.toJsonArray()
     }
     
 }
