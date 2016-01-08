@@ -176,8 +176,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nLB-Yp-WHR">
-                                <rect key="frame" x="235" y="381" width="130" height="30"/>
-                                <state key="normal" title="Messure heartRate"/>
+                                <rect key="frame" x="235" y="381" width="131" height="30"/>
+                                <state key="normal" title="Measure heartRate"/>
                                 <connections>
                                     <action selector="messureHeartRate:" destination="0hs-Q5-eWS" eventType="touchUpInside" id="nPS-S7-Sgx"/>
                                 </connections>
@@ -188,13 +188,21 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="EE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WYo-P2-oOk">
+                                <rect key="frame" x="301" y="222" width="20" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="WYo-P2-oOk" firstAttribute="centerX" secondItem="x1C-TI-79I" secondAttribute="centerX" id="VjE-fh-uWh"/>
                             <constraint firstItem="nLB-Yp-WHR" firstAttribute="centerX" secondItem="x1C-TI-79I" secondAttribute="centerX" id="fZn-35-BlQ"/>
                             <constraint firstItem="nLB-Yp-WHR" firstAttribute="top" secondItem="PhL-K1-M4a" secondAttribute="bottom" constant="71" id="ll3-Bx-QOQ"/>
                             <constraint firstItem="SO4-Xb-czc" firstAttribute="top" secondItem="nLB-Yp-WHR" secondAttribute="bottom" constant="140" id="oTh-XQ-BbR"/>
                             <constraint firstItem="nLB-Yp-WHR" firstAttribute="centerX" secondItem="PhL-K1-M4a" secondAttribute="centerX" id="otN-Gw-zAc"/>
+                            <constraint firstItem="PhL-K1-M4a" firstAttribute="top" secondItem="WYo-P2-oOk" secondAttribute="bottom" constant="40" id="pCJ-5e-vxI"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Heart" image="heart8" selectedImage="heart8" id="iFM-EV-QQS">
@@ -205,6 +213,7 @@
                         </userDefinedRuntimeAttributes>
                     </tabBarItem>
                     <connections>
+                        <outlet property="eeLabel" destination="WYo-P2-oOk" id="VbU-Wf-yAc"/>
                         <outlet property="heartRateLabel" destination="PhL-K1-M4a" id="olQ-ru-XRi"/>
                     </connections>
                 </viewController>
