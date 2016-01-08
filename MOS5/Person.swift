@@ -18,7 +18,7 @@ class Person: ObjectToStringDelegate {
     var gender:Bool!
     var par:Int!
     var stepLength:Int!
-    var heartrate:Double!
+    var heartRates:[HeartRateObject]!
     
     func objectToString() -> String {
         return "name=\(name)&email=\(mail)&pw=\(pw)&age=\(age)&height=\(height)&weight=\(weight)&gender=\(gender)&par=\(par)&steplength=\(stepLength)"
@@ -28,7 +28,7 @@ class Person: ObjectToStringDelegate {
         if let dataFromString = jsonString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false) {
             let json = JSON(data: dataFromString)
             
-            var p = Person()
+            let p = Person()
             
             p.name = json["name"].stringValue
             p.age = json["age"].intValue
@@ -37,6 +37,7 @@ class Person: ObjectToStringDelegate {
             p.gender = json["male"].boolValue
             p.par = json["par"].intValue
             p.stepLength = json["steplength"].intValue
+            p.heartRates = []
             
             return p
         }
@@ -53,7 +54,6 @@ class Person: ObjectToStringDelegate {
         weight = 0
         par=0
         stepLength=0
-        heartrate=0
     }
     
     func calcVO() -> Double{
@@ -82,9 +82,13 @@ class Person: ObjectToStringDelegate {
     func calcEE() -> Double {
         //EE = -59.3954 + gender x (-36.3781 + 0.271 x age + 0.394 x weight + 0.404 V[O.sub.2max] + 0.634x heart rate) + (1 - gender) x (0.274 x age + 0.103x weight + 0.380x V[O.sub.2max] + 0.450 x heart rate)
         
-        if heartrate == 0 {
+        if heartRates.count == 0 {
             return 0
         }
+        
+        let curHeartRate = heartRates[heartRates.count - 1]
+        
+        let heartRate:Double = Double(curHeartRate.heartRate)
         
         var res = 0.0
         
@@ -95,7 +99,7 @@ class Person: ObjectToStringDelegate {
         if gender == true { gender2 = 1 }
             else { gender2 = 0 }
         
-        res = -59.3954 + gender2 * (-36.3781 + 0.271 * age2 + 0.394 * mass + 0.404 * calcVO() + 0.634 * heartrate) + (1 - gender2) * (0.274 * age2 + 0.103 * mass + 0.380 * calcVO() + 0.450 * heartrate)
+        res = -59.3954 + gender2 * (-36.3781 + 0.271 * age2 + 0.394 * mass + 0.404 * calcVO() + 0.634 * heartRate) + (1 - gender2) * (0.274 * age2 + 0.103 * mass + 0.380 * calcVO() + 0.450 * heartRate)
         
         return res
     }

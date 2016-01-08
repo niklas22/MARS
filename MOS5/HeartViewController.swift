@@ -62,10 +62,6 @@ class HeartViewController: UIViewController {
                 measuring = false
                 hrObject.stopMonitoring()
                 
-                // send data to server
-                ServerConnector.connector.sendMessage(hrObject, functionName: "uploadHeartrates", completion: { (jsonString, error) -> Void in
-                    print(jsonString)
-                })
             }
         } else {
             
@@ -82,12 +78,16 @@ class HeartViewController: UIViewController {
     func updateHeartRate(notification: NSNotification){
         
         userinfo = notification.userInfo as! Dictionary<String,String!>
+        let hr = Double(userinfo["bpm"]!)
+        let d = userinfo["date"]!
+        
+        let hrObject = HeartRateObject(heartRate: hr!, date: d)
+        self.appdel.person.heartRates.append(hrObject)
         
         
         
         dispatch_async(dispatch_get_main_queue()) {
             self.heartRateLabel.text = self.userinfo["bpm"]!
-            self.appDel.person.heartrate = Double(self.userinfo["bpm"]!)
             self.eeLabel.text = "\(self.appDel.person.calcEE())"
         }
     }
