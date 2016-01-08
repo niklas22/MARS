@@ -9,6 +9,8 @@
 import UIKit
 
 class HeartViewController: UIViewController {
+    
+    let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
 
     var appdel:AppDelegate!
     
@@ -18,6 +20,7 @@ class HeartViewController: UIViewController {
     
     @IBOutlet weak var heartRateLabel: UILabel!
     
+    @IBOutlet weak var eeLabel: UILabel!
     var hrObject:HeartRateDelegate!
     
     override func viewDidLoad() {

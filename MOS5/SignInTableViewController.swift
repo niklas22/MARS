@@ -255,7 +255,6 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
                         self.person.mail = self.textEmail.text
                         self.person.pw = self.textPassword.text
 
-                        print("MARS: \(self.person.objectToString())")
                         dispatch_async(dispatch_get_main_queue()) {
                             self.appDel.person = self.person
                             self.performSegueWithIdentifier("showMenu", sender: self)
