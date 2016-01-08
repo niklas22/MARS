@@ -37,15 +37,16 @@ class PedoViewController: UIViewController {
         appDel.person.steps = steps
         
         pedo.calculateSteps { (steps) -> Void in
-            let distance = self.appDel.person.stepLength*steps/100
+            let distance : Double = Double(self.appDel.person.stepLength*steps/100)
             let time = (Int(NSDate().timeIntervalSince1970) - self.appDel.person.steps.startTime)
             let speed = Double(Double(distance) / Double(time)) * 3.6
-            print(time)
-            print(speed)
             
             self.labelStepCount.text = "\(String(steps)) steps"
             self.labelDistance.text = "\(String(distance)) meter"
             self.labelSpeed.text = "\(String(speed)) km/h"
+            
+            self.appDel.person.steps.speed = speed
+            self.appDel.person.steps.distance = distance
         }
     }
     

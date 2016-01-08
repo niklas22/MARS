@@ -14,8 +14,10 @@ class Steps: ObjectToStringDelegate {
     var steps : Int!
     var mail : String!
     var pw : String!
+    var distance : Double!
+    var speed : Double!
     
     func objectToString() -> String {
-        return "email=\(mail)&pw=\(pw)&steps=\(steps)&start=\(startTime)&end=\(endTime)"
+        return "email=\(mail)&pw=\(pw)&steps=\(steps)&start=\(startTime)&end=\(endTime)&distance=\(distance)&speed=\(speed)"
     }
 }
