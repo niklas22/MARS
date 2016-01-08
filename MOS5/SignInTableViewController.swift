@@ -217,7 +217,7 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
                 person.pw = textPassword.text
                 person.gender = switchGender.on
                                 
-                connector.sendMessage(person, functionName: "register") { (jsonString,error) -> Void in
+                connector.sendMessage(person.objectToString(), functionName: "register") { (jsonString,error) -> Void in
                     print("Error: \(error)")
                     if jsonString == "3" {
                         print("Server/DB Error")
@@ -240,7 +240,7 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
                 person.mail = textEmail.text
                 person.pw = textPassword.text
                 
-                connector.sendMessage(person, functionName: "login") { (jsonString,error) -> Void in
+                connector.sendMessage(person.objectToString(), functionName: "login") { (jsonString,error) -> Void in
                     print(jsonString)
                     print(error)
                     

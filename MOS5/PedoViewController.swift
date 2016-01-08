@@ -46,7 +46,7 @@ class PedoViewController: UIViewController {
         steps.mail = appDel.person.mail
         steps.pw = appDel.person.pw
         
-        connector.sendMessage(steps, functionName: "uploadSteps") { (jsonString,error) -> Void in
+        connector.sendMessage(steps.objectToString(), functionName: "uploadSteps") { (jsonString,error) -> Void in
             print(jsonString)
             print(error)
         }
