@@ -15,21 +15,28 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
     //@IBOutlet weak var labelDistance: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var buttonStartActivity: UIButton!
+    @IBOutlet weak var dataLabel: UILabel!
+    @IBOutlet weak var addonLabel: UILabel!
+    let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
     
     @IBOutlet weak var pieChartView: PieChartView!
     let descr = ["","",""]
     var data = [22.0,100.0,22.0]
     
-    let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
     var gradient : CAGradientLayer!
     
     var loop = true
-    var pedo:Pedometer!
+   
     var connector:ServerConnector!
-    var steps:Steps!
-    var person:Person!
+
     var width:CGFloat!
     
+    
+    // MARK: - Measuremntsproperties
+    var hrObject:HeartRateDelegate!
+    var pedo:Pedometer!
+    var steps:Steps!
+    var person:Person!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +45,11 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         collectionView.delegate = self
         collectionView.dataSource = self
+        
+        self.dataLabel.textColor = UIColor.whiteColor()
+        self.addonLabel.textColor = UIColor.whiteColor()
+        self.dataLabel.adjustsFontSizeToFitWidth = true
+        self.addonLabel.adjustsFontSizeToFitWidth = true
         
         collectionView.backgroundColor = UIColor.clearColor()
         collectionView.backgroundView = UIView(frame: CGRectZero)
@@ -62,52 +74,14 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         // setup progressImages
         
-        
-        pedo = Pedometer()
-        connector = ServerConnector.connector
-        steps = Steps()
-        
         setupPieChartView()
+        
+        let indexPathFirst = NSIndexPath(forRow: 0, inSection: 0)
+        self.collectionView.selectItemAtIndexPath(indexPathFirst, animated: false, scrollPosition: UICollectionViewScrollPosition.None)
+
+   
     }
     
-    @IBAction func btnStartPressed(sender: UIButton) {
-        //labelStepCount.text = "0"
-        //labelDistance.text = "0"
-        
-        steps.startTime = Int(NSDate().timeIntervalSince1970)
-        
-        appDel.person.steps = steps
-        
-        pedo.calculateSteps { (steps) -> Void in
-            let distance : Double = Double(self.appDel.person.stepLength*steps/100)
-            let time = (Int(NSDate().timeIntervalSince1970) - self.appDel.person.steps.startTime)
-            let speed = Double(Double(distance) / Double(time)) * 3.6
-            
-            self.appDel.person.steps.speed = speed
-            self.appDel.person.steps.distance = distance
-        }
-    }
-    
-    @IBAction func btnStopPressed(sender: UIButton) {
-        if appDel.person.steps.startTime == nil {
-            return
-        }
-        
-        appDel.person.steps.endTime = Int(NSDate().timeIntervalSince1970)
-        appDel.person.steps.steps = pedo.steps
-        
-        appDel.person.steps.mail = appDel.person.mail
-        appDel.person.steps.pw = appDel.person.pw
-        
-        connector.sendMessage(appDel.person.steps.objectToString(), functionName: "uploadSteps") { (jsonString,error) -> Void in
-            print(jsonString)
-            print(error)
-        }
-        
-        pedo.stopCalculating()
-        
-        appDel.person.steps.startTime = nil
-    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -152,9 +126,6 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
         cell.backgroundColor = UIColor.clearColor()
         cell.setColorForComponents(UIColor.whiteColor())
         
-        
-        
-        
         return cell
     }
          
@@ -175,6 +146,8 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         cell.backgroundColor = UIColor(red: 245/255, green: 209/255, blue: 205/255, alpha: 1)
         cell.setColorForComponents(UIColor(red: 200/255, green: 37/255, blue: 27/255, alpha: 1))
+        
+        updateLabelText(cell)
         
     }
     
@@ -226,6 +199,104 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
             self.pieChartView.animate(yAxisDuration: 2.0, easingOption: ChartEasingOption.EaseOutExpo)
         }
     }
+    
+    func collectionView(collectionView: UICollectionView, didHighlightItemAtIndexPath indexPath: NSIndexPath) {
+        
+    }
+    
+    func updateLabelText(cell: SportItemCell) {
+        dataLabel.text = cell.valueLabel.text!
+    }
+    
+    
+    // MARK: - HeartRate functions
+    
+    func setupHeartRateMeasurement() {
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateHeartRate:", name: "newHeartRate", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "messureHeartRate:", name: "changeHeartRateSource", object: nil)
+        
+        
+        HeartRate.checkAvailability { (isAvailable) -> Void in
+            if isAvailable == true {
+                self.appDel.hkAvailable = true
+                self.hrObject = HealthFactory.createHeartRateSensor()
+            }
+            else {
+                self.appDel.hkAvailable = false
+                self.hrObject = HealthFactory.createHeartRateSensor()
+            }
+            
+        }
+    }
+    
+    
+    func startHeartRateMeasurement(){
+        hrObject.startMonitoring()
+    }
+    
+    
+    func stopHeartRateMeasurement() {
+        
+        hrObject.stopMonitoring()
+        
+        ServerConnector.connector.sendMessage(appDel.person.heartRatesToString(), functionName: "uploadHeartrates", completion: { (jsonString, error) -> Void in
+            print(jsonString)
+        })
+        
+
+    }
+    
+    // MARK: - Pedo functions
+    
+    func setupPedoMeasurement(){
+        pedo = Pedometer()
+    }
+    
+    func startPedoMeasurement() {
+        steps.startTime = Int(NSDate().timeIntervalSince1970)
+        
+        appDel.person.steps = steps
+        
+        pedo.calculateSteps { (steps) -> Void in
+            let distance : Double = Double(self.appDel.person.stepLength*steps/100)
+            let time = (Int(NSDate().timeIntervalSince1970) - self.appDel.person.steps.startTime)
+            let speed = Double(Double(distance) / Double(time)) * 3.6
+            
+            
+            
+            self.appDel.person.steps.speed = speed
+            self.appDel.person.steps.distance = distance
+        }
+    }
+    
+    func stopPedoMeasurement() {
+        if appDel.person.steps.startTime == nil {
+            return
+        }
+        
+        appDel.person.steps.endTime = Int(NSDate().timeIntervalSince1970)
+        appDel.person.steps.steps = pedo.steps
+        
+        appDel.person.steps.mail = appDel.person.mail
+        appDel.person.steps.pw = appDel.person.pw
+        pedo.stopCalculating()
+        
+        appDel.person.steps.startTime = nil
+        
+        connector.sendMessage(appDel.person.steps.objectToString(), functionName: "uploadSteps") { (jsonString,error) -> Void in
+            print(jsonString)
+            print(error)
+        }
+    }
+    
+    // MARK: - Timer functions
+    
+    func setupTimer(){
+        
+    }
+    
+    
     
 }
 

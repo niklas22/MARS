@@ -136,9 +136,37 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H8m-He-SdQ" customClass="PieChartView" customModule="Charts">
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H8m-He-SdQ" customClass="PieChartView" customModule="Charts">
                                 <rect key="frame" x="0.0" y="159" width="600" height="260"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NjW-ef-9eQ">
+                                        <rect key="frame" x="215" y="117" width="171" height="83"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="83" id="961-Cd-d4u"/>
+                                            <constraint firstAttribute="width" constant="171" id="9SI-Fg-fTV"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="64"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rck-UL-c3U">
+                                        <rect key="frame" x="265" y="196" width="71" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="71" id="9Ou-LI-q4Q"/>
+                                            <constraint firstAttribute="height" constant="21" id="E4w-r7-vb1"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="27"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="rck-UL-c3U" firstAttribute="top" secondItem="NjW-ef-9eQ" secondAttribute="bottom" constant="-4" id="UR8-4N-7dw"/>
+                                    <constraint firstItem="NjW-ef-9eQ" firstAttribute="centerX" secondItem="H8m-He-SdQ" secondAttribute="centerX" id="bfp-4C-20N"/>
+                                    <constraint firstItem="rck-UL-c3U" firstAttribute="leading" secondItem="NjW-ef-9eQ" secondAttribute="trailing" constant="-121" id="nh8-kn-CI9"/>
+                                    <constraint firstItem="NjW-ef-9eQ" firstAttribute="top" secondItem="H8m-He-SdQ" secondAttribute="top" constant="117" id="vvh-b1-PJE"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -160,8 +188,10 @@
                     </view>
                     <navigationItem key="navigationItem" title="Steps" id="qsB-rk-1Bf"/>
                     <connections>
+                        <outlet property="addonLabel" destination="rck-UL-c3U" id="J8s-XO-R5R"/>
                         <outlet property="buttonStartActivity" destination="4L5-OS-pzV" id="elc-Cv-lLJ"/>
                         <outlet property="collectionView" destination="hrF-t0-A6n" id="H3l-c7-YOE"/>
+                        <outlet property="dataLabel" destination="NjW-ef-9eQ" id="Hmq-Hp-ue0"/>
                         <outlet property="pieChartView" destination="H8m-He-SdQ" id="Epx-uJ-Hwf"/>
                     </connections>
                 </viewController>

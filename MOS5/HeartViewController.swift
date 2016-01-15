@@ -32,24 +32,7 @@ class HeartViewController: UIViewController {
         gradient.colors = [UIColor(red: 200/255, green: 37/255, blue: 27/255, alpha: 1).CGColor, (UIColor.whiteColor().CGColor)]
         view.layer.insertSublayer(gradient, atIndex: 0)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateHeartRate:", name: "newHeartRate", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "messureHeartRate:", name: "changeHeartRateSource", object: nil)
-        
-        appdel = UIApplication.sharedApplication().delegate as! AppDelegate
-        
-        
-        HeartRate.checkAvailability { (isAvailable) -> Void in
-            if isAvailable == true {
-                self.appdel.hkAvailable = true
-                self.hrObject = HealthFactory.createHeartRateSensor()
-            }
-            else {
-                self.appdel.hkAvailable = false
-                self.hrObject = HealthFactory.createHeartRateSensor()
-            }
-           
-        }
-
+       
         // Do any additional setup after loading the view.
     }
 
