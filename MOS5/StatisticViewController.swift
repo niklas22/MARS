@@ -49,13 +49,13 @@ class StatisticViewController: UIViewController,CLLocationManagerDelegate {
         lon = coord.longitude
         lat = coord.latitude
         
-        if (tmp == lon && tmp2 == lat) {
+        if (tmp != lon || tmp2 != lat) {
             //New value, request altitude
-            print("\(lon) && \(lat)")
+            print("\(lat) && \(lon)")
         }
         
 
-        print("locations = \(coord.latitude) \(coord.longitude)")
+        //print("locations = \(coord.latitude) \(coord.longitude)")
     }
 
     override func didReceiveMemoryWarning() {
