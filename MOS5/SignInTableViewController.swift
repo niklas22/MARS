@@ -73,6 +73,7 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
+        self.performSegueWithIdentifier("showMenu", sender: self)
         
     }
     

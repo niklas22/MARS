@@ -114,3 +114,15 @@ class Person: ObjectToStringDelegate {
     }
     
 }
+extension Array {
+    
+    func toJsonArray() -> String{
+        var ar:String = "["
+        
+        for ind in 0...self.count-2{
+            ar.appendContentsOf("\(JSONSerializer.toJson(self[ind] as! AnyObject)),")
+        }
+        ar.appendContentsOf("\(JSONSerializer.toJson(self[self.count-1] as! AnyObject))]")
+        return ar
+    }
+}

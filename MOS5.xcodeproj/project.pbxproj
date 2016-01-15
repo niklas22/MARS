@@ -15,6 +15,7 @@
 		BCD79C2F1C181A18004FACF6 /* ServerConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD79C2E1C181A18004FACF6 /* ServerConnector.swift */; };
 		BCD79C331C18249B004FACF6 /* ObjectToStringDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD79C321C18249B004FACF6 /* ObjectToStringDelegate.swift */; };
 		BCD79C351C182861004FACF6 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD79C341C182861004FACF6 /* Person.swift */; };
+		BCE48A8C1C3FD43D00C0737C /* SportItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48A8B1C3FD43D00C0737C /* SportItemCell.swift */; };
 		BCEF80BC1C11C57E0043534E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEF80BB1C11C57E0043534E /* AppDelegate.swift */; };
 		BCEF80BE1C11C57E0043534E /* PedoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEF80BD1C11C57E0043534E /* PedoViewController.swift */; };
 		BCEF80C01C11C57E0043534E /* StatisticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEF80BF1C11C57E0043534E /* StatisticViewController.swift */; };
@@ -92,6 +93,7 @@
 		BCD79C2E1C181A18004FACF6 /* ServerConnector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerConnector.swift; sourceTree = "<group>"; };
 		BCD79C321C18249B004FACF6 /* ObjectToStringDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectToStringDelegate.swift; sourceTree = "<group>"; };
 		BCD79C341C182861004FACF6 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		BCE48A8B1C3FD43D00C0737C /* SportItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SportItemCell.swift; sourceTree = "<group>"; };
 		BCEF80B81C11C57E0043534E /* MOS5.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MOS5.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCEF80BB1C11C57E0043534E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BCEF80BD1C11C57E0043534E /* PedoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PedoViewController.swift; sourceTree = "<group>"; };
@@ -144,6 +146,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BCE48A8D1C3FD44000C0737C /* Custom Cells */ = {
+			isa = PBXGroup;
+			children = (
+				BCE48A8B1C3FD43D00C0737C /* SportItemCell.swift */,
+			);
+			name = "Custom Cells";
+			sourceTree = "<group>";
+		};
 		BCEF80AF1C11C57E0043534E = {
 			isa = PBXGroup;
 			children = (
@@ -168,6 +178,7 @@
 		BCEF80BA1C11C57E0043534E /* MOS5 */ = {
 			isa = PBXGroup;
 			children = (
+				BCE48A8D1C3FD44000C0737C /* Custom Cells */,
 				BCEF80D31C11C61F0043534E /* Controller */,
 				BCEF80D21C11C6190043534E /* Model */,
 				BCEF80CF1C11C5CB0043534E /* MOS5.entitlements */,
@@ -399,6 +410,7 @@
 				BCCF2C791C3EB3C500A2DFB4 /* JsonSerializerSwift.swift in Sources */,
 				BCEF80C01C11C57E0043534E /* StatisticViewController.swift in Sources */,
 				BCD79C331C18249B004FACF6 /* ObjectToStringDelegate.swift in Sources */,
+				BCE48A8C1C3FD43D00C0737C /* SportItemCell.swift in Sources */,
 				BC1FCFC61C1ACF2D00F95BB4 /* HealthFactory.swift in Sources */,
 				BCEF80BC1C11C57E0043534E /* AppDelegate.swift in Sources */,
 				BCCF2C771C3EA54900A2DFB4 /* HeartRateObject.swift in Sources */,

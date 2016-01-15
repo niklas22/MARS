@@ -17,6 +17,7 @@ class HeartViewController: UIViewController {
     var userinfo:Dictionary<String,String!>!
     
     var measuring:Bool = false
+    var gradient : CAGradientLayer!
     
     @IBOutlet weak var heartRateLabel: UILabel!
     
@@ -25,6 +26,11 @@ class HeartViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        gradient = CAGradientLayer()
+        gradient.frame = view.bounds
+        gradient.colors = [UIColor(red: 200/255, green: 37/255, blue: 27/255, alpha: 1).CGColor, (UIColor.whiteColor().CGColor)]
+        view.layer.insertSublayer(gradient, atIndex: 0)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateHeartRate:", name: "newHeartRate", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "messureHeartRate:", name: "changeHeartRateSource", object: nil)
@@ -107,18 +113,5 @@ class HeartViewController: UIViewController {
     }
     */
 
-}
-
-extension Array {
-    
-    func toJsonArray() -> String{
-        var ar:String = "["
-        
-        for ind in 0...self.count-2{
-            ar.appendContentsOf("\(JSONSerializer.toJson(self[ind] as! AnyObject)),")
-        }
-        ar.appendContentsOf("\(JSONSerializer.toJson(self[self.count-1] as! AnyObject))]")
-        return ar
-    }
 }
 
