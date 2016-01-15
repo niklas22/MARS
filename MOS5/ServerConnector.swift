@@ -48,6 +48,31 @@ final class ServerConnector{
         task.resume()
     }
     
+    func getHeightData(sendData: String, key: String, completion: (jsonString: String,error: String) -> Void ) {
+        
+        self.url = NSURL(string: "https://maps.googleapis.com/maps/api/elevation/json?locations=\(sendData)&key=\(key)")
+        
+        let request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
+        
+        request.HTTPMethod = "POST"
+        
+        //set timeout from serverconnection in seconds
+        request.timeoutInterval = 5
+        
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request){
+            data, response, error in
+            
+            if error != nil{
+                completion(jsonString: "", error: error!.localizedDescription)
+                return
+            }
+            
+            let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
+            completion(jsonString: String(responseString!),error: "")
+        }
+        
+        task.resume()
+    }
     
     // singletoninstance
     class var connector:ServerConnector{

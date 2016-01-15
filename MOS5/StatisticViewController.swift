@@ -18,9 +18,13 @@ class StatisticViewController: UIViewController,CLLocationManagerDelegate {
     var tmp = 0.0
     var tmp2 = 0.0
     
+    var connector:ServerConnector!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        connector = ServerConnector.connector
         
         // setup gradient
         gradient = CAGradientLayer()
@@ -31,11 +35,12 @@ class StatisticViewController: UIViewController,CLLocationManagerDelegate {
         locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locationManager.distanceFilter = 2
         
         locationManager.requestWhenInUseAuthorization()
         
         if CLLocationManager.locationServicesEnabled() {
-            locationManager.startUpdatingLocation()
+            //locationManager.startUpdatingLocation()
         }
     }
     
@@ -49,13 +54,18 @@ class StatisticViewController: UIViewController,CLLocationManagerDelegate {
         lon = coord.longitude
         lat = coord.latitude
         
-        if (tmp != lon || tmp2 != lat) {
-            //New value, request altitude
-            print("\(lat) && \(lon)")
+        connector.getHeightData("\(lat),\(lon)", key: "AIzaSyBEsjG1o1IHmamjNpXB62qyKJCia7ScdVk") { (jsonString,error) -> Void in
+            //print(jsonString)
+            print(error)
+            
+            if let data = jsonString.dataUsingEncoding(NSUTF8StringEncoding) {
+                let json = JSON(data: data)
+                
+                for item in json["results"].arrayValue {
+                    print(item["elevation"].stringValue)
+                }
+            }
         }
-        
-
-        //print("locations = \(coord.latitude) \(coord.longitude)")
     }
 
     override func didReceiveMemoryWarning() {

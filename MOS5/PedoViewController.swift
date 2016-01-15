@@ -8,11 +8,17 @@
 
 import UIKit
 import Charts
+import CoreLocation
 
-class PedoViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class PedoViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, CLLocationManagerDelegate {
     
     //@IBOutlet weak var labelStepCount: UILabel!
     //@IBOutlet weak var labelDistance: UILabel!
+    var locationManager : CLLocationManager!
+    var lon = 0.0
+    var lat = 0.0
+    var gpsData = [GeoPoint]()
+
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var buttonStartActivity: UIButton!
     
@@ -68,6 +74,8 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
         steps = Steps()
         
         setupPieChartView()
+        
+        
     }
     
     @IBAction func btnStartPressed(sender: UIButton) {
@@ -85,6 +93,24 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
             
             self.appDel.person.steps.speed = speed
             self.appDel.person.steps.distance = distance
+        }
+        
+        //Start GPS Measurements and get Altitude Data
+        startGPS()
+        print("GPS Started")
+    }
+    
+    func startGPS() {
+        //Setup Locationmanager
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locationManager.distanceFilter = 2
+        
+        locationManager.requestWhenInUseAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.startUpdatingLocation()
         }
     }
     
@@ -107,6 +133,17 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
         pedo.stopCalculating()
         
         appDel.person.steps.startTime = nil
+        
+        //Stop GPS Measurements and send data to server
+        stopGPS()
+    }
+    
+    func stopGPS() {
+        ServerConnector.connector.sendMessage(gpsData.toJsonArray(), functionName: "uploadGeoPoints", completion: { (jsonString, error) -> Void in
+            print(jsonString)
+        })
+        
+        locationManager.stopUpdatingLocation()
     }
     
     override func didReceiveMemoryWarning() {
@@ -210,7 +247,6 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     func setupPieChartView(){
-        
         setChart(descr, values: data)
         
         pieChartView.usePercentValuesEnabled = false
@@ -227,5 +263,35 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
         }
     }
     
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let loc = locations.last!
+        let coord = loc.coordinate
+        
+        lon = coord.longitude
+        lat = coord.latitude
+        
+        connector.getHeightData("\(lat),\(lon)", key: "AIzaSyBEsjG1o1IHmamjNpXB62qyKJCia7ScdVk") { (jsonString,error) -> Void in
+            //print(jsonString)
+            print(error)
+            
+            if let data = jsonString.dataUsingEncoding(NSUTF8StringEncoding) {
+                let json = JSON(data: data)
+                
+                for item in json["results"].arrayValue {
+                    
+                    let lon = item["longitude"].doubleValue
+                    let lat = item["latitude"].doubleValue
+                    let alt = item["elevation"].doubleValue
+                    let time = NSDate().timeIntervalSince1970
+                    
+                    print(alt)
+                    
+                    let gp = GeoPoint(_lon: lon, _lat: lat, _alt: alt, _time: String(time))
+                    
+                    self.gpsData.append(gp)
+                }
+            }
+        }
+    }
 }
 
