@@ -89,22 +89,10 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
         //labelStepCount.text = "0"
         //labelDistance.text = "0"
         
-        steps.startTime = Int(NSDate().timeIntervalSince1970)
-        
-        appDel.person.steps = steps
-        
-        pedo.calculateSteps { (steps) -> Void in
-            let distance : Double = Double(self.appDel.person.stepLength*steps/100)
-            let time = (Int(NSDate().timeIntervalSince1970) - self.appDel.person.steps.startTime)
-            let speed = Double(Double(distance) / Double(time)) * 3.6
-            
-            self.appDel.person.steps.speed = speed
-            self.appDel.person.steps.distance = distance
-        }
-        
-        //Start GPS Measurements and get Altitude Data
-        startGPS()
-        print("GPS Started")
+        let indexPathFirst = NSIndexPath(forRow: 0, inSection: 0)
+        self.collectionView.selectItemAtIndexPath(indexPathFirst, animated: false, scrollPosition: UICollectionViewScrollPosition.None)
+
+   
     }
     
     func startGPS() {
@@ -119,30 +107,6 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
         if CLLocationManager.locationServicesEnabled() {
             locationManager.startUpdatingLocation()
         }
-    }
-    
-    @IBAction func btnStopPressed(sender: UIButton) {
-        if appDel.person.steps.startTime == nil {
-            return
-        }
-        
-        appDel.person.steps.endTime = Int(NSDate().timeIntervalSince1970)
-        appDel.person.steps.steps = pedo.steps
-        
-        appDel.person.steps.mail = appDel.person.mail
-        appDel.person.steps.pw = appDel.person.pw
-        
-        connector.sendMessage(appDel.person.steps.objectToString(), functionName: "uploadSteps") { (jsonString,error) -> Void in
-            print(jsonString)
-            print(error)
-        }
-        
-        pedo.stopCalculating()
-        
-        appDel.person.steps.startTime = nil
-        
-        //Stop GPS Measurements and send data to server
-        stopGPS()
     }
     
     func stopGPS() {
@@ -219,6 +183,7 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         updateLabelText(cell)
         
+        
     }
     
     func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
@@ -263,6 +228,7 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
         pieChartView.legend.enabled = false
         pieChartView.descriptionTextColor = UIColor.clearColor()
     }
+    
     @IBAction func startActivity(sender: AnyObject) {
         dispatch_async(dispatch_get_main_queue()){
             self.pieChartView.animate(yAxisDuration: 2.0, easingOption: ChartEasingOption.EaseOutExpo)
@@ -299,5 +265,97 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
             }
         }
     }
-}
+    
+    func updateLabelText(cell: SportItemCell) {
+        dataLabel.text = cell.valueLabel.text!
+    }
+    
+    
+    // MARK: - HeartRate functions
+    
+    func setupHeartRateMeasurement() {
+        
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateHeartRate:", name: "newHeartRate", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "messureHeartRate:", name: "changeHeartRateSource", object: nil)
+        
+        
+        HeartRate.checkAvailability { (isAvailable) -> Void in
+            if isAvailable == true {
+                self.appDel.hkAvailable = true
+                self.hrObject = HealthFactory.createHeartRateSensor()
+            }
+            else {
+                self.appDel.hkAvailable = false
+                self.hrObject = HealthFactory.createHeartRateSensor()
+            }
+        }
+    }
+    
+    
+    func startHeartRateMeasurement(){
+        hrObject.startMonitoring()
+    }
+    
+    
+    func stopHeartRateMeasurement() {
+        
+        hrObject.stopMonitoring()
+        
+        ServerConnector.connector.sendMessage(appDel.person.heartRatesToString(), functionName: "uploadHeartrates", completion: { (jsonString, error) -> Void in
+            print(jsonString)
+        })
+        
 
+    }
+    
+    // MARK: - Pedo functions
+    
+    func setupPedoMeasurement(){
+        pedo = Pedometer()
+    }
+    
+    func startPedoMeasurement() {
+        steps.startTime = Int(NSDate().timeIntervalSince1970)
+        
+        appDel.person.steps = steps
+        
+        pedo.calculateSteps { (steps) -> Void in
+            let distance : Double = Double(self.appDel.person.stepLength*steps/100)
+            let time = (Int(NSDate().timeIntervalSince1970) - self.appDel.person.steps.startTime)
+            let speed = Double(Double(distance) / Double(time)) * 3.6
+            
+            
+            
+            self.appDel.person.steps.speed = speed
+            self.appDel.person.steps.distance = distance
+        }
+    }
+    
+    func stopPedoMeasurement() {
+        if appDel.person.steps.startTime == nil {
+            return
+        }
+        
+        appDel.person.steps.endTime = Int(NSDate().timeIntervalSince1970)
+        appDel.person.steps.steps = pedo.steps
+        
+        appDel.person.steps.mail = appDel.person.mail
+        appDel.person.steps.pw = appDel.person.pw
+        pedo.stopCalculating()
+        
+        appDel.person.steps.startTime = nil
+        
+        connector.sendMessage(appDel.person.steps.objectToString(), functionName: "uploadSteps") { (jsonString,error) -> Void in
+            print(jsonString)
+            print(error)
+        }
+    }
+    
+    // MARK: - Timer functions
+    
+    func setupTimer(){
+        
+    }
+
+}
