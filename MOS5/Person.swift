@@ -19,6 +19,7 @@ class Person: ObjectToStringDelegate {
     var par:Int!
     var stepLength:Int!
     var heartRates:[HeartRateObject]!
+    var steps: Steps
     
     func objectToString() -> String {
         return "name=\(name)&email=\(mail)&pw=\(pw)&age=\(age)&height=\(height)&weight=\(weight)&gender=\(gender)&par=\(par)&steplength=\(stepLength)"
@@ -54,6 +55,7 @@ class Person: ObjectToStringDelegate {
         weight = 0
         par=0
         stepLength=0
+        steps = Steps()
     }
     
     func calcVO() -> Double{
@@ -100,6 +102,10 @@ class Person: ObjectToStringDelegate {
             else { gender2 = 0 }
         
         res = -59.3954 + gender2 * (-36.3781 + 0.271 * age2 + 0.394 * mass + 0.404 * calcVO() + 0.634 * heartRate) + (1 - gender2) * (0.274 * age2 + 0.103 * mass + 0.380 * calcVO() + 0.450 * heartRate)
+        //At this point res = Joules/min
+        
+        res = 0.239005736 * res
+        //At this point res = kCal
         
         return res
     }

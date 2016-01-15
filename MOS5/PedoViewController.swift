@@ -79,6 +79,8 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         steps.startTime = Int(NSDate().timeIntervalSince1970)
         
+        appDel.person.steps = steps
+        
         pedo.calculateSteps { (steps) -> Void in
          //   self.labelStepCount.text = "\(String(steps)) steps"
         //    self.labelDistance.text = "\(String(self.appDel.person.stepLength*steps/100)) meter"
@@ -86,21 +88,24 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     @IBAction func btnStopPressed(sender: UIButton) {
-        steps.endTime = Int(NSDate().timeIntervalSince1970)
-        steps.steps = pedo.steps
+        if appDel.person.steps.startTime == nil {
+            return
+        }
         
-        steps.mail = appDel.person.mail
-        steps.pw = appDel.person.pw
+        appDel.person.steps.endTime = Int(NSDate().timeIntervalSince1970)
+        appDel.person.steps.steps = pedo.steps
         
-        connector.sendMessage(steps.objectToString(), functionName: "uploadSteps") { (jsonString,error) -> Void in
+        appDel.person.steps.mail = appDel.person.mail
+        appDel.person.steps.pw = appDel.person.pw
+        
+        connector.sendMessage(appDel.person.steps.objectToString(), functionName: "uploadSteps") { (jsonString,error) -> Void in
             print(jsonString)
             print(error)
         }
         
         pedo.stopCalculating()
         
-        print(steps.startTime)
-        print(steps.endTime)
+        appDel.person.steps.startTime = nil
     }
     
     override func didReceiveMemoryWarning() {

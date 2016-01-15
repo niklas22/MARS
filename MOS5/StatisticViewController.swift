@@ -7,8 +7,15 @@
 //
 
 import UIKit
+import CoreLocation
 
-class StatisticViewController: UIViewController {
+class StatisticViewController: UIViewController,CLLocationManagerDelegate {
+    
+    var locationManager : CLLocationManager!
+    var lon = 0.0
+    var lat = 0.0
+    var tmp = 0.0
+    var tmp2 = 0.0
     
     var gradient : CAGradientLayer!
     
