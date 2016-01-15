@@ -21,21 +21,28 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var buttonStartActivity: UIButton!
+    @IBOutlet weak var dataLabel: UILabel!
+    @IBOutlet weak var addonLabel: UILabel!
+    let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
     
     @IBOutlet weak var pieChartView: PieChartView!
     let descr = ["","",""]
     var data = [22.0,100.0,22.0]
     
-    let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
     var gradient : CAGradientLayer!
     
     var loop = true
-    var pedo:Pedometer!
+   
     var connector:ServerConnector!
-    var steps:Steps!
-    var person:Person!
+
     var width:CGFloat!
     
+    
+    // MARK: - Measuremntsproperties
+    var hrObject:HeartRateDelegate!
+    var pedo:Pedometer!
+    var steps:Steps!
+    var person:Person!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +51,11 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         collectionView.delegate = self
         collectionView.dataSource = self
+        
+        self.dataLabel.textColor = UIColor.whiteColor()
+        self.addonLabel.textColor = UIColor.whiteColor()
+        self.dataLabel.adjustsFontSizeToFitWidth = true
+        self.addonLabel.adjustsFontSizeToFitWidth = true
         
         collectionView.backgroundColor = UIColor.clearColor()
         collectionView.backgroundView = UIView(frame: CGRectZero)
@@ -67,11 +79,6 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
         buttonStartActivity.layer.borderColor = UIColor(red: 200/255, green: 37/255, blue: 27/255, alpha: 1).CGColor
         
         // setup progressImages
-        
-        
-        pedo = Pedometer()
-        connector = ServerConnector.connector
-        steps = Steps()
         
         setupPieChartView()
         
@@ -189,9 +196,6 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
         cell.backgroundColor = UIColor.clearColor()
         cell.setColorForComponents(UIColor.whiteColor())
         
-        
-        
-        
         return cell
     }
          
@@ -212,6 +216,8 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         cell.backgroundColor = UIColor(red: 245/255, green: 209/255, blue: 205/255, alpha: 1)
         cell.setColorForComponents(UIColor(red: 200/255, green: 37/255, blue: 27/255, alpha: 1))
+        
+        updateLabelText(cell)
         
     }
     
