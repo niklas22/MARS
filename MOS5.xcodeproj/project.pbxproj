@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BC1810041C48E33700A13D55 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC180FFF1C48E32300A13D55 /* Charts.framework */; };
-		BC1810051C48E33700A13D55 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BC180FFF1C48E32300A13D55 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BC1FCFC61C1ACF2D00F95BB4 /* HealthFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1FCFC51C1ACF2D00F95BB4 /* HealthFactory.swift */; };
 		BC1FCFCA1C1AD4BE00F95BB4 /* HeartRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1FCFC91C1AD4BE00F95BB4 /* HeartRate.swift */; };
 		BC3144B41C184D7200C07CC6 /* SignInTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3144B31C184D7200C07CC6 /* SignInTableViewController.swift */; };
+		BC8431A51C48F332008260F3 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC8431A01C48F329008260F3 /* Charts.framework */; };
+		BC8431A61C48F332008260F3 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BC8431A01C48F329008260F3 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BCCF2C771C3EA54900A2DFB4 /* HeartRateObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCF2C761C3EA54900A2DFB4 /* HeartRateObject.swift */; };
 		BCCF2C791C3EB3C500A2DFB4 /* JsonSerializerSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCF2C781C3EB3C500A2DFB4 /* JsonSerializerSwift.swift */; };
 		BCD79C2F1C181A18004FACF6 /* ServerConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD79C2E1C181A18004FACF6 /* ServerConnector.swift */; };
@@ -45,30 +45,30 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		BC180FFE1C48E32300A13D55 /* PBXContainerItemProxy */ = {
+		BC84319F1C48F329008260F3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = BC180FF81C48E32300A13D55 /* Charts.xcodeproj */;
+			containerPortal = BC8431991C48F329008260F3 /* Charts.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 5BA8EC401A9D14DC00CE82E1;
 			remoteInfo = "Charts-iOS";
 		};
-		BC1810001C48E32300A13D55 /* PBXContainerItemProxy */ = {
+		BC8431A11C48F329008260F3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = BC180FF81C48E32300A13D55 /* Charts.xcodeproj */;
+			containerPortal = BC8431991C48F329008260F3 /* Charts.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = A52C5C371BAC5CA400594CDD;
 			remoteInfo = "Charts-TV";
 		};
-		BC1810021C48E32300A13D55 /* PBXContainerItemProxy */ = {
+		BC8431A31C48F329008260F3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = BC180FF81C48E32300A13D55 /* Charts.xcodeproj */;
+			containerPortal = BC8431991C48F329008260F3 /* Charts.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 06AEE7A21BDC3F8B009875AE;
 			remoteInfo = ChartsTests;
 		};
-		BC1810061C48E33700A13D55 /* PBXContainerItemProxy */ = {
+		BC8431A71C48F332008260F3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = BC180FF81C48E32300A13D55 /* Charts.xcodeproj */;
+			containerPortal = BC8431991C48F329008260F3 /* Charts.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = 5BA8EC3F1A9D14DC00CE82E1;
 			remoteInfo = "Charts-iOS";
@@ -90,13 +90,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		BC1810081C48E33700A13D55 /* Embed Frameworks */ = {
+		BC8431A91C48F332008260F3 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				BC1810051C48E33700A13D55 /* Charts.framework in Embed Frameworks */,
+				BC8431A61C48F332008260F3 /* Charts.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -126,10 +126,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		BC180FF81C48E32300A13D55 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = ../../../../../Workspaces/xcode_workspace/MOS5/Charts/Charts.xcodeproj; sourceTree = "<group>"; };
 		BC1FCFC51C1ACF2D00F95BB4 /* HealthFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthFactory.swift; sourceTree = "<group>"; };
 		BC1FCFC91C1AD4BE00F95BB4 /* HeartRate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartRate.swift; sourceTree = "<group>"; };
 		BC3144B31C184D7200C07CC6 /* SignInTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInTableViewController.swift; sourceTree = "<group>"; };
+		BC8431991C48F329008260F3 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = Charts/Charts.xcodeproj; sourceTree = "<group>"; };
 		BCCF2C761C3EA54900A2DFB4 /* HeartRateObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartRateObject.swift; sourceTree = "<group>"; };
 		BCCF2C781C3EB3C500A2DFB4 /* JsonSerializerSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonSerializerSwift.swift; sourceTree = "<group>"; };
 		BCD79C2E1C181A18004FACF6 /* ServerConnector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerConnector.swift; sourceTree = "<group>"; };
@@ -175,7 +175,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCEF80D11C11C5CB0043534E /* HealthKit.framework in Frameworks */,
-				BC1810041C48E33700A13D55 /* Charts.framework in Frameworks */,
+				BC8431A51C48F332008260F3 /* Charts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,12 +189,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		BC180FF91C48E32300A13D55 /* Products */ = {
+		BC84319A1C48F329008260F3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BC180FFF1C48E32300A13D55 /* Charts.framework */,
-				BC1810011C48E32300A13D55 /* Charts.framework */,
-				BC1810031C48E32300A13D55 /* ChartsTests.xctest */,
+				BC8431A01C48F329008260F3 /* Charts.framework */,
+				BC8431A21C48F329008260F3 /* Charts.framework */,
+				BC8431A41C48F329008260F3 /* ChartsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -215,7 +215,7 @@
 				DF3D740C1C184E1900C3C7E1 /* MOS5Watch */,
 				DF3D741B1C184E1900C3C7E1 /* MOS5Watch Extension */,
 				BCEF80B91C11C57E0043534E /* Products */,
-				BC180FF81C48E32300A13D55 /* Charts.xcodeproj */,
+				BC8431991C48F329008260F3 /* Charts.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -321,13 +321,13 @@
 				BCEF80B51C11C57E0043534E /* Frameworks */,
 				BCEF80B61C11C57E0043534E /* Resources */,
 				DF3D74331C184E1900C3C7E1 /* Embed Watch Content */,
-				BC1810081C48E33700A13D55 /* Embed Frameworks */,
+				BC8431A91C48F332008260F3 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				DF3D742A1C184E1900C3C7E1 /* PBXTargetDependency */,
-				BC1810071C48E33700A13D55 /* PBXTargetDependency */,
+				BC8431A81C48F332008260F3 /* PBXTargetDependency */,
 			);
 			name = MOS5;
 			productName = MOS5;
@@ -417,8 +417,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = BC180FF91C48E32300A13D55 /* Products */;
-					ProjectRef = BC180FF81C48E32300A13D55 /* Charts.xcodeproj */;
+					ProductGroup = BC84319A1C48F329008260F3 /* Products */;
+					ProjectRef = BC8431991C48F329008260F3 /* Charts.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -431,25 +431,25 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		BC180FFF1C48E32300A13D55 /* Charts.framework */ = {
+		BC8431A01C48F329008260F3 /* Charts.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = Charts.framework;
-			remoteRef = BC180FFE1C48E32300A13D55 /* PBXContainerItemProxy */;
+			remoteRef = BC84319F1C48F329008260F3 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		BC1810011C48E32300A13D55 /* Charts.framework */ = {
+		BC8431A21C48F329008260F3 /* Charts.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = Charts.framework;
-			remoteRef = BC1810001C48E32300A13D55 /* PBXContainerItemProxy */;
+			remoteRef = BC8431A11C48F329008260F3 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		BC1810031C48E32300A13D55 /* ChartsTests.xctest */ = {
+		BC8431A41C48F329008260F3 /* ChartsTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = ChartsTests.xctest;
-			remoteRef = BC1810021C48E32300A13D55 /* PBXContainerItemProxy */;
+			remoteRef = BC8431A31C48F329008260F3 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -526,10 +526,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		BC1810071C48E33700A13D55 /* PBXTargetDependency */ = {
+		BC8431A81C48F332008260F3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Charts-iOS";
-			targetProxy = BC1810061C48E33700A13D55 /* PBXContainerItemProxy */;
+			targetProxy = BC8431A71C48F332008260F3 /* PBXContainerItemProxy */;
 		};
 		DF3D741A1C184E1900C3C7E1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
