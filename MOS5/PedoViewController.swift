@@ -56,6 +56,7 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
         self.addonLabel.textColor = UIColor.whiteColor()
         self.dataLabel.adjustsFontSizeToFitWidth = true
         self.addonLabel.adjustsFontSizeToFitWidth = true
+        self.addonLabel.text = "12:00"
         
         collectionView.backgroundColor = UIColor.clearColor()
         collectionView.backgroundView = UIView(frame: CGRectZero)
