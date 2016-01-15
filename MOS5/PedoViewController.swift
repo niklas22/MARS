@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Charts
 
 class PedoViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
@@ -14,7 +15,10 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
     //@IBOutlet weak var labelDistance: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var buttonStartActivity: UIButton!
-    @IBOutlet weak var activityView:UIImageView!
+    
+    @IBOutlet weak var pieChartView: PieChartView!
+    let descr = ["","",""]
+    var data = [22.0,100.0,22.0]
     
     let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
     var gradient : CAGradientLayer!
@@ -26,7 +30,6 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
     var person:Person!
     var width:CGFloat!
     
-    var pictureArray:[UIImage] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,18 +62,12 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         // setup progressImages
         
-        dispatch_async(dispatch_get_main_queue()){
-            self.loadImages()
-            self.activityView.animationImages = self.pictureArray
-            self.activityView.animationRepeatCount = 1
-            self.activityView.startAnimating()
-            
-        }
-        
         
         pedo = Pedometer()
         connector = ServerConnector.connector
         steps = Steps()
+        
+        setupPieChartView()
     }
     
     @IBAction func btnStartPressed(sender: UIButton) {
@@ -82,8 +79,12 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
         appDel.person.steps = steps
         
         pedo.calculateSteps { (steps) -> Void in
-         //   self.labelStepCount.text = "\(String(steps)) steps"
-        //    self.labelDistance.text = "\(String(self.appDel.person.stepLength*steps/100)) meter"
+            let distance : Double = Double(self.appDel.person.stepLength*steps/100)
+            let time = (Int(NSDate().timeIntervalSince1970) - self.appDel.person.steps.startTime)
+            let speed = Double(Double(distance) / Double(time)) * 3.6
+            
+            self.appDel.person.steps.speed = speed
+            self.appDel.person.steps.distance = distance
         }
     }
     
@@ -184,10 +185,47 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
         cell.setColorForComponents(UIColor.whiteColor())
     }
     
-    private func loadImages() {
-        for ind in 0...100 {
-            pictureArray.append(UIImage(named: "progress\(ind)")!)
+    func setChart(dataPoints: [String], values: [Double]) {
+        
+        var dataEntries: [ChartDataEntry] = []
+        
+        for i in 0..<dataPoints.count {
+            let dataEntry = ChartDataEntry(value: values[i], xIndex: i)
+            dataEntries.append(dataEntry)
+        }
+        
+        let pieChartDataSet = PieChartDataSet(yVals: dataEntries, label: "Units Sold")
+        pieChartDataSet.drawValuesEnabled = false
+        let pieChartData = PieChartData(xVals: dataPoints, dataSet: pieChartDataSet)
+        
+        pieChartView.data = pieChartData
+        
+        var colors: [UIColor] = []
+        colors.append(UIColor.clearColor())
+        colors.append(UIColor.whiteColor())
+        colors.append(UIColor.clearColor())
+        
+        pieChartDataSet.colors = colors
+        
+    }
+    
+    func setupPieChartView(){
+        
+        setChart(descr, values: data)
+        
+        pieChartView.usePercentValuesEnabled = false
+        pieChartView.holeRadiusPercent = 0.90
+        pieChartView.transparentCircleRadiusPercent = 0
+        pieChartView.backgroundColor = UIColor.clearColor()
+        pieChartView.holeColor = UIColor.clearColor()
+        pieChartView.legend.enabled = false
+        pieChartView.descriptionTextColor = UIColor.clearColor()
+    }
+    @IBAction func startActivity(sender: AnyObject) {
+        dispatch_async(dispatch_get_main_queue()){
+            self.pieChartView.animate(yAxisDuration: 2.0, easingOption: ChartEasingOption.EaseOutExpo)
         }
     }
+    
 }
 

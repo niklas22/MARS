@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Hdo-77-6V4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Hdo-77-6V4">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -117,9 +117,6 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="progress0" translatesAutoresizingMaskIntoConstraints="NO" id="zfs-7t-apU">
-                                <rect key="frame" x="0.0" y="153" width="600" height="267"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4L5-OS-pzV">
                                 <rect key="frame" x="180" y="434" width="240" height="50"/>
                                 <constraints>
@@ -129,27 +126,43 @@
                                 <state key="normal" title="Start activity">
                                     <color key="titleColor" red="0.7843137255" green="0.1450980392" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="startActivity:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="tm8-d6-qaF"/>
+                                </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="StepCount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JWu-Kz-ube">
+                                <rect key="frame" x="259" y="40" width="82" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H8m-He-SdQ" customClass="PieChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="159" width="600" height="260"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <color key="tintColor" red="1" green="0.16227666355088366" blue="0.17766919043509699" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="zfs-7t-apU" firstAttribute="leading" secondItem="hrF-t0-A6n" secondAttribute="leading" id="0Xz-kB-Ac3"/>
-                            <constraint firstItem="zfs-7t-apU" firstAttribute="centerX" secondItem="4L5-OS-pzV" secondAttribute="centerX" id="6Kh-r6-WCR"/>
-                            <constraint firstItem="zfs-7t-apU" firstAttribute="trailing" secondItem="hrF-t0-A6n" secondAttribute="trailing" id="EB8-BK-Hn8"/>
+                            <constraint firstItem="H8m-He-SdQ" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="95" id="16l-pW-t7Z"/>
+                            <constraint firstItem="L7p-HK-0SC" firstAttribute="top" secondItem="JWu-Kz-ube" secondAttribute="bottom" constant="3" id="1dH-q9-6jV"/>
+                            <constraint firstItem="H8m-He-SdQ" firstAttribute="leading" secondItem="hrF-t0-A6n" secondAttribute="leading" id="2ke-e8-yQh"/>
+                            <constraint firstItem="H8m-He-SdQ" firstAttribute="trailing" secondItem="hrF-t0-A6n" secondAttribute="trailing" id="7Dt-8D-wQf"/>
+                            <constraint firstItem="JWu-Kz-ube" firstAttribute="top" secondItem="QS5-Rx-YEW" secondAttribute="topMargin" constant="40" id="Ndk-ZC-bHe"/>
+                            <constraint firstItem="4L5-OS-pzV" firstAttribute="centerX" secondItem="H8m-He-SdQ" secondAttribute="centerX" id="RhI-iT-XGp"/>
+                            <constraint firstItem="JWu-Kz-ube" firstAttribute="centerX" secondItem="hrF-t0-A6n" secondAttribute="centerX" id="XGb-m8-zO7"/>
                             <constraint firstItem="hrF-t0-A6n" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" id="YCf-1k-Xaw"/>
                             <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="4L5-OS-pzV" secondAttribute="bottom" constant="67" id="aFe-GP-nJZ"/>
                             <constraint firstAttribute="trailing" secondItem="hrF-t0-A6n" secondAttribute="trailing" id="bNp-CT-CxZ"/>
-                            <constraint firstItem="zfs-7t-apU" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="89" id="cvN-tu-Mjp"/>
-                            <constraint firstItem="4L5-OS-pzV" firstAttribute="top" secondItem="zfs-7t-apU" secondAttribute="bottom" constant="14" id="hO1-JT-1pX"/>
+                            <constraint firstItem="4L5-OS-pzV" firstAttribute="top" secondItem="H8m-He-SdQ" secondAttribute="bottom" constant="15" id="bxD-Hp-yZ3"/>
                             <constraint firstItem="hrF-t0-A6n" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="-64" id="xL1-bh-fCB"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Steps" id="qsB-rk-1Bf"/>
                     <connections>
-                        <outlet property="activityView" destination="zfs-7t-apU" id="gUO-PT-oRe"/>
                         <outlet property="buttonStartActivity" destination="4L5-OS-pzV" id="elc-Cv-lLJ"/>
                         <outlet property="collectionView" destination="hrF-t0-A6n" id="H3l-c7-YOE"/>
+                        <outlet property="pieChartView" destination="H8m-He-SdQ" id="Epx-uJ-Hwf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
@@ -680,7 +693,6 @@
         <image name="first" width="30" height="30"/>
         <image name="heart8" width="32" height="32"/>
         <image name="info" width="256" height="256"/>
-        <image name="progress0" width="300" height="300"/>
         <image name="stepsIcon" width="32" height="32"/>
     </resources>
     <color key="tintColor" red="0.78431372549019607" green="0.14509803921568626" blue="0.10588235294117647" alpha="1" colorSpace="calibratedRGB"/>
