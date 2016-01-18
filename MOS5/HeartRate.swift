@@ -73,7 +73,7 @@ class HeartRate: HeartRateDelegate{
                 }
                 
                 
-                var nowDouble:Double!
+                var nowDouble:Int!
                 
                 for sample in results as! [HKQuantitySample]{
                     
@@ -83,15 +83,16 @@ class HeartRate: HeartRateDelegate{
                     
                     let heartRate = sample.quantity.doubleValueForUnit(heartRateUnit)
                     
-                    nowDouble = sample.startDate.timeIntervalSince1970
+                    nowDouble = Int(sample.startDate.timeIntervalSince1970*1000)
                     
                     
-                    let obj = HeartRateObject(heartRate: heartRate, date: String(nowDouble*100000))
+                    
+                    let obj = HeartRateObject(heartRate: heartRate, date: String(nowDouble))
                     self.hrObjects.append(obj)
                     
                     // prints heartrate
                     dispatch_async(dispatch_get_main_queue(), {
-                        NSNotificationCenter.defaultCenter().postNotificationName("newHeartRate", object: nil, userInfo:["bpm":String(heartRate),"date":String(nowDouble*100000)])
+                        NSNotificationCenter.defaultCenter().postNotificationName("newHeartRate", object: nil, userInfo:["bpm":String(heartRate),"date":String(nowDouble)])
                         
                     })
                 }

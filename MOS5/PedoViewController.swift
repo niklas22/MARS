@@ -447,8 +447,8 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
             
             if self.currentIndexPath == self.distanceIndexPath {
                 self.updateProgressView(incrementDistance, cell: self.collectionView.cellForItemAtIndexPath(self.distanceIndexPath) as! SportItemCell, data: speedText, data2: distanceText,updateChart: true)
-                self.addonLabel.text = speedText
-                self.dataLabel.text = distanceText
+                self.addonLabel.text = distanceText
+                self.dataLabel.text = speedText
             } else {
                 self.updateProgressView(incrementDistance, cell: self.collectionView.cellForItemAtIndexPath(self.distanceIndexPath) as! SportItemCell, data:speedText, data2:distanceText,updateChart: false)
             }
@@ -540,6 +540,7 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
         if currentIndexPath == timerIndexPath {
             updateProgressView(incrementval, cell: collectionView.cellForItemAtIndexPath(timerIndexPath) as! SportItemCell, data: "\(strMinutes):\(strSeconds)", data2: activityStartTime!, updateChart: true)
             dataLabel.text = "\(strMinutes):\(strSeconds)"
+            addonLabel.text = activityStartTime!
         } else {
             updateProgressView(incrementval, cell: collectionView.cellForItemAtIndexPath(timerIndexPath) as! SportItemCell, data: "\(strMinutes):\(strSeconds)",data2: activityStartTime!, updateChart: false)
         }
@@ -554,8 +555,6 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
         if updateChart {
            setChart(descr, values: cell.progressData)
         }
-        
-        
         cell.valueLabel.text = data
         cell.additionalText = data2
     }
