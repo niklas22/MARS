@@ -75,6 +75,19 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
         
         //self.performSegueWithIdentifier("showMenu", sender: self)
         
+        if appDel.personMail != nil && appDel.personMail != "" {
+            person = Person()
+            
+            print(appDel.personMail)
+            print(appDel.personPW)
+            
+            person.mail = appDel.personMail
+            person.pw = appDel.personPW
+            
+            
+            loginRequest()
+        }
+        
     }
     
     func maleTapped() {
@@ -220,6 +233,12 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
                                 
                 connector.sendMessage(person.objectToString(), functionName: "register") { (jsonString,error) -> Void in
                     print("Error: \(error)")
+                    
+                    self.appDel.personMail = self.textEmail.text
+                    self.appDel.personPW = self.textPassword.text
+                    
+                    self.appDel.saveUserDefaults()
+                    
                     if jsonString == "3" {
                         print("Server/DB Error")
                     } else if jsonString == "1" {
@@ -238,28 +257,12 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
         } else {
             //Login
             if textEmail.text != "" && textPassword.text != "" {
+                
                 person.mail = textEmail.text
                 person.pw = textPassword.text
                 
-                connector.sendMessage(person.objectToString(), functionName: "login") { (jsonString,error) -> Void in
-                    
-                    if jsonString == "" {
-                        print("User not in our database")
-                    } else {
-                        //User Data contained in jsonString
-                        //Convert JSON String to Person Object
-                        //Params of the JSON String: age, email, height, name, password, weight, gender, par, steplength
-                        
-                        self.person = self.person.jsonToObject(jsonString)
-                        self.person.mail = self.textEmail.text
-                        self.person.pw = self.textPassword.text
-
-                        dispatch_async(dispatch_get_main_queue()) {
-                            self.appDel.person = self.person
-                            self.performSegueWithIdentifier("showMenu", sender: self)
-                        }
-                    }
-                }
+                loginRequest()
+                
             } else {
                 print("Mars: Please enter all the data!")
             }
@@ -267,6 +270,40 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
         }
         
 
+    }
+    
+    func loginRequest() {
+        
+        print(person.objectToString())
+        
+        
+        connector.sendMessage(person.objectToString(), functionName: "login") { (jsonString,error) -> Void in
+            
+            if jsonString == "" {
+                print("User not in our database")
+            } else {
+                //User Data contained in jsonString
+                //Convert JSON String to Person Object
+                //Params of the JSON String: age, email, height, name, password, weight, gender, par, steplength
+                
+                self.person = self.person.jsonToObject(jsonString)
+                self.person.mail = self.textEmail.text
+                self.person.pw = self.textPassword.text
+                
+                print(jsonString)
+                
+                self.appDel.personMail = self.textEmail.text
+                self.appDel.personPW = self.textPassword.text
+                
+                self.appDel.saveUserDefaults()
+                
+                
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.appDel.person = self.person
+                    self.performSegueWithIdentifier("showMenu", sender: self)
+                }
+            }
+        }
     }
     
     /*

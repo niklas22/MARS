@@ -135,6 +135,10 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
         currentIndexPath = NSIndexPath(forRow: 0, inSection: 0)
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        self.collectionView(collectionView, didDeselectItemAtIndexPath: currentIndexPath)
+    }
+    
     @IBAction func btnStartPressed(sender: UIButton) {
         //labelStepCount.text = "0"
         //labelDistance.text = "0"

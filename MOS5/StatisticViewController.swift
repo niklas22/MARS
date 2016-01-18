@@ -21,6 +21,8 @@ class StatisticViewController: UIViewController,CLLocationManagerDelegate {
     var connector:ServerConnector!
     
     override func viewDidLoad() {
+        
+        
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
@@ -66,6 +68,11 @@ class StatisticViewController: UIViewController,CLLocationManagerDelegate {
                 }
             }
         }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.selectedIndex = 1
     }
 
     override func didReceiveMemoryWarning() {

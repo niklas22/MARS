@@ -31,6 +31,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var person : Person!
     var hkAvailable:Bool = false
+    var personMail: String!
+    var personPW: String!
     
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -46,12 +48,47 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITabBar.appearance().backgroundImage = UIImage()
         UITabBar.appearance().shadowImage = UIImage()
         
+        loadUserDefaults()
+        
         return true
     }
+    
+    private func handleShortcutItem(shortcutItem: UIApplicationShortcutItem) {
+        if let rootViewController = window?.rootViewController, let shortcutItemType = DGShortcutItemType(shortcutItem: shortcutItem) {
+            rootViewController.dismissViewControllerAnimated(false, completion: nil)
+            let alertController = UIAlertController(title: "", message: "", preferredStyle: .Alert)
+            
+            switch shortcutItemType {
+            case .Search:
+                alertController.message = "It's time to search"
+                break
+            case .Activity:
+                alertController.message = "Activity start"
+                if let vc = rootViewController as? UINavigationController {
+                    
+                    if self.person != nil {
+                        let eventVC = vc.topViewController as! SignInTableViewController
+                        eventVC.performSegueWithIdentifier("showMenu", sender: self)
+                    }
+                }
+                break
+            }
+            
+            //rootViewController.presentViewController(alertController, animated: true, completion: nil)
+
+            
+        }
+    }
+    
+    func application(application: UIApplication, performActionForShortcutItem shortcutItem: UIApplicationShortcutItem, completionHandler: (Bool) -> Void) {
+        handleShortcutItem(shortcutItem)
+    }
+
     
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+        saveUserDefaults()
     }
     
     func applicationDidEnterBackground(application: UIApplication) {
@@ -61,6 +98,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationWillEnterForeground(application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+        loadUserDefaults()
     }
     
     func applicationDidBecomeActive(application: UIApplication) {
@@ -69,6 +107,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    func saveUserDefaults(){
+        
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        userDefaults.setValue(personMail, forKey: "personMail")
+        userDefaults.setValue(personPW, forKey: "personPW")
+        userDefaults.synchronize()
+    }
+    
+    func loadUserDefaults(){
+        if let usermail = NSUserDefaults.standardUserDefaults().valueForKey("personMail") {
+            personMail = usermail as? String
+        }
+        
+        if let userpw = NSUserDefaults.standardUserDefaults().valueForKey("personPW"){
+            personPW = userpw as? String
+        }
     }
     
     
