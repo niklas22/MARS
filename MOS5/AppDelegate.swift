@@ -49,6 +49,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    private func handleShortcutItem(shortcutItem: UIApplicationShortcutItem) {
+        if let rootViewController = window?.rootViewController, let shortcutItemType = DGShortcutItemType(shortcutItem: shortcutItem) {
+            rootViewController.dismissViewControllerAnimated(false, completion: nil)
+            let alertController = UIAlertController(title: "", message: "", preferredStyle: .Alert)
+            
+            switch shortcutItemType {
+            case .Search:
+                alertController.message = "It's time to search"
+                break
+            case .Activity:
+                alertController.message = "Activity start"
+                if let vc = rootViewController as? UINavigationController {
+                    
+                    if self.person != nil {
+                        let eventVC = vc.topViewController as! SignInTableViewController
+                        eventVC.performSegueWithIdentifier("showMenu", sender: self)
+                    }
+                }
+                break
+            }
+            
+            //rootViewController.presentViewController(alertController, animated: true, completion: nil)
+
+            
+        }
+    }
+    
+    func application(application: UIApplication, performActionForShortcutItem shortcutItem: UIApplicationShortcutItem, completionHandler: (Bool) -> Void) {
+        handleShortcutItem(shortcutItem)
+    }
+
+    
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
