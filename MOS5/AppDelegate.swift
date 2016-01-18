@@ -9,6 +9,22 @@
 import UIKit
 import HealthKit
 
+
+
+enum DGShortcutItemType: String {
+    case Search
+    case Activity
+    
+    init?(shortcutItem: UIApplicationShortcutItem) {
+        guard let last = shortcutItem.type.componentsSeparatedByString(".").last else { return nil }
+        self.init(rawValue: last)
+    }
+    
+    var type: String {
+        return NSBundle.mainBundle().bundleIdentifier! + ".\(self.rawValue)"
+    }
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
