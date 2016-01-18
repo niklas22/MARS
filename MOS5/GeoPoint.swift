@@ -11,15 +11,15 @@ import Foundation
 
 
 class GeoPoint {
-    var lon : Double
-    var lat : Double
-    var alt : Double
+    var longitude : Double
+    var latitude : Double
+    var altitude : Double
     var timestamp : String
     
     init(_lon : Double, _lat : Double, _alt : Double, _time : String) {
-        lon = _lon
-        lat = _lat
-        alt = _alt
+        longitude = _lon
+        latitude = _lat
+        altitude = _alt
         timestamp = _time
     }
     

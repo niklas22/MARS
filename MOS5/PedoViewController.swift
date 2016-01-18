@@ -23,6 +23,7 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
     @IBOutlet weak var buttonStartActivity: UIButton!
     @IBOutlet weak var dataLabel: UILabel!
     @IBOutlet weak var addonLabel: UILabel!
+    
     let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
     
     @IBOutlet weak var pieChartView: PieChartView!
@@ -109,10 +110,8 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
         setupPedoMeasurement()
         setupHeartRateMeasurement()
         
-        
         // setup UI
         setupPieChartView()
-
         
         connector = ServerConnector.connector
     }
@@ -148,7 +147,10 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     func stopGPS() {
-        ServerConnector.connector.sendMessage(gpsData.toJsonArray(), functionName: "uploadGeoPoints", completion: { (jsonString, error) -> Void in
+        
+        let sendData = "email=\(appDel.person.mail)&pw=\(appDel.person.pw)&points=\(gpsData.toJsonArray())"
+        
+        ServerConnector.connector.sendMessage(sendData, functionName: "uploadGeoPoints", completion: { (jsonString, error) -> Void in
             print(jsonString)
             print(self.gpsData.toJsonArray())
         })
@@ -331,7 +333,7 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
                     let lon = self.lon
                     let lat = self.lat
                     let alt = item["elevation"].doubleValue
-                    let time = NSDate().timeIntervalSince1970
+                    let time = Int(NSDate().timeIntervalSince1970)*1000
                     
                     print(alt)
                     
@@ -410,7 +412,6 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
         }
     }
     
-    
     // MARK: - Pedo functions
     
     func setupPedoMeasurement(){
@@ -419,13 +420,13 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     func startPedoMeasurement() {
-        steps.startTime = Int(NSDate().timeIntervalSince1970)
+        steps.startTime = Int(NSDate().timeIntervalSince1970)*1000
         
         appDel.person.steps = steps
         
         pedo.calculateSteps { (steps) -> Void in
             let distance : Double = Double(self.appDel.person.stepLength*steps/100)
-            let time = (Int(NSDate().timeIntervalSince1970) - self.appDel.person.steps.startTime)
+            let time = (Int(NSDate().timeIntervalSince1970)*1000 - self.appDel.person.steps.startTime)
             let speed = Double(Double(distance) / Double(time)) * 3.6
             
             let incrementPedo:Double = 100 /  self.maxStepsVal
@@ -462,18 +463,19 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
             return
         }
         
-        appDel.person.steps.endTime = Int(NSDate().timeIntervalSince1970)
+        appDel.person.steps.endTime = Int(NSDate().timeIntervalSince1970)*1000
         appDel.person.steps.steps = pedo.steps
         
         appDel.person.steps.mail = appDel.person.mail
         appDel.person.steps.pw = appDel.person.pw
         pedo.stopCalculating()
         
-        appDel.person.steps.startTime = nil
         
         connector.sendMessage(appDel.person.steps.objectToString(), functionName: "uploadSteps") { (jsonString,error) -> Void in
             print(jsonString)
             print(error)
+            
+            self.appDel.person.steps.startTime = nil
         }
     }
     
@@ -501,7 +503,6 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
         }
         
     }
-
     
     dynamic private func updateTime(){
         
@@ -542,8 +543,6 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
         } else {
             updateProgressView(incrementval, cell: collectionView.cellForItemAtIndexPath(timerIndexPath) as! SportItemCell, data: "\(strMinutes):\(strSeconds)",data2: activityStartTime!, updateChart: false)
         }
-        
-        
         
     }
     
