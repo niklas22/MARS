@@ -23,6 +23,8 @@ final class ServerConnector{
         
         let request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
         
+        print(senddata)
+        
         // get encoded objectdatatoString
         request.HTTPBody = senddata.dataUsingEncoding(NSUTF8StringEncoding)
         //request.HTTPBody = "firstname=Niklas&lastname=Mayr&age=22".dataUsingEncoding(NSUTF8StringEncoding)
