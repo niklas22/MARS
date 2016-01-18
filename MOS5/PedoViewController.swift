@@ -439,8 +439,6 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
         appDel.person.steps = steps
         
         pedo.calculateSteps { (steps) -> Void in
-            let distance : Double = Double(self.appDel.person.stepLength*steps/100)
-            
             var speed = 0.0
             
             if (self.tmpTime == 0) {
@@ -449,15 +447,10 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
                 self.tmpTime2 = self.tmpTime
                 self.tmpTime = Int(NSDate().timeIntervalSince1970*1000)
                 
-                print("1: \(self.tmpTime)")
-                print("1: \(self.tmpTime2)")
-                
                 let dist = Double(self.appDel.person.stepLength)/100
                 
                 speed = dist/Double(self.tmpTime-self.tmpTime2)*3600
             }
-            
-            print("Mars: \(speed)")
             
             let incrementPedo:Double = 100 /  self.maxStepsVal
             let incrementDistance:Double = 100 / self.maxDistanceVal
@@ -471,6 +464,7 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
                 self.updateProgressView(incrementPedo, cell: self.collectionView.cellForItemAtIndexPath(self.stepsIndexPath) as! SportItemCell, data: String(steps),data2: "",updateChart: false)
             }
             
+            let distance = Double(self.appDel.person.stepLength*steps/100)
             
             let speedText = "\(String(round(100*speed)/100)) km/h"
             let distanceText = "\(String(round(100*distance)/100)) m"
@@ -482,9 +476,6 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
             } else {
                 self.updateProgressView(incrementDistance, cell: self.collectionView.cellForItemAtIndexPath(self.distanceIndexPath) as! SportItemCell, data:speedText, data2:distanceText,updateChart: false)
             }
-            
-            
-            self.appDel.person.steps.distance = distance
         }
     }
     
@@ -498,6 +489,7 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         appDel.person.steps.mail = appDel.person.mail
         appDel.person.steps.pw = appDel.person.pw
+        appDel.person.steps.speed = 0
         pedo.stopCalculating()
         
         
