@@ -9,8 +9,11 @@
 import UIKit
 import Charts
 import CoreLocation
+import HealthKit
 
 class PedoViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, CLLocationManagerDelegate {
+    
+    
     
     //@IBOutlet weak var labelStepCount: UILabel!
     //@IBOutlet weak var labelDistance: UILabel!
@@ -105,15 +108,22 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
         buttonStartActivity.layer.borderWidth = 1
         buttonStartActivity.layer.borderColor = UIColor(red: 200/255, green: 37/255, blue: 27/255, alpha: 1).CGColor
         
+        
+
+        
         // setup Activites
         setupTimer()
         setupPedoMeasurement()
         setupHeartRateMeasurement()
         
+        
+        
         // setup UI
         setupPieChartView()
         
         connector = ServerConnector.connector
+
+
     }
     
     override func viewDidAppear(animated: Bool) {
