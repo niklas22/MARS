@@ -50,6 +50,8 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
     var startTime:NSTimeInterval!
     var currentTime:NSTimeInterval!
     var isRunning:Bool = false
+    var activityStartTime: String?
+    
     
     
     // MARK: - Maxvalues
@@ -231,8 +233,11 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         cell.backgroundColor = UIColor(red: 245/255, green: 209/255, blue: 205/255, alpha: 1)
         cell.setColorForComponents(UIColor(red: 200/255, green: 37/255, blue: 27/255, alpha: 1))
+        self.dataLabel.text = cell.valueLabel.text
+        self.addonLabel.text = cell.additionalText
         
         setChart(descr, values: cell.progressData)
+        
         
         dispatch_async(dispatch_get_main_queue()){
             self.pieChartView.animate(yAxisDuration: 2.0, easingOption: ChartEasingOption.EaseOutExpo)
@@ -395,14 +400,13 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         if self.currentIndexPath == self.energyIndexPath {
             
-            self.updateProgressView(incrementVal, cell: self.collectionView.cellForItemAtIndexPath(self.energyIndexPath) as! SportItemCell, data: String(energy),updateChart: true)
+            self.updateProgressView(incrementVal, cell: self.collectionView.cellForItemAtIndexPath(self.energyIndexPath) as! SportItemCell, data: String(energy),data2: String(hr!), updateChart: true)
             self.dataLabel.text = String(energy)
             self.addonLabel.text = String(Int(hr!))
             
         }
-        
         else {
-            self.updateProgressView(incrementVal, cell: self.collectionView.cellForItemAtIndexPath(self.energyIndexPath) as! SportItemCell, data: String(energy),updateChart: false)
+            self.updateProgressView(incrementVal, cell: self.collectionView.cellForItemAtIndexPath(self.energyIndexPath) as! SportItemCell, data: String(energy),data2: String(hr!), updateChart: false)
         }
     }
     
@@ -428,22 +432,24 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
             let incrementDistance:Double = 100 / self.maxDistanceVal
             
             if self.currentIndexPath == self.stepsIndexPath {
-                self.updateProgressView(incrementPedo, cell: self.collectionView.cellForItemAtIndexPath(self.stepsIndexPath) as! SportItemCell, data: String(steps),updateChart: true)
+                self.updateProgressView(incrementPedo, cell: self.collectionView.cellForItemAtIndexPath(self.stepsIndexPath) as! SportItemCell, data: String(steps),data2: "", updateChart: true)
                 
                 self.dataLabel.text = String(steps)
                 
             } else {
-                self.updateProgressView(incrementPedo, cell: self.collectionView.cellForItemAtIndexPath(self.stepsIndexPath) as! SportItemCell, data: String(steps),updateChart: false)
+                self.updateProgressView(incrementPedo, cell: self.collectionView.cellForItemAtIndexPath(self.stepsIndexPath) as! SportItemCell, data: String(steps),data2: "",updateChart: false)
             }
             
+            
+            let speedText = "\(String(round(100*speed)/100)) km/h"
+            let distanceText = "\(String(round(100*distance)/100)) m"
+            
             if self.currentIndexPath == self.distanceIndexPath {
-                print("is in")
-                self.updateProgressView(incrementDistance, cell: self.collectionView.cellForItemAtIndexPath(self.distanceIndexPath) as! SportItemCell, data: "\(String(round(100*distance)/100)) m",updateChart: true)
-                self.addonLabel.text = "\(String(speed)) km/h"
-                self.dataLabel.text = "\(String(round(100*distance)/100)) m"
+                self.updateProgressView(incrementDistance, cell: self.collectionView.cellForItemAtIndexPath(self.distanceIndexPath) as! SportItemCell, data: speedText, data2: distanceText,updateChart: true)
+                self.addonLabel.text = speedText
+                self.dataLabel.text = distanceText
             } else {
-                print("not in")
-                 self.updateProgressView(incrementDistance, cell: self.collectionView.cellForItemAtIndexPath(self.distanceIndexPath) as! SportItemCell, data: String(Int(distance)),updateChart: false)
+                self.updateProgressView(incrementDistance, cell: self.collectionView.cellForItemAtIndexPath(self.distanceIndexPath) as! SportItemCell, data:speedText, data2:distanceText,updateChart: false)
             }
             
             
@@ -482,7 +488,7 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
     func startTimer(){
         let aSelector : Selector = "updateTime"
         startTime = NSDate.timeIntervalSinceReferenceDate()
-        addonLabel.text = timeformatter.stringFromDate(NSDate())
+        activityStartTime = timeformatter.stringFromDate(NSDate())
         timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: aSelector, userInfo: nil, repeats: true)
         
     }
@@ -531,10 +537,10 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
         let incrementval:Double = 100 /  maxTimerValinSeconds
 
         if currentIndexPath == timerIndexPath {
-            updateProgressView(incrementval, cell: collectionView.cellForItemAtIndexPath(timerIndexPath) as! SportItemCell, data: "\(strMinutes):\(strSeconds)",updateChart: true)
+            updateProgressView(incrementval, cell: collectionView.cellForItemAtIndexPath(timerIndexPath) as! SportItemCell, data: "\(strMinutes):\(strSeconds)", data2: activityStartTime!, updateChart: true)
             dataLabel.text = "\(strMinutes):\(strSeconds)"
         } else {
-            updateProgressView(incrementval, cell: collectionView.cellForItemAtIndexPath(timerIndexPath) as! SportItemCell, data: "\(strMinutes):\(strSeconds)",updateChart: false)
+            updateProgressView(incrementval, cell: collectionView.cellForItemAtIndexPath(timerIndexPath) as! SportItemCell, data: "\(strMinutes):\(strSeconds)",data2: activityStartTime!, updateChart: false)
         }
         
         
@@ -542,7 +548,7 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     
-    func updateProgressView(incrementVal: Double, cell: SportItemCell, data: String, updateChart: Bool) {
+    func updateProgressView(incrementVal: Double, cell: SportItemCell, data: String, data2: String,updateChart: Bool) {
         cell.progressData[1] += incrementVal
         cell.progressData[2] -= incrementVal
         
@@ -552,5 +558,6 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         
         cell.valueLabel.text = data
+        cell.additionalText = data2
     }
 }
