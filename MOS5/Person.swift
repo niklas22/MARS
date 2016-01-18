@@ -112,6 +112,8 @@ class Person: ObjectToStringDelegate {
     
     
     
+    
+    
     // MARK: - memberToString for upload
     
     func heartRatesToString() -> String {
