@@ -84,6 +84,9 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
         setupPieChartView()
         
         connector = ServerConnector.connector
+        
+        //For Debug Purposes
+        startGPS()
     }
     
     @IBAction func btnStartPressed(sender: UIButton) {
@@ -111,7 +114,10 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     func stopGPS() {
-        ServerConnector.connector.sendMessage(gpsData.toJsonArray(), functionName: "uploadGeoPoints", completion: { (jsonString, error) -> Void in
+        
+        let sendData = "email=\(appDel.person.mail)&pw=\(appDel.person.pw)&points=\(gpsData.toJsonArray())"
+        
+        ServerConnector.connector.sendMessage(sendData, functionName: "uploadGeoPoints", completion: { (jsonString, error) -> Void in
             print(jsonString)
             print(self.gpsData.toJsonArray())
         })
@@ -235,6 +241,9 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
         dispatch_async(dispatch_get_main_queue()){
             self.pieChartView.animate(yAxisDuration: 2.0, easingOption: ChartEasingOption.EaseOutExpo)
         }
+        
+        //For Debug Purposes
+        stopGPS()
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -256,7 +265,7 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
                     let lon = self.lon
                     let lat = self.lat
                     let alt = item["elevation"].doubleValue
-                    let time = NSDate().timeIntervalSince1970
+                    let time = Int(NSDate().timeIntervalSince1970)
                     
                     print(alt)
                     
