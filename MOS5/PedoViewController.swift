@@ -73,6 +73,11 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
     var stepsIndexPath: NSIndexPath!
     var energyIndexPath: NSIndexPath!
     
+    // MARK: time var for speed calculation
+    
+    var tmpTime = 0
+    var tmpTime2 = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -366,8 +371,7 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateHeartRate:", name: "newHeartRate", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "messureHeartRate:", name: "changeHeartRateSource", object: nil)
-        
+        //NSNotificationCenter.defaultCenter().addObserver(self, selector: "messureHeartRate:", name: "changeHeartRateSource", object: nil)
         
         HeartRate.checkAvailability { (isAvailable) -> Void in
             if isAvailable == true {
@@ -435,9 +439,18 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
         appDel.person.steps = steps
         
         pedo.calculateSteps { (steps) -> Void in
-            let distance : Double = Double(self.appDel.person.stepLength*steps/100)
-            let time = (Int(NSDate().timeIntervalSince1970)*1000 - self.appDel.person.steps.startTime)
-            let speed = Double(Double(distance) / Double(time)) * 3.6
+            var speed = 0.0
+            
+            if (self.tmpTime == 0) {
+                self.tmpTime = Int(NSDate().timeIntervalSince1970*1000)
+            } else {
+                self.tmpTime2 = self.tmpTime
+                self.tmpTime = Int(NSDate().timeIntervalSince1970*1000)
+                
+                let dist = Double(self.appDel.person.stepLength)/100
+                
+                speed = dist/Double(self.tmpTime-self.tmpTime2)*3600
+            }
             
             let incrementPedo:Double = 100 /  self.maxStepsVal
             let incrementDistance:Double = 100 / self.maxDistanceVal
@@ -451,6 +464,7 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
                 self.updateProgressView(incrementPedo, cell: self.collectionView.cellForItemAtIndexPath(self.stepsIndexPath) as! SportItemCell, data: String(steps),data2: "",updateChart: false)
             }
             
+            let distance = Double(self.appDel.person.stepLength*steps/100)
             
             let speedText = "\(String(round(100*speed)/100)) km/h"
             let distanceText = "\(String(round(100*distance)/100)) m"
@@ -462,9 +476,6 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
             } else {
                 self.updateProgressView(incrementDistance, cell: self.collectionView.cellForItemAtIndexPath(self.distanceIndexPath) as! SportItemCell, data:speedText, data2:distanceText,updateChart: false)
             }
-            
-            
-            self.appDel.person.steps.distance = distance
         }
     }
     
@@ -478,6 +489,7 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         appDel.person.steps.mail = appDel.person.mail
         appDel.person.steps.pw = appDel.person.pw
+        appDel.person.steps.speed = 0
         pedo.stopCalculating()
         
         
