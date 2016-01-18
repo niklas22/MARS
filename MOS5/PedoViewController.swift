@@ -464,6 +464,7 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
             
             let distance = Double(self.appDel.person.stepLength*steps/100)
             
+            
             let speedText = "\(String(round(100*speed)/100)) km/h"
             let distanceText = "\(String(round(100*distance)/100)) m"
             
