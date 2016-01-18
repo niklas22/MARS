@@ -13,8 +13,6 @@ import HealthKit
 
 class PedoViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, CLLocationManagerDelegate {
     
-    
-    
     //@IBOutlet weak var labelStepCount: UILabel!
     //@IBOutlet weak var labelDistance: UILabel!
     var locationManager : CLLocationManager!
