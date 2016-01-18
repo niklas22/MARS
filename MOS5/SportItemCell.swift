@@ -13,6 +13,9 @@ class SportItemCell: UICollectionViewCell {
     @IBOutlet weak var symbolImage: UIImageView!
     @IBOutlet weak var valueLabel: UILabel!
     @IBOutlet weak var unitLabel: UILabel!
+    var progressMaxValue: Double!
+    var progressData = [22.0,0.0,122.0]
+    var currentActivity:Bool = false
     
     
     func setColorForComponents(color: UIColor){
