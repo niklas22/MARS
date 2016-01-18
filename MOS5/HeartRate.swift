@@ -168,26 +168,45 @@ class HeartRate: HeartRateDelegate{
     
     class func checkAvailability(completion: (isAvailable: Bool) -> Void){
         
+        
         let heartRateQuantityType = HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeartRate)!
-        let healthStore = HKHealthStore()
+        let dataTypesToRead = NSSet(object: heartRateQuantityType)
         
-        let query = HKSampleQuery(sampleType: heartRateQuantityType,
-            predicate: nil,
-            limit: Int(HKObjectQueryNoLimit),
-            sortDescriptors: nil,
-            resultsHandler: {(query: HKSampleQuery,
-                results: [HKSample]?,
-                error: NSError?) in
-                
-                if results?.count == 0{
-                    completion(isAvailable: false)
-                } else {
-                    completion(isAvailable: true)
-                }
-                
-        })
+        let healthStore: HKHealthStore? = {
+            if HKHealthStore.isHealthDataAvailable() {
+                return HKHealthStore()
+            } else {
+                return nil
+            }
+        }()
         
-        healthStore.executeQuery(query)
+        healthStore?.requestAuthorizationToShareTypes(nil, readTypes: dataTypesToRead as? Set<HKObjectType>) { (success, error) -> Void in
+            
+            if( error == nil )
+            {
+                let query = HKSampleQuery(sampleType: heartRateQuantityType,
+                    predicate: nil,
+                    limit: Int(HKObjectQueryNoLimit),
+                    sortDescriptors: nil,
+                    resultsHandler: {(query: HKSampleQuery,
+                        results: [HKSample]?,
+                        error: NSError?) in
+                        
+                        if results?.count == 0{
+                            completion(isAvailable: false)
+                        } else {
+                            completion(isAvailable: true)
+                        }
+                        
+                })
+                
+                healthStore!.executeQuery(query)
+
+            } else {
+                completion(isAvailable: false)
+            }
+        }
+
     }
     
     private func initQuery(){
