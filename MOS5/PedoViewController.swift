@@ -23,6 +23,7 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
     @IBOutlet weak var buttonStartActivity: UIButton!
     @IBOutlet weak var dataLabel: UILabel!
     @IBOutlet weak var addonLabel: UILabel!
+    
     let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
     
     @IBOutlet weak var pieChartView: PieChartView!
@@ -107,15 +108,10 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
         setupPedoMeasurement()
         setupHeartRateMeasurement()
         
-        
         // setup UI
         setupPieChartView()
-
         
         connector = ServerConnector.connector
-        
-        //For Debug Purposes
-        startGPS()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -311,9 +307,6 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
         dispatch_async(dispatch_get_main_queue()){
             self.pieChartView.animate(yAxisDuration: 2.0, easingOption: ChartEasingOption.EaseOutExpo)
         }
-        
-        //For Debug Purposes
-        stopGPS()
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -335,7 +328,7 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
                     let lon = self.lon
                     let lat = self.lat
                     let alt = item["elevation"].doubleValue
-                    let time = Int(NSDate().timeIntervalSince1970)
+                    let time = Int(NSDate().timeIntervalSince1970)*1000
                     
                     print(alt)
                     
@@ -415,7 +408,6 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
         }
     }
     
-    
     // MARK: - Pedo functions
     
     func setupPedoMeasurement(){
@@ -424,13 +416,13 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     func startPedoMeasurement() {
-        steps.startTime = Int(NSDate().timeIntervalSince1970)
+        steps.startTime = Int(NSDate().timeIntervalSince1970)*1000
         
         appDel.person.steps = steps
         
         pedo.calculateSteps { (steps) -> Void in
             let distance : Double = Double(self.appDel.person.stepLength*steps/100)
-            let time = (Int(NSDate().timeIntervalSince1970) - self.appDel.person.steps.startTime)
+            let time = (Int(NSDate().timeIntervalSince1970)*1000 - self.appDel.person.steps.startTime)
             let speed = Double(Double(distance) / Double(time)) * 3.6
             
             let incrementPedo:Double = 100 /  self.maxStepsVal
@@ -465,18 +457,19 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
             return
         }
         
-        appDel.person.steps.endTime = Int(NSDate().timeIntervalSince1970)
+        appDel.person.steps.endTime = Int(NSDate().timeIntervalSince1970)*1000
         appDel.person.steps.steps = pedo.steps
         
         appDel.person.steps.mail = appDel.person.mail
         appDel.person.steps.pw = appDel.person.pw
         pedo.stopCalculating()
         
-        appDel.person.steps.startTime = nil
         
         connector.sendMessage(appDel.person.steps.objectToString(), functionName: "uploadSteps") { (jsonString,error) -> Void in
             print(jsonString)
             print(error)
+            
+            self.appDel.person.steps.startTime = nil
         }
     }
     
@@ -504,7 +497,6 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
         }
         
     }
-
     
     dynamic private func updateTime(){
         
@@ -546,10 +538,7 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
             updateProgressView(incrementval, cell: collectionView.cellForItemAtIndexPath(timerIndexPath) as! SportItemCell, data: "\(strMinutes):\(strSeconds)",updateChart: false)
         }
         
-        
-        
     }
-    
     
     func updateProgressView(incrementVal: Double, cell: SportItemCell, data: String, updateChart: Bool) {
         cell.progressData[1] += incrementVal
