@@ -242,8 +242,6 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
                 person.pw = textPassword.text
                 
                 connector.sendMessage(person.objectToString(), functionName: "login") { (jsonString,error) -> Void in
-                    print(jsonString)
-                    print(error)
                     
                     if jsonString == "" {
                         print("User not in our database")
