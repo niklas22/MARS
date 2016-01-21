@@ -56,6 +56,7 @@ class Person: ObjectToStringDelegate {
         par=0
         stepLength=0
         steps = Steps()
+        heartRates = []
     }
     
     func calcVO() -> Double{
