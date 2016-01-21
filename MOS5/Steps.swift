@@ -23,8 +23,8 @@ class Steps: ObjectToStringDelegate {
         steps = 0
         mail = ""
         pw = ""
-        distance = 0
-        speed = 0
+        distance = 0.0
+        speed = 0.0
     }
     
     func objectToString() -> String {

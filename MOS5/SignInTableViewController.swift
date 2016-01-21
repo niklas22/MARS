@@ -78,12 +78,18 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
         if appDel.personMail != nil && appDel.personMail != "" {
             person = Person()
             
-            print(appDel.personMail)
-            print(appDel.personPW)
+
             
             person.mail = appDel.personMail
             person.pw = appDel.personPW
             
+            // global person init
+            appDel.person = Person()
+            appDel.person.mail = person.mail
+            appDel.person.pw = person.pw
+            
+            print(appDel.person.mail)
+            print(appDel.person.pw)
             
             loginRequest()
         }
