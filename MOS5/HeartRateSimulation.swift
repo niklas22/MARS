@@ -38,7 +38,7 @@ class HeartRateSimulation: HeartRateDelegate {
     }
     
     func startMonitoring() {
-        self.timer = NSTimer.scheduledTimerWithTimeInterval(0.2, target: self, selector: Selector("runCode"), userInfo: nil, repeats: true)
+        self.timer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: Selector("runCode"), userInfo: nil, repeats: true)
     }
     
     func stopMonitoring() {

@@ -88,9 +88,6 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
             appDel.person.mail = person.mail
             appDel.person.pw = person.pw
             
-            print(appDel.person.mail)
-            print(appDel.person.pw)
-            
             loginRequest()
         }
         
@@ -236,14 +233,19 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
                 person.mail = textEmail.text
                 person.pw = textPassword.text
                 person.gender = switchGender.on
+                person.stepLength = Int(textStepLength.text!)
+                person.height = Int(textHeight.text!)
+                person.weight = Int(textWeight.text!)
+                person.par = Int(textPar.text!)
+                person.age = Int(textAge.text!)
                                 
                 connector.sendMessage(person.objectToString(), functionName: "register") { (jsonString,error) -> Void in
                     print("Error: \(error)")
                     
                     self.appDel.personMail = self.textEmail.text
                     self.appDel.personPW = self.textPassword.text
-                    
                     self.appDel.saveUserDefaults()
+
                     
                     if jsonString == "3" {
                         print("Server/DB Error")
@@ -251,6 +253,7 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
                         print("Successful")
                         dispatch_async(dispatch_get_main_queue()) {
                             self.appDel.person = self.person
+
                             self.performSegueWithIdentifier("showMenu", sender: self)
                         }
                     } else if jsonString == "-2" {
@@ -293,13 +296,19 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
                 //Params of the JSON String: age, email, height, name, password, weight, gender, par, steplength
                 
                 self.person = self.person.jsonToObject(jsonString)
-                self.person.mail = self.textEmail.text
-                self.person.pw = self.textPassword.text
                 
-                print(jsonString)
+                if self.textEmail.text! == "" || self.textPassword.text! == "" {
+                    self.person.mail = self.appDel.person.mail
+                    self.person.pw = self.appDel.person.pw
+                } else {
+                    self.person.mail = self.textEmail.text
+                    self.person.pw = self.textPassword.text
+                    self.appDel.personMail = self.textEmail.text
+                    self.appDel.personPW = self.textPassword.text
+                }
                 
-                self.appDel.personMail = self.textEmail.text
-                self.appDel.personPW = self.textPassword.text
+             //   print(jsonString)
+
                 
                 self.appDel.saveUserDefaults()
                 
