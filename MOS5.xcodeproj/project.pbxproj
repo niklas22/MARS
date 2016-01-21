@@ -17,7 +17,6 @@
 		BCD79C2F1C181A18004FACF6 /* ServerConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD79C2E1C181A18004FACF6 /* ServerConnector.swift */; };
 		BCD79C331C18249B004FACF6 /* ObjectToStringDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD79C321C18249B004FACF6 /* ObjectToStringDelegate.swift */; };
 		BCD79C351C182861004FACF6 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD79C341C182861004FACF6 /* Person.swift */; };
-		BCE4318C1C4D020300282B3B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BCE4318A1C4D020300282B3B /* InfoPlist.strings */; };
 		BCE48A8C1C3FD43D00C0737C /* SportItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE48A8B1C3FD43D00C0737C /* SportItemCell.swift */; };
 		BCEF80BC1C11C57E0043534E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEF80BB1C11C57E0043534E /* AppDelegate.swift */; };
 		BCEF80BE1C11C57E0043534E /* PedoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEF80BD1C11C57E0043534E /* PedoViewController.swift */; };
@@ -44,6 +43,7 @@
 		DF7732581C1998E100C4D95F /* Steps.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7732571C1998E100C4D95F /* Steps.swift */; };
 		DFD551081C3EAC74009C6135 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD551071C3EAC74009C6135 /* SwiftyJSON.swift */; };
 		DFD9AF031C4900FE00A8BBED /* GeoPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD9AF021C4900FE00A8BBED /* GeoPoint.swift */; };
+		DFE8B46F1C4D23FA00082441 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DFE8B46D1C4D23FA00082441 /* InfoPlist.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -137,7 +137,6 @@
 		BCD79C2E1C181A18004FACF6 /* ServerConnector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerConnector.swift; sourceTree = "<group>"; };
 		BCD79C321C18249B004FACF6 /* ObjectToStringDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectToStringDelegate.swift; sourceTree = "<group>"; };
 		BCD79C341C182861004FACF6 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
-		BCE4318B1C4D020300282B3B /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = InfoPlist.strings; sourceTree = "<group>"; };
 		BCE48A8B1C3FD43D00C0737C /* SportItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SportItemCell.swift; sourceTree = "<group>"; };
 		BCEF80B81C11C57E0043534E /* MOS5.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MOS5.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCEF80BB1C11C57E0043534E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -171,6 +170,7 @@
 		DF7732571C1998E100C4D95F /* Steps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Steps.swift; sourceTree = "<group>"; };
 		DFD551071C3EAC74009C6135 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		DFD9AF021C4900FE00A8BBED /* GeoPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoPoint.swift; sourceTree = "<group>"; };
+		DFE8B46E1C4D23FA00082441 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = InfoPlist.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,14 +203,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		BCE431891C4D020300282B3B /* Base.lproj */ = {
-			isa = PBXGroup;
-			children = (
-				BCE4318A1C4D020300282B3B /* InfoPlist.strings */,
-			);
-			path = Base.lproj;
-			sourceTree = "<group>";
-		};
 		BCE48A8D1C3FD44000C0737C /* Custom Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -222,7 +214,7 @@
 		BCEF80AF1C11C57E0043534E = {
 			isa = PBXGroup;
 			children = (
-				BCE431891C4D020300282B3B /* Base.lproj */,
+				DFE8B46C1C4D23FA00082441 /* Base.lproj */,
 				BCEF80D01C11C5CB0043534E /* HealthKit.framework */,
 				BCEF80BA1C11C57E0043534E /* MOS5 */,
 				DF3D740C1C184E1900C3C7E1 /* MOS5Watch */,
@@ -322,6 +314,14 @@
 				DF3D741D1C184E1900C3C7E1 /* PushNotificationPayload.apns */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DFE8B46C1C4D23FA00082441 /* Base.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				DFE8B46D1C4D23FA00082441 /* InfoPlist.strings */,
+			);
+			path = Base.lproj;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -477,7 +477,7 @@
 				BCEF80C51C11C57E0043534E /* Assets.xcassets in Resources */,
 				BCEF80D71C11C6A70043534E /* Main.storyboard in Resources */,
 				BCF505511C22C2C000869E43 /* simulationdata.txt in Resources */,
-				BCE4318C1C4D020300282B3B /* InfoPlist.strings in Resources */,
+				DFE8B46F1C4D23FA00082441 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -560,14 +560,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		BCE4318A1C4D020300282B3B /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BCE4318B1C4D020300282B3B /* Base */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		BCEF80C61C11C57E0043534E /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -582,6 +574,14 @@
 				DF3D740E1C184E1900C3C7E1 /* Base */,
 			);
 			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
+		DFE8B46D1C4D23FA00082441 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DFE8B46E1C4D23FA00082441 /* Base */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
