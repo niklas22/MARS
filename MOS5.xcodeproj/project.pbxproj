@@ -43,7 +43,6 @@
 		DF7732581C1998E100C4D95F /* Steps.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7732571C1998E100C4D95F /* Steps.swift */; };
 		DFD551081C3EAC74009C6135 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD551071C3EAC74009C6135 /* SwiftyJSON.swift */; };
 		DFD9AF031C4900FE00A8BBED /* GeoPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD9AF021C4900FE00A8BBED /* GeoPoint.swift */; };
-		DFE8B46F1C4D23FA00082441 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DFE8B46D1C4D23FA00082441 /* InfoPlist.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -170,7 +169,6 @@
 		DF7732571C1998E100C4D95F /* Steps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Steps.swift; sourceTree = "<group>"; };
 		DFD551071C3EAC74009C6135 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		DFD9AF021C4900FE00A8BBED /* GeoPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoPoint.swift; sourceTree = "<group>"; };
-		DFE8B46E1C4D23FA00082441 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = InfoPlist.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,7 +212,6 @@
 		BCEF80AF1C11C57E0043534E = {
 			isa = PBXGroup;
 			children = (
-				DFE8B46C1C4D23FA00082441 /* Base.lproj */,
 				BCEF80D01C11C5CB0043534E /* HealthKit.framework */,
 				BCEF80BA1C11C57E0043534E /* MOS5 */,
 				DF3D740C1C184E1900C3C7E1 /* MOS5Watch */,
@@ -314,14 +311,6 @@
 				DF3D741D1C184E1900C3C7E1 /* PushNotificationPayload.apns */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		DFE8B46C1C4D23FA00082441 /* Base.lproj */ = {
-			isa = PBXGroup;
-			children = (
-				DFE8B46D1C4D23FA00082441 /* InfoPlist.strings */,
-			);
-			path = Base.lproj;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -477,7 +466,6 @@
 				BCEF80C51C11C57E0043534E /* Assets.xcassets in Resources */,
 				BCEF80D71C11C6A70043534E /* Main.storyboard in Resources */,
 				BCF505511C22C2C000869E43 /* simulationdata.txt in Resources */,
-				DFE8B46F1C4D23FA00082441 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -574,14 +562,6 @@
 				DF3D740E1C184E1900C3C7E1 /* Base */,
 			);
 			name = Interface.storyboard;
-			sourceTree = "<group>";
-		};
-		DFE8B46D1C4D23FA00082441 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DFE8B46E1C4D23FA00082441 /* Base */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
