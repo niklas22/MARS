@@ -147,8 +147,6 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         let indexPathFirst = NSIndexPath(forRow: 0, inSection: 0)
         self.collectionView.selectItemAtIndexPath(indexPathFirst, animated: false, scrollPosition: UICollectionViewScrollPosition.None)
-
-   
     }
     
     func setupGPSMeasurement(){
@@ -159,7 +157,6 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
         locationManager.distanceFilter = 2
         
         locationManager.requestWhenInUseAuthorization()
-        
     }
     
     
@@ -170,7 +167,6 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     func stopGPS() {
-        
         let sendData = "email=\(appDel.person.mail)&pw=\(appDel.person.pw)&points=\(gpsData.toJsonArray())"
         
         ServerConnector.connector.sendMessage(sendData, functionName: "uploadGeoPoints", completion: { (jsonString, error) -> Void in
@@ -187,7 +183,6 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("StepCell", forIndexPath: indexPath) as! SportItemCell
         
         cell.layer.borderColor = UIColor.clearColor().CGColor
@@ -270,8 +265,6 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
         }
         
         updateLabelText(cell)
-        
-        
     }
     
     func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
@@ -282,7 +275,6 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     func setChart(dataPoints: [String], values: [Double]) {
-        
         var dataEntries: [ChartDataEntry] = []
         
         for i in 0..<dataPoints.count {
@@ -302,7 +294,6 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
         colors.append(UIColor.clearColor())
         
         pieChartDataSet.colors = colors
-        
     }
     
     func setupPieChartView(){
@@ -318,7 +309,6 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
     
     @IBAction func startActivity(sender: AnyObject) {
-        
         if isRunning {
             stopTimer()
             stopPedoMeasurement()
@@ -362,9 +352,6 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
                     let alt = item["elevation"].doubleValue
                     let time = Int(NSDate().timeIntervalSince1970)*1000
                     
-                    print(alt)
-
-                    
                     let gp = GeoPoint(_lon: lon, _lat: lat, _alt: alt, _time: String(time))
                     
                     self.gpsData.append(gp)
@@ -381,8 +368,6 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
     // MARK: - HeartRate functions
     
     func setupHeartRateMeasurement() {
-        
-        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateHeartRate:", name: "newHeartRate", object: nil)
         //NSNotificationCenter.defaultCenter().addObserver(self, selector: "messureHeartRate:", name: "changeHeartRateSource", object: nil)
         
@@ -405,18 +390,14 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     
     func stopHeartRateMeasurement() {
-        
         hrObject.stopMonitoring()
         
         ServerConnector.connector.sendMessage(appDel.person.heartRatesToString(), functionName: "uploadHeartrates", completion: { (jsonString, error) -> Void in
             print(jsonString)
         })
-        
-
     }
     
     func updateHeartRate(notification: NSNotification){
-        
         userinfo = notification.userInfo as! Dictionary<String,String!>
         let hr = Double(userinfo["bpm"]!)
         let d = userinfo["date"]!
@@ -528,20 +509,16 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
         startTime = NSDate.timeIntervalSinceReferenceDate()
         activityStartTime = timeformatter.stringFromDate(NSDate())
         timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: aSelector, userInfo: nil, repeats: true)
-        
     }
     
     func stopTimer() {
-        
         if timer != nil {
             timer.invalidate()
             timer = nil
         }
-        
     }
     
     dynamic private func updateTime(){
-        
         currentTime = NSDate.timeIntervalSinceReferenceDate()
         
         //Find the difference between current time and start time.
@@ -580,7 +557,6 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
         } else {
             updateProgressView(incrementval, cell: collectionView.cellForItemAtIndexPath(timerIndexPath) as! SportItemCell, data: "\(strMinutes):\(strSeconds)",data2: activityStartTime!, updateChart: false)
         }
-        
     }
     
     @IBAction func logoutAction(sender: AnyObject) {

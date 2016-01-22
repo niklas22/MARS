@@ -22,9 +22,7 @@ final class ServerConnector{
         self.url = NSURL(string: "http://193.170.133.31:33333/MarsServer/server/\(functionName)")!
         
         let request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
-        
-        //print(senddata)
-        
+                
         // get encoded objectdatatoString
         request.HTTPBody = senddata.dataUsingEncoding(NSUTF8StringEncoding)
         //request.HTTPBody = "firstname=Niklas&lastname=Mayr&age=22".dataUsingEncoding(NSUTF8StringEncoding)
