@@ -128,6 +128,10 @@ extension Array {
     func toJsonArray() -> String{
         var ar:String = "["
         
+        if self.count == 1 {
+            ar.appendContentsOf("\(JSONSerializer.toJson(self[self.count-1] as! AnyObject))]")
+            return ar
+        }
         for ind in 0...self.count-2{
             ar.appendContentsOf("\(JSONSerializer.toJson(self[ind] as! AnyObject)),")
         }

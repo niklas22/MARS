@@ -118,12 +118,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func loadUserDefaults(){
+        
+        person = Person()
+        
         if let usermail = NSUserDefaults.standardUserDefaults().valueForKey("personMail") {
             personMail = usermail as? String
+            person.mail = personMail
         }
         
         if let userpw = NSUserDefaults.standardUserDefaults().valueForKey("personPW"){
             personPW = userpw as? String
+            person.pw = personPW
         }
     }
     

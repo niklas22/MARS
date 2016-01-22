@@ -30,4 +30,12 @@ class Steps: ObjectToStringDelegate {
     func objectToString() -> String {
         return "email=\(mail)&pw=\(pw)&steps=\(steps)&start=\(startTime)&end=\(endTime)&distance=\(distance)&speed=\(speed)"
     }
+    
+    func startDateToString() {
+        print(NSDate(timeIntervalSince1970: NSTimeInterval(startTime)))
+    }
+    
+    func endDateToString() {
+        
+    }
 }

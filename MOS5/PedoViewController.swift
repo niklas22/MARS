@@ -118,6 +118,8 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
         setupTimer()
         setupPedoMeasurement()
         setupHeartRateMeasurement()
+        setupGPSMeasurement()
+        
         
         
         
@@ -149,7 +151,7 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
    
     }
     
-    func startGPS() {
+    func setupGPSMeasurement(){
         //Setup Locationmanager
         locationManager = CLLocationManager()
         locationManager.delegate = self
@@ -158,6 +160,10 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         locationManager.requestWhenInUseAuthorization()
         
+    }
+    
+    
+    func startGPS() {
         if CLLocationManager.locationServicesEnabled() {
             locationManager.startUpdatingLocation()
         }
@@ -187,6 +193,7 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
         cell.layer.borderColor = UIColor.clearColor().CGColor
         cell.layer.borderWidth = 0
         cell.layer.cornerRadius = 0
+        cell.progressData = [22.0,0.0,122.0]
         
         // specific items
         
@@ -316,12 +323,15 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
             stopTimer()
             stopPedoMeasurement()
             stopHeartRateMeasurement()
+            stopGPS()
             isRunning = false
             buttonStartActivity.setTitle("Start Activity", forState: UIControlState.Normal)
         } else {
+            self.collectionView.reloadData()
             startTimer()
             startPedoMeasurement()
             startHeartRateMeasurement()
+            startGPS()
             isRunning = true
             buttonStartActivity.setTitle("Stop Activity", forState: UIControlState.Normal)
         }
@@ -353,6 +363,7 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
                     let time = Int(NSDate().timeIntervalSince1970)*1000
                     
                     print(alt)
+
                     
                     let gp = GeoPoint(_lon: lon, _lat: lat, _alt: alt, _time: String(time))
                     
@@ -419,7 +430,7 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
         if self.currentIndexPath == self.energyIndexPath {
             
             self.updateProgressView(incrementVal, cell: self.collectionView.cellForItemAtIndexPath(self.energyIndexPath) as! SportItemCell, data: String(energy),data2: String(hr!), updateChart: true)
-            self.dataLabel.text = String(energy)
+            self.dataLabel.text = String(Int(energy))
             self.addonLabel.text = String(Int(hr!))
             
         }
