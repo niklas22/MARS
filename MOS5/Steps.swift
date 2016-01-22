@@ -17,14 +17,14 @@ class Steps: ObjectToStringDelegate {
     var distance : Double!
     var speed : Double!
     
-    init(){
+    init () {
         startTime = 0
         endTime = 0
         steps = 0
         mail = ""
         pw = ""
-        distance = 0.0
-        speed = 0.0
+        distance = 0
+        speed = 0
     }
     
     func objectToString() -> String {
