@@ -81,8 +81,9 @@ class StatisticsTableViewController: UITableViewController {
     }
     
     @IBAction func logoutAction(sender: AnyObject) {
-        
-        
+        appDel.personMail = ""
+        appDel.personPW = ""
+        appDel.saveUserDefaults()
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     

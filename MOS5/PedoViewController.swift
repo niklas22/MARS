@@ -583,6 +583,12 @@ class PedoViewController: UIViewController, UICollectionViewDataSource, UICollec
         
     }
     
+    @IBAction func logoutAction(sender: AnyObject) {
+        appDel.personMail = ""
+        appDel.personPW = ""
+        appDel.saveUserDefaults()
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
     
     func updateProgressView(incrementVal: Double, cell: SportItemCell, data: String, data2: String,updateChart: Bool) {
         cell.progressData[1] += incrementVal
