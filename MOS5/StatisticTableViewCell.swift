@@ -12,11 +12,16 @@ import Charts
 class StatisticTableViewCell: UITableViewCell, ChartViewDelegate {
 
     
+    @IBOutlet weak var startTimeLabel: UILabel!
+    @IBOutlet weak var endTimeLabel: UILabel!
     @IBOutlet weak var statisticDetail: UILabel!
     @IBOutlet weak var barChartView: BarChartView!
     @IBOutlet weak var statisticTitle: UILabel!
+    
     let dateFormatter = NSDateFormatter()
-    var dict = Dictionary<Int, AnyObject>()
+    var descriptionText: [String] = []
+    var startTimeText:[String] = []
+    var endTimeText:[String] = []
     
    // let dataDescription = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
     var dataDescription:[String] = []
@@ -27,17 +32,29 @@ class StatisticTableViewCell: UITableViewCell, ChartViewDelegate {
         
         dateFormatter.dateFormat = "dd MMM yyyy"
         
+        endTimeLabel.textColor = UIColor.whiteColor()
+        startTimeLabel.textColor = UIColor.whiteColor()
+        endTimeLabel.text = "Endtime:"
+        startTimeLabel.text = "Starttime:"
+        statisticDetail.text = "Steps:"
+        
+        
+        
         barChartView.delegate = self
-        
         barChartView.scaleYEnabled = false
-        barChartView.descriptionText = ""
-        
+        barChartView.descriptionText = "Steps:"
         barChartView.legend.enabled = false
         barChartView.leftAxis.enabled = false
         barChartView.rightAxis.enabled = false
         barChartView.drawValueAboveBarEnabled = false
-        barChartView.descriptionTextColor = UIColor.whiteColor()
         barChartView.descriptionTextColor = UIColor.clearColor()
+        barChartView.legend.textColor = UIColor.whiteColor()
+        barChartView.backgroundColor = UIColor.clearColor()
+        barChartView.xAxis.labelPosition = .Bottom
+        
+        
+        statisticTitle.textColor = UIColor.whiteColor()
+        statisticDetail.textColor = UIColor.whiteColor()
 
         // Initialization code
     }
@@ -76,12 +93,19 @@ class StatisticTableViewCell: UITableViewCell, ChartViewDelegate {
     }
     
     func chartValueSelected(chartView: ChartViewBase, entry: ChartDataEntry, dataSetIndex: Int, highlight: ChartHighlight) {
-        print("selected")
+        statisticDetail.text = descriptionText[entry.xIndex]
+        startTimeLabel.text = startTimeText[entry.xIndex]
+        endTimeLabel.text = endTimeText[entry.xIndex]
     }
     
-    func loadDataFromServer(dataString: String) {
+    func loadDataFromServer(functionName: String, dataString: String) {
         
-        ServerConnector.connector.sendMessage(dataString, functionName: "getSteps") { (jsonString, error) -> Void in
+        self.data = []
+        self.dataDescription = []
+        self.startTimeText = []
+        self.endTimeText = []
+        
+        ServerConnector.connector.sendMessage(dataString, functionName: functionName) { (jsonString, error) -> Void in
             
             print("MARS: \(jsonString)")
             var beginDate:String = ""
@@ -93,18 +117,36 @@ class StatisticTableViewCell: UITableViewCell, ChartViewDelegate {
                 let ar = json.arrayValue
                 
                 for ind in 0..<ar.count {
+                    
                     let steps = ar[ind]["steps"].intValue
-                    let startTime = ar[ind]["startTime"].intValue
-                    let endTime = ar[ind]["endTime"].intValue
-                    
-                    beginDate = self.dateFormatter.stringFromDate(NSDate(timeIntervalSince1970: NSTimeInterval(startTime)))
-                    endDate = self.dateFormatter.stringFromDate(NSDate(timeIntervalSince1970: NSTimeInterval(endTime)))
-                    
-                    
 
+                    if steps != 0{
+                        
+                        
+                        let startTime = ar[ind]["startTime"].intValue
+                        let endTime = ar[ind]["endTime"].intValue
+                        
+                        self.data.append(Double(steps))
+                        self.dataDescription.append("")
+                        
+                        beginDate = self.dateFormatter.stringFromDate(NSDate(timeIntervalSince1970: NSTimeInterval(startTime/1000)))
+                        endDate = self.dateFormatter.stringFromDate(NSDate(timeIntervalSince1970: NSTimeInterval(endTime/1000)))
+                        
+                        self.descriptionText.append("Steps: \(steps)")
+                        self.startTimeText.append("Starttime: \(beginDate)")
+                        self.endTimeText.append("Endtime: \(endDate)")
+
+                    }
+                    
                 }
-
+                
+                dispatch_async(dispatch_get_main_queue()){
+                   self.initBarChart() 
+                }
+                
             }
+            
+            
 
             
         }

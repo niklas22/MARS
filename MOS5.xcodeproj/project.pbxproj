@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		BC1FCFC61C1ACF2D00F95BB4 /* HealthFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1FCFC51C1ACF2D00F95BB4 /* HealthFactory.swift */; };
 		BC1FCFCA1C1AD4BE00F95BB4 /* HeartRate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1FCFC91C1AD4BE00F95BB4 /* HeartRate.swift */; };
+		BC2D15CB1C52254700C7F2BC /* GraphTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2D15CA1C52254700C7F2BC /* GraphTableViewCell.swift */; };
 		BC3144B41C184D7200C07CC6 /* SignInTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3144B31C184D7200C07CC6 /* SignInTableViewController.swift */; };
 		BC8431A51C48F332008260F3 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC8431A01C48F329008260F3 /* Charts.framework */; };
 		BC8431A61C48F332008260F3 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BC8431A01C48F329008260F3 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -131,6 +132,7 @@
 /* Begin PBXFileReference section */
 		BC1FCFC51C1ACF2D00F95BB4 /* HealthFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthFactory.swift; sourceTree = "<group>"; };
 		BC1FCFC91C1AD4BE00F95BB4 /* HeartRate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartRate.swift; sourceTree = "<group>"; };
+		BC2D15CA1C52254700C7F2BC /* GraphTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphTableViewCell.swift; sourceTree = "<group>"; };
 		BC3144B31C184D7200C07CC6 /* SignInTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInTableViewController.swift; sourceTree = "<group>"; };
 		BC8431991C48F329008260F3 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = Charts/Charts.xcodeproj; sourceTree = "<group>"; };
 		BC97B4501C50D0BB00E10B83 /* StatisticTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticTableViewCell.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 			children = (
 				BCE48A8B1C3FD43D00C0737C /* SportItemCell.swift */,
 				BC97B4501C50D0BB00E10B83 /* StatisticTableViewCell.swift */,
+				BC2D15CA1C52254700C7F2BC /* GraphTableViewCell.swift */,
 			);
 			name = "Custom Cells";
 			sourceTree = "<group>";
@@ -516,6 +519,7 @@
 				BCF505471C22B5C300869E43 /* HeartRateDelegate.swift in Sources */,
 				BCF5054B1C22BA0300869E43 /* HeartRateSimulation.swift in Sources */,
 				DFD9AF031C4900FE00A8BBED /* GeoPoint.swift in Sources */,
+				BC2D15CB1C52254700C7F2BC /* GraphTableViewCell.swift in Sources */,
 				DFD551081C3EAC74009C6135 /* SwiftyJSON.swift in Sources */,
 				BCD79C2F1C181A18004FACF6 /* ServerConnector.swift in Sources */,
 				BCD79C351C182861004FACF6 /* Person.swift in Sources */,
