@@ -66,8 +66,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 alertController.message = "Activity start"
                 if let vc = rootViewController as? UINavigationController {
                     
-                    if self.person != nil {
+                    if self.personMail != "" {
                         let eventVC = vc.topViewController as! SignInTableViewController
+                        eventVC.forceTouchActionEnabled = true
                         eventVC.performSegueWithIdentifier("showMenu", sender: self)
                     }
                 }

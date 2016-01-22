@@ -40,6 +40,7 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
     var connector:ServerConnector!
     
     var simulation:HeartRateSimulation!
+    var forceTouchActionEnabled:Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -291,6 +292,23 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
         }
     }
     
+    
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        if segue.identifier == "showMenu" {
+//            
+//            if !forceTouchActionEnabled {
+//                super.prepareForSegue(segue, sender: sender)
+//            } else {
+//                if let tab = segue.destinationViewController as? UITabBarController {
+//                    if let vc = tab.viewControllers![0] as? PedoViewController {
+//                        print(vc)
+//                    }
+//                    
+//                    
+//                }
+//            }
+//        }
+//    }
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
