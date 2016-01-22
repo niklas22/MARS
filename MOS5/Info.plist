@@ -10,7 +10,7 @@
 			<key>UIApplicationShortcutItemIconFile</key>
 			<string>ShortcutIconFavorites</string>
 			<key>UIApplicationShortcutItemTitle</key>
-			<string>SHORTCUT_TITLE_ACTIVITY</string>
+			<string>Start Activity</string>
 			<key>UIApplicationShortcutItemType</key>
 			<string>$(PRODUCT_BUNDLE_IDENTIFIER).Activity</string>
 		</dict>

@@ -53,41 +53,38 @@ class StatisticsTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        return 2
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath) as! StatisticTableViewCell
-        cell.statisticTitle.textColor = UIColor.whiteColor()
-        cell.barChartView.descriptionTextColor = UIColor.whiteColor()
-        cell.barChartView.legend.textColor = UIColor.whiteColor()
-        cell.barChartView.animate(yAxisDuration: 2.0, easingOption: ChartEasingOption.EaseOutExpo)
-        cell.barChartView.backgroundColor = UIColor.clearColor()
-        cell.barChartView.xAxis.labelPosition = .Bottom
-        cell.statisticDetail.text = ""
-        cell.statisticDetail.textColor = UIColor.whiteColor()
-        cell.loadDataFromServer("email=\(appDel.person.mail)&pw=\(appDel.person.pw)")
         
         // stepts
         if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath) as! StatisticTableViewCell
             cell.setTitle("Steps")
-            
-            
-            
-            
-            cell.initBarChart()
+            cell.loadDataFromServer("getSteps",dataString: "email=\(appDel.person.mail)&pw=\(appDel.person.pw)")
+            cell.barChartView.animate(yAxisDuration: 2.0, easingOption: ChartEasingOption.EaseOutExpo)
+            return cell
 
-
-        } else if indexPath.row == 1 {
-            
+        } else {
+            let cell = tableView.dequeueReusableCellWithIdentifier("heartRateCell", forIndexPath: indexPath) as! GraphTableViewCell
+            cell.setTitle("Heartrates")
+            cell.loadDataFromServer("getHeartrates", dataString: appDel.person.objectToString())
+            cell.lineChart.animate(xAxisDuration: 2.0, easingOption: ChartEasingOption.EaseOutExpo)
+            return cell
         }
 
         // Configure the cell...
 
-        return cell
+       
     }
     
+    @IBAction func logoutAction(sender: AnyObject) {
+        
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
     
     
 
