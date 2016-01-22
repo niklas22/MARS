@@ -70,16 +70,9 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
         pictureInfo.userInteractionEnabled = true
         pictureInfo.addGestureRecognizer(recognizer3)
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        //self.performSegueWithIdentifier("showMenu", sender: self)
-        
         if appDel.personMail != nil && appDel.personMail != "" {
             person = Person()
-            
-
-            
+        
             person.mail = appDel.personMail
             person.pw = appDel.personPW
             
@@ -90,7 +83,6 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
             
             loginRequest()
         }
-        
     }
     
     func maleTapped() {
@@ -102,17 +94,23 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
     }
     
     func infoTapped() {
-        let alert = UIAlertController()
-        
-        alert.title = "Info"
-        alert.message = "Use the number (0 – 7) that best describes your physical activity level for the previous month: \n 0-1: Do not participate regularly in programmed recreation sport or heavy physical activity \n 2-3: Participate regularly in recreation or work requiring modest physical activity, such as golf, horseback riding, calisthenics, gymnastics, table tennis, bowling, weightlifting, yard work \n 4-7: Participate regularly in heavy physical exercise such as running or jogging, swimming, cycling, rowing, skipping rope, running in place or engaging in vigorous activity exercise such as tennis, basketball, or handball work"
-        
-        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) -> Void in
-            alert.dismissViewControllerAnimated(true, completion: nil)
-        })
-        )
-        
-        presentViewController(alert, animated: true, completion: nil)
+        showAlert("Info", text: "Use the number (0 – 7) that best describes your physical activity level for the previous month: \n 0-1: Do not participate regularly in programmed recreation sport or heavy physical activity \n 2-3: Participate regularly in recreation or work requiring modest physical activity, such as golf, horseback riding, calisthenics, gymnastics, table tennis, bowling, weightlifting, yard work \n 4-7: Participate regularly in heavy physical exercise such as running or jogging, swimming, cycling, rowing, skipping rope, running in place or engaging in vigorous activity exercise such as tennis, basketball, or handball work")
+    }
+    
+    func showAlert(title: String, text: String) {
+        dispatch_async(dispatch_get_main_queue()) {
+            let alert = UIAlertController()
+            
+            alert.title = title
+            alert.message = text
+            
+            alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) -> Void in
+                alert.dismissViewControllerAnimated(true, completion: nil)
+            })
+            )
+            
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
     }
     
     @IBAction func LogRegSegmentValueChanged(sender: UISegmentedControl) {
@@ -148,15 +146,10 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
         pickerView.reloadAllComponents()
     }
     
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    // MARK: - Table view data source
-
-    
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -216,15 +209,7 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
     }
 
     @IBAction func btnDoneClicked(sender: UIBarButtonItem) {
-        
-        
         NSNotificationCenter.defaultCenter().postNotificationName("notifyWatch", object: nil, userInfo: nil)
-        
-//        connector.sendMessage(person, functionName: "") { (jsonString, error) -> Void in
-//            print(jsonString)
-//        }
-
-        
         
         if (LogRegSegment.selectedSegmentIndex == 0) {
             //Register
@@ -245,51 +230,40 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
                     self.appDel.personMail = self.textEmail.text
                     self.appDel.personPW = self.textPassword.text
                     self.appDel.saveUserDefaults()
-
                     
                     if jsonString == "3" {
-                        print("Server/DB Error")
+                        self.showAlert("Server Error", text: "Server currently unable to resolve your request.")
                     } else if jsonString == "1" {
-                        print("Successful")
                         dispatch_async(dispatch_get_main_queue()) {
                             self.appDel.person = self.person
 
                             self.performSegueWithIdentifier("showMenu", sender: self)
                         }
                     } else if jsonString == "-2" {
-                        print("Username already taken")
+                        self.showAlert("Email already in use.", text: "Please choose another email address.")
                     }
                 }
             } else {
-                print("Mars: Please enter all the data!")
+                showAlert("Missing data!", text: "Please enter all the data.")
             }
         } else {
             //Login
             if textEmail.text != "" && textPassword.text != "" {
-                
                 person.mail = textEmail.text
                 person.pw = textPassword.text
                 
                 loginRequest()
-                
             } else {
-                print("Mars: Please enter all the data!")
+                showAlert("Missing data!", text: "Please enter all the data.")
             }
-
         }
-        
-
     }
     
     func loginRequest() {
-        
-        print(person.objectToString())
-        
-        
         connector.sendMessage(person.objectToString(), functionName: "login") { (jsonString,error) -> Void in
-            
-            if jsonString == "" {
-                print("User not in our database")
+            print(jsonString)
+            if jsonString == "denial" {
+                self.showAlert("Wrong User Data", text: "Email and password don't seem to match. Try again.")
             } else {
                 //User Data contained in jsonString
                 //Convert JSON String to Person Object
@@ -307,11 +281,7 @@ class SignInTableViewController: UITableViewController, UIPickerViewDataSource, 
                     self.appDel.personPW = self.textPassword.text
                 }
                 
-             //   print(jsonString)
-
-                
                 self.appDel.saveUserDefaults()
-                
                 
                 dispatch_async(dispatch_get_main_queue()) {
                     self.appDel.person = self.person
